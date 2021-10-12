@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public float speed = 10f;
 
+    public Collider2D held = null;
     public char playerNumber = (char)1;
 
     // Start is called before the first frame update
@@ -26,6 +27,33 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        CheckInteract();
+        CheckHeld();
+    }
+
+    private void CheckInteract()
+    {
+        if(Input.GetButtonDown("Interact" + playerNumber))
+        {
+            if (held != null)
+            {
+                held = null;
+                return;
+            }
+            Collider2D hit = Physics2D.OverlapCircle(this.transform.position, 1.5f);
+            if (hit != null && hit.tag == "Tower")
+            {
+                held = hit;
+            }
+        }
+    }
+
+    private void CheckHeld()
+    {
+        if(held == null)
+        {
+            return;
+        }
+        held.transform.position = this.transform.position + new Vector3(0, 1, 0);
     }
 }
