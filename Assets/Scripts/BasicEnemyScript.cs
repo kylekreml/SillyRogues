@@ -9,6 +9,7 @@ public class BasicEnemyScript : MonoBehaviour
     //not sure if this is how i'm doing it yet
     public string type;
 
+    public GameObject spawnpoint;
     public GameObject route;
     public Transform[] waypoints;
     public int currentWaypoint;
@@ -17,6 +18,8 @@ public class BasicEnemyScript : MonoBehaviour
 
     //for movement walkToLoot towards loot pile or spawn
     public bool walkToLoot = true;
+    //for if kill when in spawn
+    public bool hasLoot = false;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +40,13 @@ public class BasicEnemyScript : MonoBehaviour
                 walkTowards = waypoints[currentWaypoint];
             walk();
         }
+
+        //TEMPORARY KILL
+        if(transform.position == spawnpoint.transform.position && hasLoot)
+        {
+            Debug.Log("home");
+            Destroy(gameObject);
+        }
     }
 
     void walk()
@@ -50,15 +60,21 @@ public class BasicEnemyScript : MonoBehaviour
             //REMINDER OF LOOT PICKUP PROCESS
             //WAYPOINT WILL TELL CLOSEST ENEMY THERE IS LOOT AND REDIRECT THEM
             if(!(currentWaypoint < this.waypoints.Length-1))
+            {
                 walkToLoot = !walkToLoot;
+                //TEMPORARY KILL
+                hasLoot = true;
+            }
 
             if(walkToLoot)
                 currentWaypoint++;
-            else
+            else if(currentWaypoint > -1)
                 currentWaypoint--;
             
             if(currentWaypoint > -1)
                 walkTowards = waypoints[currentWaypoint];
+            else
+                walkTowards = spawnpoint.transform;
         }
     }
 
