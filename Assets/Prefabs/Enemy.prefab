@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  speed: 5
+  speed: 2
   type: 
   spawnpoint: {fileID: 0}
   route: {fileID: 0}

@@ -44,7 +44,6 @@ public class BasicEnemyScript : MonoBehaviour
         //TEMPORARY KILL
         if(transform.position == spawnpoint.transform.position && hasLoot)
         {
-            Debug.Log("home");
             Destroy(gameObject);
         }
     }
@@ -53,6 +52,13 @@ public class BasicEnemyScript : MonoBehaviour
     {
         
         transform.position = Vector2.MoveTowards(transform.position, walkTowards.position, speed*Time.deltaTime);
+
+        Vector3 vectorToTarget = walkTowards.position - transform.position;
+        float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - 90;
+        Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+        // transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * speed);
+        transform.rotation = q;
+        Debug.DrawRay(transform.position, transform.up, Color.red);
 
         if(transform.position == walkTowards.position)
         {
