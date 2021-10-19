@@ -6,13 +6,16 @@ public class PlayerMovement : MonoBehaviour
 {
     public float speed = 10f;
     public int lootCount = 0;
+    public float playerInteractRange = 1.5f;
     public Collider2D held = null;
     public char playerNumber = (char)1;
+
+    private Vector3 NormalizedDirection = new Vector3(0, 0, 0);
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Physics2D.queriesStartInColliders = false;
     }
 
     private void FixedUpdate()
@@ -21,6 +24,10 @@ public class PlayerMovement : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical" + playerNumber);
 
         Vector3 direction = new Vector3(horizontalInput, verticalInput, 0);
+        if (direction != Vector3.zero)
+        {
+            NormalizedDirection = direction.normalized;
+        }
         transform.Translate(direction * speed * Time.deltaTime);
     }
 
@@ -38,13 +45,17 @@ public class PlayerMovement : MonoBehaviour
         {
             if (held != null)
             {
+                //Going to have to place in grid somewhere around here.
+                held.isTrigger = false;
                 held = null;
                 return;
             }
-            Collider2D hit = Physics2D.OverlapCircle(this.transform.position, 1.5f);
-            if (hit != null && hit.tag == "Tower")
+            RaycastHit2D hit = Physics2D.Raycast(this.transform.position, this.transform.rotation * NormalizedDirection, playerInteractRange);
+            Debug.Log(hit.collider.tag);
+            if (hit && hit.transform.tag == "Tower")
             {
-                held = hit;
+                hit.collider.isTrigger = true;
+                held = hit.collider;
             }
         }
     }
@@ -55,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
         {
             return;
         }
-        held.transform.position = this.transform.position + new Vector3(0, 1, 0);
+        held.transform.position = this.transform.position + NormalizedDirection * 1.2f;
     }
 
     private void CheckLoot()
