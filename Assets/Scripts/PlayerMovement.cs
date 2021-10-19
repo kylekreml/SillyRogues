@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 10f;
-
+    public int lootCount = 0;
     public Collider2D held = null;
     public char playerNumber = (char)1;
 
@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     {
         CheckInteract();
         CheckHeld();
+        CheckLoot();
     }
 
     private void CheckInteract()
@@ -55,5 +56,22 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
         held.transform.position = this.transform.position + new Vector3(0, 1, 0);
+    }
+
+    private void CheckLoot()
+    {
+        Collider2D[] hit = Physics2D.OverlapCircleAll(this.transform.position, 4f);
+        if (hit.Length == 0)
+        {
+            return;
+        }
+        foreach (Collider2D item in hit)
+        {
+            if (item.tag == "Loot")
+            {
+                Destroy(item.gameObject);
+                lootCount++;
+            }
+        }
     }
 }
