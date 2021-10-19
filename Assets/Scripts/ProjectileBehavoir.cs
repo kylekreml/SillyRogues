@@ -6,7 +6,7 @@ public class ProjectileBehavoir : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    
+    public float damage = 1;
     public GameObject target;
 
     void Start()
@@ -32,7 +32,10 @@ public class ProjectileBehavoir : MonoBehaviour
         // }
         Debug.Log(other.gameObject.name);
         if (other.gameObject.CompareTag("Enemy"))
-            Destroy(gameObject); //Change this to do damage later or something
+        {
+            other.gameObject.GetComponent<BasicEnemyScript>().damage(damage);
+            Destroy(gameObject);
+        }
     }
 
     // Update is called once per frame

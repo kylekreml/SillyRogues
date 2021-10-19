@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BasicEnemyScript : MonoBehaviour
 {
-    public int health;
-    public float speed;
+    public float health = 5;
+    public float speed = 3;
     //not sure if this is how i'm doing it yet
     public string type;
 
@@ -84,8 +84,14 @@ public class BasicEnemyScript : MonoBehaviour
         }
     }
 
-    void damage(string damageType, int amount)
+    public void damage(float amount)
     {
-        
+        Debug.Log("Hit");
+        health = health - amount;
+        if (health <= 0)
+        {
+            Debug.Log("Kill");
+            Destroy(gameObject);
+        }
     }
 }
