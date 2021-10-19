@@ -30,7 +30,6 @@ public class ProjectileBehavoir : MonoBehaviour
         //{
         //    Destroy(gameObject); //Change this to do damage later or something
         // }
-        Debug.Log(other.gameObject.name);
         if (other.gameObject.CompareTag("Enemy"))
         {
             other.gameObject.GetComponent<BasicEnemyScript>().damage(damage);
@@ -39,8 +38,16 @@ public class ProjectileBehavoir : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        this.transform.position = Vector3.MoveTowards(gameObject.transform.position, target.transform.position, .10f);
+        if (target)
+        {
+            this.transform.position = Vector3.MoveTowards(gameObject.transform.position, target.transform.position, .10f);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        
     }
 }

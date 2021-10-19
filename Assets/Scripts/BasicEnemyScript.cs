@@ -86,11 +86,9 @@ public class BasicEnemyScript : MonoBehaviour
 
     public void damage(float amount)
     {
-        Debug.Log("Hit");
         health = health - amount;
         if (health <= 0)
         {
-            Debug.Log("Kill");
             Destroy(gameObject);
         }
     }
