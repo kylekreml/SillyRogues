@@ -25,8 +25,8 @@ public class EnemySpawnerScript : MonoBehaviour
         if(spawnDelay <= 0)
         {
             GameObject child = Instantiate(spawnChild);
-            child.GetComponent<BasicEnemyScript>().route = route;
-            child.GetComponent<BasicEnemyScript>().spawnpoint = gameObject;
+            child.GetComponent<BasicEnemyScript>().SetRoute(route);
+            child.GetComponent<BasicEnemyScript>().SetSpawnpoint(gameObject);
             child.transform.position = transform.position;
             spawnDelay = spawnCooldown;
         }

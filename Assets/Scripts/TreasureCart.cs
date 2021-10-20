@@ -34,6 +34,13 @@ public class TreasureCart : MonoBehaviour
                 lootCount += player.lootCount;
                 player.lootCount = 0;
             }
+            else if (objCol.tag == "Enemy" && lootCount > 0)
+            {
+                if (objCol.gameObject.GetComponent<BasicEnemyScript>().giveLoot())
+                {
+                    lootCount--;
+                }
+            }
         }
     }
 }

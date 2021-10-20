@@ -11,12 +11,16 @@ public class BasicEnemyScript : MonoBehaviour
 
     public string type;
 
-    public GameObject spawnpoint;
-    public GameObject route;
-    public Transform[] waypoints;
-    public int currentWaypoint;
-    public Transform walkTowards;
-    public int previousWaypoint;
+    private GameObject spawnpoint;
+    private GameObject route;
+    private Transform[] waypoints;
+    private int currentWaypoint;
+    private Transform walkTowards;
+    private int previousWaypoint;
+
+    [SerializeField]
+    private GameObject loot;
+    private bool holdingLoot = false;
 
     //for movement walkToLoot towards loot pile or spawn
     public bool walkToLoot = true;
@@ -45,7 +49,7 @@ public class BasicEnemyScript : MonoBehaviour
         }
 
         //TEMPORARY KILL
-        if (transform.position == spawnpoint.transform.position && hasLoot)
+        if (transform.position == spawnpoint.transform.position && !walkToLoot)
         {
             Destroy(gameObject);
         }
@@ -71,8 +75,7 @@ public class BasicEnemyScript : MonoBehaviour
             if (!(currentWaypoint < this.waypoints.Length - 1))
             {
                 walkToLoot = !walkToLoot;
-                //TEMPORARY KILL
-                hasLoot = true;
+
             }
 
             if (walkToLoot)
@@ -85,20 +88,22 @@ public class BasicEnemyScript : MonoBehaviour
             else
                 walkTowards = spawnpoint.transform;
         }
-
-
-     
-
-
     }
+
     public void damage(float amount)
     {
         health = health - amount;
         if (health <= 0)
         {
+            if(holdingLoot)
+            {
+                GameObject l = Instantiate(loot);
+                l.transform.position = transform.position;
+            }
             Destroy(gameObject);
         }
     }
+
     public void changeSpeed(float newSpeed)
     {
         //Call this function to change speed of enemy movement
@@ -114,5 +119,35 @@ public class BasicEnemyScript : MonoBehaviour
     public void resetSpeed()
     {
         speed = defaultSpeed;
+    }
+
+    void OnTriggerEnter2D(Collider2D collide)
+    {
+        // Debug.Log(collide.gameObject.tag);
+        if (holdingLoot == false && collide.gameObject.tag == "Loot")
+        {
+            Destroy(collide.gameObject);
+            holdingLoot = true;
+        }
+    }
+
+    public bool giveLoot()
+    {
+        if (holdingLoot == false)
+        {
+            holdingLoot = true;
+            return true;
+        }
+        return false;
+    }
+
+    public void SetRoute(GameObject r)
+    {
+        route = r;
+    }
+
+    public void SetSpawnpoint(GameObject sp)
+    {
+        spawnpoint = sp;
     }
 }
