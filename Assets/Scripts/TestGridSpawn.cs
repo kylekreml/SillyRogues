@@ -31,6 +31,7 @@ public class TestGridSpawn : MonoBehaviour
             Collider2D[] overlaps = Physics2D.OverlapBoxAll(new Vector2(gridPosition.x, gridPosition.y), new Vector2(0.5f, 0.5f), 0f);
             foreach (Collider2D o in overlaps)
             {
+                Debug.Log(o.tag);
                 if (o.tag == "Tower")
                 {
                     canSpawn = false;

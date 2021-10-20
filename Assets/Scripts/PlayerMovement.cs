@@ -9,8 +9,10 @@ public class PlayerMovement : MonoBehaviour
     public float playerInteractRange = 1.5f;
     public Collider2D held = null;
     public char playerNumber = (char)1;
+    public Animator animator;
 
     private Vector3 NormalizedDirection = new Vector3(0, 0, 0);
+    private Vector3 direction;
 
     // Start is called before the first frame update
     void Start()
@@ -20,20 +22,22 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float horizontalInput = Input.GetAxis("Horizontal" + playerNumber);
-        float verticalInput = Input.GetAxis("Vertical" + playerNumber);
-
-        Vector3 direction = new Vector3(horizontalInput, verticalInput, 0);
         if (direction != Vector3.zero)
         {
             NormalizedDirection = direction.normalized;
         }
         transform.Translate(direction * speed * Time.deltaTime);
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        direction.x = Input.GetAxis("Horizontal" + playerNumber);
+        direction.y = Input.GetAxis("Vertical" + playerNumber);
+        animator.SetFloat("Horizontal", direction.x);
+        animator.SetFloat("Vertical", direction.y);
+        animator.SetFloat("Speed", Mathf.Max(Mathf.Abs(direction.x), Mathf.Abs(direction.y)));
         CheckInteract();
         CheckHeld();
         CheckLoot();
@@ -51,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
                 return;
             }
             RaycastHit2D hit = Physics2D.Raycast(this.transform.position, this.transform.rotation * NormalizedDirection, playerInteractRange);
-            Debug.Log(hit.collider.tag);
+            //Debug.Log(hit.collider.tag);
             if (hit && hit.transform.tag == "Tower")
             {
                 hit.collider.isTrigger = true;
