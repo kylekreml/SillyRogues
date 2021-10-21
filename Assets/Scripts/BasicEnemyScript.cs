@@ -11,7 +11,9 @@ public class BasicEnemyScript : MonoBehaviour
 
     public string type;
 
-    private GameObject spawnpoint;
+    [SerializeField]
+    private GameObject destination;
+    [SerializeField]
     private GameObject route;
     private Transform[] waypoints;
     private int currentWaypoint;
@@ -22,10 +24,8 @@ public class BasicEnemyScript : MonoBehaviour
     private GameObject loot;
     private bool holdingLoot = false;
 
-    //for movement walkToLoot towards loot pile or spawn
-    public bool walkToLoot = true;
-    //for if kill when in spawn
-    public bool hasLoot = false;
+    //for walking to exit destination when done with waypoints
+    private bool walkToExit = false;
 
     // Start is called before the first frame update
     void Start()
@@ -41,15 +41,10 @@ public class BasicEnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentWaypoint < this.waypoints.Length)
-        {
-            if (walkTowards == null)
-                walkTowards = waypoints[currentWaypoint];
-            walk();
-        }
-
-        //TEMPORARY KILL
-        if (transform.position == spawnpoint.transform.position && !walkToLoot)
+        walk();
+        
+        //destroys this instance when it reaches the destination
+        if (transform.position == destination.transform.position && walkToExit)
         {
             Destroy(gameObject);
         }
@@ -57,36 +52,35 @@ public class BasicEnemyScript : MonoBehaviour
 
     void walk()
     {
+        if (walkTowards == null)
+            walkTowards = waypoints[currentWaypoint];
 
         transform.position = Vector2.MoveTowards(transform.position, walkTowards.position, speed * Time.deltaTime);
 
+        //Rotation of enemy
         Vector3 vectorToTarget = walkTowards.position - transform.position;
         float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - 90;
         Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
-        // transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * speed);
         transform.rotation = q;
         Debug.DrawRay(transform.position, transform.up, Color.red);
 
         if (transform.position == walkTowards.position)
         {
-            //will need to change for loot and return to spawn
+            currentWaypoint++;
+            //TODO: closest enemy walks to dropped loot
             //REMINDER OF LOOT PICKUP PROCESS
             //WAYPOINT WILL TELL CLOSEST ENEMY THERE IS LOOT AND REDIRECT THEM
-            if (!(currentWaypoint < this.waypoints.Length - 1))
+            //OR DYING ENEMY TELLS CLOSEST ENEMY
+            if (currentWaypoint >= waypoints.Length)
             {
-                walkToLoot = !walkToLoot;
-
+                walkToExit = true;
+                walkTowards = destination.transform;
             }
-
-            if (walkToLoot)
-                currentWaypoint++;
-            else if (currentWaypoint > -1)
-                currentWaypoint--;
-
-            if (currentWaypoint > -1)
-                walkTowards = waypoints[currentWaypoint];
             else
-                walkTowards = spawnpoint.transform;
+            {
+                previousWaypoint = currentWaypoint;
+                walkTowards = waypoints[currentWaypoint];
+            }
         }
     }
 
@@ -146,8 +140,33 @@ public class BasicEnemyScript : MonoBehaviour
         route = r;
     }
 
-    public void SetSpawnpoint(GameObject sp)
+    public void SetDestination(GameObject d)
     {
-        spawnpoint = sp;
+        destination = d;
+    }
+
+    public float RemainingDistance()
+    {
+        int cwaypoint = currentWaypoint;
+
+        float ret = 0f;
+        if (cwaypoint < waypoints.Length)
+        {
+            ret = Vector3.Distance(transform.position, waypoints[cwaypoint].position);
+
+            cwaypoint++;
+            
+            while (cwaypoint < waypoints.Length)
+            {
+                ret += Vector3.Distance(waypoints[cwaypoint-1].position, waypoints[cwaypoint].position);
+                cwaypoint++;
+            }
+
+            ret += Vector3.Distance(waypoints[cwaypoint-1].position, destination.transform.position);
+        }
+        else
+            ret += Vector3.Distance(transform.position, destination.transform.position);
+        
+        return ret;
     }
 }

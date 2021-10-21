@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemySpawnerScript : MonoBehaviour
 {
     public GameObject route;
+    public GameObject destination;
     public float spawnDelay;
     public float spawnCooldown;
 
@@ -13,7 +14,8 @@ public class EnemySpawnerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (destination == null)
+            destination = gameObject;
     }
 
     // Update is called once per frame
@@ -26,7 +28,7 @@ public class EnemySpawnerScript : MonoBehaviour
         {
             GameObject child = Instantiate(spawnChild);
             child.GetComponent<BasicEnemyScript>().SetRoute(route);
-            child.GetComponent<BasicEnemyScript>().SetSpawnpoint(gameObject);
+            child.GetComponent<BasicEnemyScript>().SetDestination(destination);
             child.transform.position = transform.position;
             spawnDelay = spawnCooldown;
         }
