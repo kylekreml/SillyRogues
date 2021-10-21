@@ -7,6 +7,7 @@ public class ProjectileBehavoir : MonoBehaviour
     // Start is called before the first frame update
 
     public float damage = 1;
+    public float speed = 1f;
     public GameObject target;
 
     void Start()
@@ -42,7 +43,7 @@ public class ProjectileBehavoir : MonoBehaviour
     {
         if (target)
         {
-            this.transform.position = Vector3.MoveTowards(gameObject.transform.position, target.transform.position, .10f);
+            this.transform.position = Vector3.MoveTowards(gameObject.transform.position, target.transform.position, speed);
         }
         else
         {

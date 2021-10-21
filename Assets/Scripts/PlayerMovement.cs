@@ -26,15 +26,15 @@ public class PlayerMovement : MonoBehaviour
         {
             NormalizedDirection = direction.normalized;
         }
-        transform.Translate(direction * speed * Time.deltaTime);
+        transform.Translate(direction.normalized * speed * Time.deltaTime);
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        direction.x = Input.GetAxis("Horizontal" + playerNumber);
-        direction.y = Input.GetAxis("Vertical" + playerNumber);
+        direction.x = Input.GetAxisRaw("Horizontal" + playerNumber);
+        direction.y = Input.GetAxisRaw("Vertical" + playerNumber);
         animator.SetFloat("Horizontal", direction.x);
         animator.SetFloat("Vertical", direction.y);
         animator.SetFloat("Speed", Mathf.Max(Mathf.Abs(direction.x), Mathf.Abs(direction.y)));
@@ -60,6 +60,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 hit.collider.isTrigger = true;
                 held = hit.collider;
+                // held.transform.SetActive(false);
             }
         }
     }
