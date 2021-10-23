@@ -62,6 +62,18 @@ public class PlayerMovement : MonoBehaviour
                 held = hit.collider;
                 // held.transform.SetActive(false);
             }
+            else if (hit && hit.transform.tag == "Resource")
+            {
+                //Probably also need a check for the resource so it doesn't get stuck in something
+                ResourceScript resourceScript = hit.collider.gameObject.GetComponent<ResourceScript>();
+                if (resourceScript.ResourceType() != Resource.Node)
+                    held = hit.collider;
+                else
+                {
+                    ResourceNodeScript node = hit.collider.gameObject.GetComponent<ResourceNodeScript>();
+                    node.interactResourceNode();
+                }
+            }
         }
     }
 
