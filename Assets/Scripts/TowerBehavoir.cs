@@ -83,26 +83,12 @@ public class TowerBehavoir : MonoBehaviour
 
                 if (objects.Length != 0)
                 {
-                    for (int i = 0; i < objects.Length; i++)
-                    {
-                        if (objects[i].gameObject.CompareTag("Enemy") && objects[i].gameObject.GetComponent<BasicEnemyScript>().RemainingDistance() < targetDistance)
-                        {
-                            target = objects[i].gameObject;
-                            targetDistance = objects[i].gameObject.GetComponent<BasicEnemyScript>().RemainingDistance();
-                        }
-                    }
+                    setTarget(objects);
                 }
 
                 if (target)
                 {
-                    Vector3 vectorToTarget = target.transform.position - transform.position;
-                    float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - 90;
-                    Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
-                    transform.rotation = q;
-                    GameObject newBullet = Instantiate(bullet, this.gameObject.transform.GetChild(0).position, Quaternion.identity);
-                    newBullet.GetComponent<ProjectileBehavoir>().setTarget(target);
-                    timer = bulletRespawn;
-
+                    shootTarget();
                 }
 
             }
@@ -110,17 +96,9 @@ public class TowerBehavoir : MonoBehaviour
             else
             { //if timer is <= 0 AND target != null
                 if (Vector3.Distance(target.transform.position, this.transform.position) < radius)
-                //enemy out of range
-                { 
-
-                        Vector3 vectorToTarget = target.transform.position - transform.position;
-                        float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - 90;
-                        Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
-                        transform.rotation = q;
-                        GameObject newBullet = Instantiate(bullet, this.gameObject.transform.GetChild(0).position, Quaternion.identity);
-                        newBullet.GetComponent<ProjectileBehavoir>().setTarget(target);
-                        timer = bulletRespawn;
-                    
+                //enemy in range
+                {
+                    shootTarget();
                 }
                 else
                 { //target out of range
@@ -131,25 +109,12 @@ public class TowerBehavoir : MonoBehaviour
 
                     if (objects.Length != 0)
                     {
-                        for (int i = 0; i < objects.Length; i++)
-                        {
-                            if (objects[i].gameObject.CompareTag("Enemy") && objects[i].gameObject.GetComponent<BasicEnemyScript>().RemainingDistance() < targetDistance)
-                            {
-                                target = objects[i].gameObject;
-                                targetDistance = objects[i].gameObject.GetComponent<BasicEnemyScript>().RemainingDistance();
-                            }
-                        }
+                        setTarget(objects);
                     }
 
                     if (target)
                     {
-                        Vector3 vectorToTarget = target.transform.position - transform.position;
-                        float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - 90;
-                        Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
-                        transform.rotation = q;
-                        GameObject newBullet = Instantiate(bullet, this.gameObject.transform.GetChild(0).position, Quaternion.identity);
-                        newBullet.GetComponent<ProjectileBehavoir>().setTarget(target);
-                        timer = bulletRespawn;
+                        shootTarget();
 
                     }
                 }
@@ -162,9 +127,28 @@ public class TowerBehavoir : MonoBehaviour
             timer -= Time.deltaTime;
         }
 
+        void setTarget(Collider2D[] objects)
+        {
+            for (int i = 0; i < objects.Length; i++)
+            {
+                if (objects[i].gameObject.CompareTag("Enemy") && objects[i].gameObject.GetComponent<BasicEnemyScript>().RemainingDistance() < targetDistance)
+                {
+                    target = objects[i].gameObject;
+                    targetDistance = objects[i].gameObject.GetComponent<BasicEnemyScript>().RemainingDistance();
+                }
+            }
+        }
 
-
-
+        void shootTarget()
+        {
+            Vector3 vectorToTarget = target.transform.position - transform.position;
+            float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - 90;
+            Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+            transform.rotation = q;
+            GameObject newBullet = Instantiate(bullet, this.gameObject.transform.GetChild(0).position, Quaternion.identity);
+            newBullet.GetComponent<ProjectileBehavoir>().setTarget(target);
+            timer = bulletRespawn;
+        }
 
 
 
