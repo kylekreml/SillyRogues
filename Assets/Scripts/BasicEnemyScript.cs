@@ -85,6 +85,7 @@ public class BasicEnemyScript : MonoBehaviour
     }
 
     public void damage(float amount)
+
     {
         health = health - amount;
         if (health <= 0)
