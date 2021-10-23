@@ -95,7 +95,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3137337180425928737}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -139,6 +139,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletRespawn: 2
   bullet: {fileID: 6418467644957234089, guid: ce101b6f1152f014d965985a6360f753, type: 3}
+  radius: 0
+  target: {fileID: 0}
 --- !u!61 &2935540410962972069
 BoxCollider2D:
   m_ObjectHideFlags: 0
