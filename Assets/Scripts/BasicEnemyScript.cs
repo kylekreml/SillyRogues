@@ -31,11 +31,6 @@ public class BasicEnemyScript : MonoBehaviour
     void Start()
     {
         speed = defaultSpeed;
-        waypoints = new Transform[route.transform.childCount];
-        for (int i = 0; i < route.transform.childCount; i++)
-        {
-            waypoints[i] = route.transform.GetChild(i);
-        }
     }
 
     // Update is called once per frame
@@ -85,7 +80,6 @@ public class BasicEnemyScript : MonoBehaviour
     }
 
     public void damage(float amount)
-
     {
         health = health - amount;
         if (health <= 0)
@@ -126,6 +120,8 @@ public class BasicEnemyScript : MonoBehaviour
         }
     }
 
+    //Called by TreasureCart. Checks if enemy is holding loot.
+    //If not holding loot, give loot and return true. Else return false
     public bool giveLoot()
     {
         if (holdingLoot == false)
@@ -136,16 +132,24 @@ public class BasicEnemyScript : MonoBehaviour
         return false;
     }
 
+    //Called by EnemySpawner. Setter for the route the enemy walks
     public void SetRoute(GameObject r)
     {
         route = r;
+        waypoints = new Transform[route.transform.childCount];
+        for (int i = 0; i < route.transform.childCount; i++)
+        {
+            waypoints[i] = route.transform.GetChild(i);
+        }
     }
 
+    //Called by EnemySpawner. Setter for the last waypoint before it can delete itself
     public void SetDestination(GameObject d)
     {
         destination = d;
     }
 
+    //Calculates distance between waypoints and returns a float of the remaining distance
     public float RemainingDistance()
     {
         int cwaypoint = currentWaypoint;
