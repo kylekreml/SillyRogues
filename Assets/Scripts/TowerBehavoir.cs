@@ -15,13 +15,16 @@ public class TowerBehavoir : MonoBehaviour
 
     public GameObject target = null;
 
-    float targetDistance = 1000000;
+    public float targetDistance = 1000000;
+
+    public LineRenderer circleRenderer;
 
 
     // Start is called before the first frame update
     void Start()
     {
         timer = bulletRespawn;
+        DrawCircle(100, radius);
     }
     /*
     private void OnTriggerEnter2D(Collider2D collision)
@@ -29,6 +32,7 @@ public class TowerBehavoir : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            collision.gameObject.GetComponent<BasicEnemyScript>().RemainingDistance();
             if (timer <= 0)
             {
                 Vector3 vectorToTarget = collision.transform.position - transform.position;
@@ -66,8 +70,8 @@ public class TowerBehavoir : MonoBehaviour
             else
                 timer -= Time.deltaTime;
         }
-    }
-    */
+    }*/
+
 
 
     // Update is called once per frame
@@ -84,12 +88,13 @@ public class TowerBehavoir : MonoBehaviour
                 if (objects.Length != 0)
                 {
                     setTarget(objects);
+                    if (target != null)
+                    {
+                        shootTarget();
+                    }
                 }
 
-                if (target)
-                {
-                    shootTarget();
-                }
+                
 
             }
 
@@ -112,45 +117,65 @@ public class TowerBehavoir : MonoBehaviour
                         setTarget(objects);
                     }
 
-                    if (target)
+                    if (target != null)
                     {
                         shootTarget();
 
                     }
                 }
             }
-
+        
 
         }
         else 
         {
             timer -= Time.deltaTime;
         }
-
-        void setTarget(Collider2D[] objects)
+    }
+    void setTarget(Collider2D[] objects)
+    {
+        for (int i = 0; i < objects.Length; i++)
         {
-            for (int i = 0; i < objects.Length; i++)
+            if (objects[i].gameObject.CompareTag("Enemy") && objects[i].gameObject.GetComponent<BasicEnemyScript>().RemainingDistance() < targetDistance)
             {
-                if (objects[i].gameObject.CompareTag("Enemy") && objects[i].gameObject.GetComponent<BasicEnemyScript>().RemainingDistance() < targetDistance)
-                {
-                    target = objects[i].gameObject;
-                    targetDistance = objects[i].gameObject.GetComponent<BasicEnemyScript>().RemainingDistance();
-                }
+                target = objects[i].gameObject;
+                targetDistance = objects[i].gameObject.GetComponent<BasicEnemyScript>().RemainingDistance();
             }
         }
 
-        void shootTarget()
-        {
-            Vector3 vectorToTarget = target.transform.position - transform.position;
-            float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - 90;
-            Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
-            transform.rotation = q;
-            GameObject newBullet = Instantiate(bullet, this.gameObject.transform.GetChild(0).position, Quaternion.identity);
-            newBullet.GetComponent<ProjectileBehavoir>().setTarget(target);
-            timer = bulletRespawn;
-        }
-
-
-
     }
+    void shootTarget()
+    {
+        Vector3 vectorToTarget = target.transform.position - transform.position;
+        float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - 90;
+        Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+        transform.rotation = q;
+        GameObject newBullet = Instantiate(bullet, this.gameObject.transform.GetChild(0).position, Quaternion.identity);
+        newBullet.GetComponent<ProjectileBehavoir>().setTarget(target);
+        timer = bulletRespawn;
+    }
+
+    void DrawCircle(int steps, float radius)
+    {
+        circleRenderer.positionCount = steps;
+
+        for (int currentStep = 0; currentStep < steps; currentStep++)
+        {
+            float circumferenceProgress = (float)currentStep / (steps - 1);
+
+            float currentRadian = circumferenceProgress * 2 * Mathf.PI;
+
+            float xScaled = Mathf.Cos(currentRadian);
+            float yScaled = Mathf.Sin(currentRadian);
+
+            float x = radius * xScaled;
+            float y = radius * yScaled;
+            float z = 0;
+
+            Vector3 currentPosition = new Vector3(x, y, z);
+
+            circleRenderer.SetPosition(currentStep, currentPosition);
+        }
+    }
+
 }
