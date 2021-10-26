@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerBehavior : MonoBehaviour
+[System.Serializable]
+public class TowerBehavior : TowerClass
 {
 
     public float bulletRespawn = 2f;
@@ -18,14 +19,11 @@ public class TowerBehavior : MonoBehaviour
     float targetDistance = 1000000;
 
     public LineRenderer circleRenderer;
-
-    private bool disabled = false;
-
     // Start is called before the first frame update
     void Start()
     {
         timer = bulletRespawn;
-        //drawCircle(100, radius);
+        enableTower();
     }
     /*
     private void OnTriggerEnter2D(Collider2D collision)
@@ -78,7 +76,8 @@ public class TowerBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!disabled) {
+        if (!this.disabled) {
+            Debug.Log(disabled);
             if (timer <= 0)
             {
                 targetDistance = 1000000;
@@ -122,37 +121,6 @@ public class TowerBehavior : MonoBehaviour
         timer = bulletRespawn;
     }
 
-    void drawCircle(int steps, float radius)
-    {
-        circleRenderer.positionCount = steps;
 
-        for (int currentStep = 0; currentStep < steps; currentStep++)
-        {
-            float circumferenceProgress = (float)currentStep / (steps - 1);
-
-            float currentRadian = circumferenceProgress * 2 * Mathf.PI;
-
-            float xScaled = Mathf.Cos(currentRadian);
-            float yScaled = Mathf.Sin(currentRadian);
-
-            float x = radius * xScaled;
-            float y = radius * yScaled;
-            float z = 0;
-
-            Vector3 currentPosition = new Vector3(x, y, z);
-
-            circleRenderer.SetPosition(currentStep, currentPosition);
-        }
-    }
-
-    public void enableTower()
-    {
-        disabled = false;
-    }
-
-    public void disableTower()
-    {
-        disabled = true;
-    }
 
 }
