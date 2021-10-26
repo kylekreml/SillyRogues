@@ -360,7 +360,7 @@ GameObject:
   - component: {fileID: 502261777}
   - component: {fileID: 502261778}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Player 1
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6846,6 +6846,63 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1001 &815440226324645829
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2367496044584639139, guid: d816faf3e663420429309fadd87a3ec6, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2367496044584639139, guid: d816faf3e663420429309fadd87a3ec6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 2367496044584639139, guid: d816faf3e663420429309fadd87a3ec6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2367496044584639139, guid: d816faf3e663420429309fadd87a3ec6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2367496044584639139, guid: d816faf3e663420429309fadd87a3ec6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2367496044584639139, guid: d816faf3e663420429309fadd87a3ec6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2367496044584639139, guid: d816faf3e663420429309fadd87a3ec6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2367496044584639139, guid: d816faf3e663420429309fadd87a3ec6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2367496044584639139, guid: d816faf3e663420429309fadd87a3ec6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2367496044584639139, guid: d816faf3e663420429309fadd87a3ec6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2367496044584639139, guid: d816faf3e663420429309fadd87a3ec6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2367496044584639160, guid: d816faf3e663420429309fadd87a3ec6, type: 3}
+      propertyPath: m_Name
+      value: LordDom
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d816faf3e663420429309fadd87a3ec6, type: 3}
 --- !u!1001 &4743218714497067785
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6900,10 +6957,6 @@ PrefabInstance:
     - target: {fileID: 1552374781822248211, guid: b7066255d6d4f32488aba2612070cfef, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6077723049414649252, guid: b7066255d6d4f32488aba2612070cfef, type: 3}
-      propertyPath: damage
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7066255d6d4f32488aba2612070cfef, type: 3}
