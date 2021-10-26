@@ -59,8 +59,8 @@ public class PlayerMovement : MonoBehaviour
             //Debug.Log(hit.collider.tag);
             if (hit && hit.transform.tag == "Tower")
             {
+                hit.collider.GetComponent<TowerBehavior>().disableTower();
                 held = hit.collider;
-                held.GetComponent<TowerBehavior>().disableTower();
                 // held.transform.SetActive(false);
             }
             else if (hit && hit.transform.tag == "Resource")

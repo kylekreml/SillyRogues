@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 287258176}
   - component: {fileID: 287258180}
   - component: {fileID: 287258179}
+  - component: {fileID: 287258181}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Player
@@ -160,6 +161,7 @@ MonoBehaviour:
   playerInteractRange: 4
   held: {fileID: 0}
   playerNumber: 49
+  animator: {fileID: 287258181}
 --- !u!212 &287258177
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -272,6 +274,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &287258181
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 287258175}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d4ae512a23afec846bb8c589cfa45d15, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &354656911
 GameObject:
   m_ObjectHideFlags: 0
@@ -1043,3 +1064,24 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &2031951368 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5298221346549103162, guid: 0cf4a464b16c21a43923090bc385284e, type: 3}
+  m_PrefabInstance: {fileID: 1911817199}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2031951372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2031951368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5d0a07ae52c5ec4088061bff81b2e04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletRespawn: 2
+  bullet: {fileID: 0}
+  radius: 0
+  circleRenderer: {fileID: 0}
