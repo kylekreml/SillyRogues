@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlowTowerBehavoir : MonoBehaviour
+public class SlowAoeBehavior: MonoBehaviour
 {
 
     public float slowPercentage = .30f;
