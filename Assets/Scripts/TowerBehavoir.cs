@@ -13,18 +13,19 @@ public class TowerBehavoir : MonoBehaviour
 
     public int radius;
 
-    public GameObject target = null;
+    GameObject target = null;
 
-    public float targetDistance = 1000000;
+    float targetDistance = 1000000;
 
     public LineRenderer circleRenderer;
 
+    private bool disabled = false;
 
     // Start is called before the first frame update
     void Start()
     {
         timer = bulletRespawn;
-        DrawCircle(100, radius);
+        //drawCircle(100, radius);
     }
     /*
     private void OnTriggerEnter2D(Collider2D collision)
@@ -77,14 +78,11 @@ public class TowerBehavoir : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (timer <= 0)
-        {
-
-            if (target == null)
+        if (!disabled) {
+            if (timer <= 0)
             {
-                //only used on first enemy encountered
+                targetDistance = 1000000;
                 Collider2D[] objects = Physics2D.OverlapCircleAll(this.transform.position, radius);
-
                 if (objects.Length != 0)
                 {
                     setTarget(objects);
@@ -94,49 +92,18 @@ public class TowerBehavoir : MonoBehaviour
                     }
                 }
 
-                
-
             }
-
             else
-            { //if timer is <= 0 AND target != null
-                if (Vector3.Distance(target.transform.position, this.transform.position) < radius)
-                //enemy in range
-                {
-                    shootTarget();
-                }
-                else
-                { //target out of range
-                    target = null;
-                    targetDistance = 1000000;
-
-                    Collider2D[] objects = Physics2D.OverlapCircleAll(this.transform.position, radius);
-
-                    if (objects.Length != 0)
-                    {
-                        setTarget(objects);
-                    }
-
-                    if (target != null)
-                    {
-                        shootTarget();
-
-                    }
-                }
+            {
+                timer -= Time.deltaTime;
             }
-        
-
-        }
-        else 
-        {
-            timer -= Time.deltaTime;
         }
     }
     void setTarget(Collider2D[] objects)
     {
         for (int i = 0; i < objects.Length; i++)
         {
-            if (objects[i].gameObject.CompareTag("Enemy") && objects[i].gameObject.GetComponent<BasicEnemyScript>().RemainingDistance() < targetDistance)
+            if (objects[i].gameObject.CompareTag("Enemy") && objects[i].gameObject.GetComponent<BasicEnemyScript>().RemainingDistance() < targetDistance && Vector3.Distance(objects[i].transform.position, this.transform.position) < radius)
             {
                 target = objects[i].gameObject;
                 targetDistance = objects[i].gameObject.GetComponent<BasicEnemyScript>().RemainingDistance();
@@ -155,7 +122,7 @@ public class TowerBehavoir : MonoBehaviour
         timer = bulletRespawn;
     }
 
-    void DrawCircle(int steps, float radius)
+    void drawCircle(int steps, float radius)
     {
         circleRenderer.positionCount = steps;
 
@@ -176,6 +143,16 @@ public class TowerBehavoir : MonoBehaviour
 
             circleRenderer.SetPosition(currentStep, currentPosition);
         }
+    }
+
+    void enableTower()
+    {
+        disabled = false;
+    }
+
+    void disableTower()
+    {
+        disabled = true;
     }
 
 }
