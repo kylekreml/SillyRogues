@@ -30,8 +30,4 @@ public class TowerClass : MonoBehaviour
         disabled = true;
     }
 
-    public bool returnStatus()
-    {
-        return disabled;
-    }
 }
