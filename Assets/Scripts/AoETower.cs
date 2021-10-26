@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AoETower : MonoBehaviour
+public class AoETower : TowerClass
 {
     public float attackSpeed = 1;
     public GameObject blade;
@@ -15,7 +15,15 @@ public class AoETower : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Rotate();
+        if(!this.disabled)
+        {
+            Rotate();
+            this.transform.Find("pointer").GetComponent<BoxCollider2D>().enabled = true;
+        }
+        else
+        {
+            this.transform.Find("pointer").GetComponent<BoxCollider2D>().enabled = false;
+        }
     }
     void Rotate()
     {

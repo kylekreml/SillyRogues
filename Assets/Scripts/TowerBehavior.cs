@@ -77,7 +77,6 @@ public class TowerBehavior : TowerClass
     void Update()
     {
         if (!this.disabled) {
-            Debug.Log(disabled);
             if (timer <= 0)
             {
                 targetDistance = 1000000;
@@ -95,6 +94,17 @@ public class TowerBehavior : TowerClass
             else
             {
                 timer -= Time.deltaTime;
+            }
+            if (this.transform.Find("Circle").GetComponent<SpriteRenderer>().enabled)
+            {
+                this.transform.Find("Circle").GetComponent<SpriteRenderer>().enabled = false;
+            }
+        }
+        else 
+        {
+            if (!this.transform.Find("Circle").GetComponent<SpriteRenderer>().enabled)
+            {
+                this.transform.Find("Circle").GetComponent<SpriteRenderer>().enabled = true;
             }
         }
     }
