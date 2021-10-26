@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerBehavoir : MonoBehaviour
+public class TowerBehavior : MonoBehaviour
 {
 
     public float bulletRespawn = 2f;
