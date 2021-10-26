@@ -25,6 +25,8 @@ public class PlayerMovement : MonoBehaviour
         if (direction != Vector3.zero)
         {
             NormalizedDirection = direction.normalized;
+            animator.SetFloat("LastX", direction.x);
+            animator.SetFloat("LastY", direction.y);
         }
         transform.Translate(direction.normalized * speed * Time.deltaTime);
 
@@ -52,6 +54,7 @@ public class PlayerMovement : MonoBehaviour
                 //Going to have to place in grid somewhere around here.
                 var oldHeld = held;
                 held = null;
+                oldHeld.enabled = true;
                 oldHeld.GetComponent<TowerBehavior>().enableTower();
                 return;
             }
@@ -59,8 +62,9 @@ public class PlayerMovement : MonoBehaviour
             //Debug.Log(hit.collider.tag);
             if (hit && hit.transform.tag == "Tower")
             {
+                hit.collider.GetComponent<TowerBehavior>().disableTower();
+                hit.collider.enabled = false;
                 held = hit.collider;
-                held.GetComponent<TowerBehavior>().disableTower();
                 // held.transform.SetActive(false);
             }
             else if (hit && hit.transform.tag == "Resource")
