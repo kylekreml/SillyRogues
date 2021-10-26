@@ -27,12 +27,12 @@ public class ResourceScript : MonoBehaviour
         
     }
 
-    public void SetType(Resource r)
+    public void SetResourceType(Resource r)
     {
         type = r;
     }
 
-    public Resource ResourceType()
+    public Resource GetResourceType()
     {
         return type;
     }

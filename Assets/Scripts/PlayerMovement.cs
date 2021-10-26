@@ -71,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 //Probably also need a check for the resource so it doesn't get stuck in something
                 ResourceScript resourceScript = hit.collider.gameObject.GetComponent<ResourceScript>();
-                if (resourceScript.ResourceType() != Resource.Node)
+                if (resourceScript.GetResourceType() != Resource.Node)
                     held = hit.collider;
                 else
                 {

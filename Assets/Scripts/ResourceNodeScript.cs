@@ -42,7 +42,7 @@ public class ResourceNodeScript : ResourceScript
             interactsLeft = interactsNeeded;
             spriteRenderer.color = Color.green;
             GameObject r = Instantiate(resource);
-            r.GetComponent<ResourceScript>().SetType(resourceType);
+            r.GetComponent<ResourceScript>().SetResourceType(resourceType);
             
             switch(direction)
             {
