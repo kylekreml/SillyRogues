@@ -12,9 +12,7 @@ GameObject:
   - component: {fileID: 3777581528124063536}
   - component: {fileID: 3777581528124063539}
   - component: {fileID: 3777581528124063540}
-  - component: {fileID: 3777581528124063537}
   - component: {fileID: 3777581528124063538}
-  - component: {fileID: 3777581528124063534}
   - component: {fileID: 3777581528124063533}
   m_Layer: 0
   m_Name: Player 1
@@ -77,8 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: -2027258975
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 0.4669811, g: 0.49541944, b: 1, a: 1}
+  m_Sprite: {fileID: 3011676916495493464, guid: 1956b17856dde084c9ebf7abb6649c25, type: 3}
+  m_Color: {r: 0.8537736, g: 0.8631072, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -135,21 +133,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &3777581528124063537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3777581528124063541}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 566d7862d58da434ca61d02b4fe6e876, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  groundMap: {fileID: 0}
-  colMap: {fileID: 0}
-  playerNumber: 49
 --- !u!114 &3777581528124063538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,22 +151,6 @@ MonoBehaviour:
   held: {fileID: 0}
   playerNumber: 49
   animator: {fileID: 3777581528124063533}
---- !u!114 &3777581528124063534
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3777581528124063541}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12b5862b25a93144b8857b4af9838cc7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  groundMap: {fileID: 0}
-  colMap: {fileID: 0}
-  playerNumber: 49
-  tower: {fileID: 3137337180425928737, guid: dd947afb2686cb345af2d059e005aa5c, type: 3}
 --- !u!95 &3777581528124063533
 Animator:
   serializedVersion: 3
@@ -194,7 +161,7 @@ Animator:
   m_GameObject: {fileID: 3777581528124063541}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d4ae512a23afec846bb8c589cfa45d15, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
