@@ -50,16 +50,17 @@ public class PlayerMovement : MonoBehaviour
             if (held != null)
             {
                 //Going to have to place in grid somewhere around here.
-                held.isTrigger = false;
+                var oldHeld = held;
                 held = null;
+                oldHeld.GetComponent<TowerBehavior>().enableTower();
                 return;
             }
             RaycastHit2D hit = Physics2D.Raycast(this.transform.position, this.transform.rotation * NormalizedDirection, playerInteractRange);
             //Debug.Log(hit.collider.tag);
             if (hit && hit.transform.tag == "Tower")
             {
-                hit.collider.isTrigger = true;
                 held = hit.collider;
+                held.GetComponent<TowerBehavior>().disableTower();
                 // held.transform.SetActive(false);
             }
             else if (hit && hit.transform.tag == "Resource")

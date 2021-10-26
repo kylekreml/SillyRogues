@@ -145,12 +145,12 @@ public class TowerBehavior : MonoBehaviour
         }
     }
 
-    void enableTower()
+    public void enableTower()
     {
         disabled = false;
     }
 
-    void disableTower()
+    public void disableTower()
     {
         disabled = true;
     }
