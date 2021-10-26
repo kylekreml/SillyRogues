@@ -25,6 +25,8 @@ public class PlayerMovement : MonoBehaviour
         if (direction != Vector3.zero)
         {
             NormalizedDirection = direction.normalized;
+            animator.SetFloat("LastX", direction.x);
+            animator.SetFloat("LastY", direction.y);
         }
         transform.Translate(direction.normalized * speed * Time.deltaTime);
 
