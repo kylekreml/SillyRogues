@@ -52,6 +52,7 @@ public class PlayerMovement : MonoBehaviour
                 //Going to have to place in grid somewhere around here.
                 var oldHeld = held;
                 held = null;
+                oldHeld.enabled = true;
                 oldHeld.GetComponent<TowerBehavior>().enableTower();
                 return;
             }
@@ -60,6 +61,7 @@ public class PlayerMovement : MonoBehaviour
             if (hit && hit.transform.tag == "Tower")
             {
                 hit.collider.GetComponent<TowerBehavior>().disableTower();
+                hit.collider.enabled = false;
                 held = hit.collider;
                 // held.transform.SetActive(false);
             }
