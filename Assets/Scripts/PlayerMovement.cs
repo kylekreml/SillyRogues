@@ -55,14 +55,14 @@ public class PlayerMovement : MonoBehaviour
                 var oldHeld = held;
                 held = null;
                 oldHeld.enabled = true;
-                oldHeld.GetComponent<TowerBehavior>().enableTower();
+                oldHeld.GetComponent<TowerClass>().enableTower();
                 return;
             }
             RaycastHit2D hit = Physics2D.Raycast(this.transform.position, this.transform.rotation * NormalizedDirection, playerInteractRange);
             //Debug.Log(hit.collider.tag);
             if (hit && hit.transform.tag == "Tower")
             {
-                hit.collider.GetComponent<TowerBehavior>().disableTower();
+                hit.collider.GetComponent<TowerClass>().disableTower();
                 hit.collider.enabled = false;
                 held = hit.collider;
                 // held.transform.SetActive(false);
