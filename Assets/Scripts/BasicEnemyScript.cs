@@ -31,6 +31,14 @@ public class BasicEnemyScript : MonoBehaviour
     void Start()
     {
         speed = defaultSpeed;
+        if (waypoints == null)
+        {
+            waypoints = new Transform[route.transform.childCount];
+            for (int i = 0; i < route.transform.childCount; i++)
+            {
+                waypoints[i] = route.transform.GetChild(i);
+            }
+        }
     }
 
     // Update is called once per frame
@@ -136,10 +144,13 @@ public class BasicEnemyScript : MonoBehaviour
     public void SetRoute(GameObject r)
     {
         route = r;
-        waypoints = new Transform[route.transform.childCount];
-        for (int i = 0; i < route.transform.childCount; i++)
+        if (waypoints == null)
         {
-            waypoints[i] = route.transform.GetChild(i);
+            waypoints = new Transform[route.transform.childCount];
+            for (int i = 0; i < route.transform.childCount; i++)
+            {
+                waypoints[i] = route.transform.GetChild(i);
+            }
         }
     }
 
