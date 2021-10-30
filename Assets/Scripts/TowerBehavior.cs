@@ -79,6 +79,7 @@ public class TowerBehavior : TowerClass
         if (!this.disabled) {
             if (timer <= 0)
             {
+                target = null;
                 targetDistance = 1000000;
                 Collider2D[] objects = Physics2D.OverlapCircleAll(this.transform.position, radius);
                 if (objects.Length != 0)

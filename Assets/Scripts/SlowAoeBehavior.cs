@@ -5,7 +5,7 @@ using UnityEngine;
 public class SlowAoeBehavior: MonoBehaviour
 {
 
-    public float slowPercentage = .30f;
+    public float slowPercentage = .50f;
 
 
     // Start is called before the first frame update
