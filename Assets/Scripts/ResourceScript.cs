@@ -15,10 +15,12 @@ public class ResourceScript : MonoBehaviour
 {
     [SerializeField]
     private Resource type;
+    private bool useAsCraft;
+    private bool playerInteracted;
     // Start is called before the first frame update
     void Start()
     {
-        
+        useAsCraft = false;
     }
 
     // Update is called once per frame
@@ -35,5 +37,32 @@ public class ResourceScript : MonoBehaviour
     public Resource GetResourceType()
     {
         return type;
+    }
+
+    public void SetUseAsCraft(bool state)
+    {
+        useAsCraft = state;
+    }
+
+    public bool GetUseAsCraft()
+    {
+        return useAsCraft;
+    }
+
+    public void SetPlayerInteracted(bool state)
+    {
+        playerInteracted = state;
+        StartCoroutine("resetPlayerInteracted");
+    }
+
+    public bool GetPlayerInteracted()
+    {
+        return playerInteracted;
+    }
+
+    IEnumerator resetPlayerInteracted()
+    {
+        yield return new WaitForSeconds(.2f);
+        SetPlayerInteracted(false);
     }
 }

@@ -51,6 +51,16 @@ public class PlayerMovement : MonoBehaviour
         {
             if (held != null)
             {
+                if (held.gameObject.tag == "Resource")
+                {
+                    ResourceScript resourceScript = held.gameObject.GetComponent<ResourceScript>();
+                    if (resourceScript.GetUseAsCraft())
+                    {
+                        resourceScript.SetPlayerInteracted(true);
+                    }
+                    held = null;
+                    return;
+                }
                 //Going to have to place in grid somewhere around here.
                 var oldHeld = held;
                 held = null;
