@@ -2316,7 +2316,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1264991130}
   - component: {fileID: 1264991129}
-  - component: {fileID: 1264991128}
   m_Layer: 0
   m_Name: EnemySpawn
   m_TagString: Untagged
@@ -2324,23 +2323,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1264991128
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1264991127}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4fbaec437834ba47bd7be86fc045fa3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  route: {fileID: 818380870}
-  destination: {fileID: 1140655726}
-  spawnDelay: 1
-  spawnCooldown: 2
-  spawnChild: {fileID: 5038858920877382330, guid: 0bb66abe89c9f3145a86360b57b9be60, type: 3}
 --- !u!212 &1264991129
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2599,13 +2581,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d48124c8b57444408c2378673f22425, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawners:
-  - {fileID: 1264991127}
   groups:
-  - spawnTime: 5
+  - spawnTime: 0
     spawnDelay: 1
+    curSpawnDelay: 0
     enemy: {fileID: 473488541409166241, guid: 289a1802b7d759b49a78f4de941f29e2, type: 3}
     numberOfEnemies: 4
+    spawnPoint: {fileID: 1264991130}
+  route: {fileID: 818380870}
+  destination: {fileID: 1140655726}
 --- !u!4 &1818473846
 Transform:
   m_ObjectHideFlags: 0
