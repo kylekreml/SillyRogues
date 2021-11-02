@@ -23,54 +23,7 @@ public class TowerBehavior : TowerClass
     void Start()
     {
         timer = bulletRespawn;
-        enableTower();
     }
-    /*
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            collision.gameObject.GetComponent<BasicEnemyScript>().RemainingDistance();
-            if (timer <= 0)
-            {
-                Vector3 vectorToTarget = collision.transform.position - transform.position;
-                float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - 90;
-                Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
-                //transform.rotation = Quaternion.Slerp(transform.rotation, q, 10f);
-                transform.rotation = q;
-
-
-                GameObject newBullet = Instantiate(bullet, this.gameObject.transform.GetChild(0).position, Quaternion.identity);
-                newBullet.GetComponent<ProjectileBehavoir>().setTarget(collision.gameObject);
-                timer = bulletRespawn;
-            }
-            else
-                timer -= Time.deltaTime;
-        }
-    }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            if (timer <= 0)
-            {
-                Vector3 vectorToTarget = collision.transform.position - transform.position;
-                float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - 90;
-                Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
-                //transform.rotation = Quaternion.Slerp(transform.rotation, q, 10f);
-                transform.rotation = q;
-
-                GameObject newBullet = Instantiate(bullet, this.gameObject.transform.GetChild(0).position, Quaternion.identity);
-                newBullet.GetComponent<ProjectileBehavoir>().setTarget(collision.gameObject);
-                timer = bulletRespawn;
-            }
-            else
-                timer -= Time.deltaTime;
-        }
-    }*/
-
 
 
     // Update is called once per frame
