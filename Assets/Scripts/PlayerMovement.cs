@@ -60,17 +60,22 @@ public class PlayerMovement : MonoBehaviour
         {
             if (held != null)
             {
+                Collider2D[] overlaps = Physics2D.OverlapBoxAll(new Vector2(indicator.transform.position.x,indicator.transform.position.y), new Vector2(0.5f, 0.5f), 0f);
                 if (held.gameObject.tag == "Resource")
                 {
                     ResourceScript resourceScript = held.gameObject.GetComponent<ResourceScript>();
-                    if (resourceScript.GetUseAsCraft())
-                    {
-                        resourceScript.SetPlayerInteracted(true);
-                    }
+                    //Possibly needed later, but not sure
+                    // foreach (Collider2D o in overlaps)
+                    // {
+                    //     if (o.name.Contains("TowerCrafting"))
+                    //     {
+                    //     }
+                    // }
+                    resourceScript.SetPlayerInteracted(true);
                 }
-                if (held.gameObject.tag == "Tower") 
+                else if (held.gameObject.tag == "Tower") 
                 { 
-                    Collider2D[] overlaps = Physics2D.OverlapBoxAll(new Vector2(indicator.transform.position.x,indicator.transform.position.y), new Vector2(0.5f, 0.5f), 0f);
+                    
                     foreach (Collider2D o in overlaps)
                     {
                         Debug.Log(o.tag);

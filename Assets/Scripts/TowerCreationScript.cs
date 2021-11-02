@@ -108,26 +108,6 @@ public class TowerCreationScript : MonoBehaviour
         }
     }
 
-    //Will probably delete OnCollisionEnter2D
-
-    // private void OnCollisionEnter2D(Collision2D collider)
-    // {
-    //     if (collider.gameObject.tag == "Resource")
-    //     {
-    //         collider.gameObject.GetComponent<ResourceScript>().SetUseAsCraft(true);
-    //         if (resource1 == Resource.Node)
-    //         {
-    //             resource1 = collider.gameObject.GetComponent<ResourceScript>().GetResourceType();
-    //             Destroy(collider.gameObject);
-    //         }
-    //         else if (resource2 == Resource.Node)
-    //         {
-    //             resource2 = collider.gameObject.GetComponent<ResourceScript>().GetResourceType();
-    //             Destroy(collider.gameObject);
-    //         }
-    //     }
-    // }
-
     //Today I learned that triggers don't get detected in OnCollisionStay2d but just change with OnTriggerStay2D and the collider will detect triggers
     private void OnTriggerStay2D(Collider2D collider)
     {
@@ -135,7 +115,7 @@ public class TowerCreationScript : MonoBehaviour
         if (collider.gameObject.tag == "Resource")
         {
             ResourceScript resourceScript = collider.gameObject.GetComponent<ResourceScript>();
-            resourceScript.SetUseAsCraft(true);
+            // resourceScript.SetUseAsCraft(true);
             if (resource1 == Resource.Node && resourceScript.GetPlayerInteracted())
             {
                 resource1 = resourceScript.GetResourceType();
@@ -149,11 +129,23 @@ public class TowerCreationScript : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collider)
-    {
-        if (collider.gameObject.tag == "Resource")
-        {
-            collider.gameObject.GetComponent<ResourceScript>().SetUseAsCraft(false);
-        }
-    }
+    // private void OnTriggerEnter2D(Collider2D collider)
+    // {
+    //     Debug.Log(collider.gameObject.name);
+    //     if (collider.gameObject.tag == "Resource")
+    //     {
+    //         ResourceScript resourceScript = collider.gameObject.GetComponent<ResourceScript>();
+    //         // resourceScript.SetUseAsCraft(true);
+    //         if (resource1 == Resource.Node && resourceScript.GetPlayerInteracted())
+    //         {
+    //             resource1 = resourceScript.GetResourceType();
+    //             Destroy(collider.gameObject);
+    //         }
+    //         else if (resource2 == Resource.Node && resourceScript.GetPlayerInteracted())
+    //         {
+    //             resource2 = resourceScript.GetResourceType();
+    //             Destroy(collider.gameObject);
+    //         }
+    //     }
+    // }
 }
