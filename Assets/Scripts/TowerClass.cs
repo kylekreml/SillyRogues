@@ -8,6 +8,7 @@ public class TowerClass : MonoBehaviour
 
 
     public bool disabled = false;
+    public bool buffed = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +29,16 @@ public class TowerClass : MonoBehaviour
     public void disableTower()
     {
         disabled = true;
+    }
+
+    public void buffTower()
+    {
+        buffed = true;
+    }
+
+    public void debuffTower()
+    {
+        buffed = false;
     }
 
 }
