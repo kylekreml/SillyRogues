@@ -101,6 +101,7 @@ public class BasicEnemyScript : MonoBehaviour
         {
             if(holdingLoot)
             {
+                holdingLoot = false;
                 GameObject l = Instantiate(loot);
                 l.transform.position = transform.position;
             }
