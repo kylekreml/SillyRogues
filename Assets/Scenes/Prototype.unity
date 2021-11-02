@@ -6618,7 +6618,25 @@ MonoBehaviour:
     spawnDelay: 1
     curSpawnDelay: 0
     enemy: {fileID: 473488541409166241, guid: 289a1802b7d759b49a78f4de941f29e2, type: 3}
-    numberOfEnemies: 4
+    numberOfEnemies: 7
+    spawnPoint: {fileID: 642614940}
+  - spawnTime: 7
+    spawnDelay: 1
+    curSpawnDelay: 0
+    enemy: {fileID: 242025649482435655, guid: 261fdc79a200153429bc68380c269281, type: 3}
+    numberOfEnemies: 10
+    spawnPoint: {fileID: 642614940}
+  - spawnTime: 20
+    spawnDelay: 0.5
+    curSpawnDelay: 0
+    enemy: {fileID: 473488541409166241, guid: 289a1802b7d759b49a78f4de941f29e2, type: 3}
+    numberOfEnemies: 20
+    spawnPoint: {fileID: 642614940}
+  - spawnTime: 30
+    spawnDelay: 0.78
+    curSpawnDelay: 0
+    enemy: {fileID: 5038858920877382330, guid: 0bb66abe89c9f3145a86360b57b9be60, type: 3}
+    numberOfEnemies: 10
     spawnPoint: {fileID: 642614940}
   route: {fileID: 1236497969}
   destination: {fileID: 1602538641}
@@ -8284,12 +8302,30 @@ MonoBehaviour:
   - spawnTime: 0
     spawnDelay: 1
     curSpawnDelay: 0
+    enemy: {fileID: 5038858920877382330, guid: 0bb66abe89c9f3145a86360b57b9be60, type: 3}
+    numberOfEnemies: 8
+    spawnPoint: {fileID: 1264991130}
+  - spawnTime: 10
+    spawnDelay: 0.7
+    curSpawnDelay: 0
     enemy: {fileID: 473488541409166241, guid: 289a1802b7d759b49a78f4de941f29e2, type: 3}
+    numberOfEnemies: 10
+    spawnPoint: {fileID: 1264991130}
+  - spawnTime: 19
+    spawnDelay: 2
+    curSpawnDelay: 0
+    enemy: {fileID: 242025649482435655, guid: 261fdc79a200153429bc68380c269281, type: 3}
     numberOfEnemies: 4
+    spawnPoint: {fileID: 1264991130}
+  - spawnTime: 30
+    spawnDelay: 1
+    curSpawnDelay: 0
+    enemy: {fileID: 473488541409166241, guid: 289a1802b7d759b49a78f4de941f29e2, type: 3}
+    numberOfEnemies: 3
     spawnPoint: {fileID: 1264991130}
   route: {fileID: 818380870}
   destination: {fileID: 1602538641}
-  timeSinceStart: 0
+  timeSinceStart: 5
 --- !u!4 &1818473846
 Transform:
   m_ObjectHideFlags: 0
