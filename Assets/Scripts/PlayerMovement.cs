@@ -68,17 +68,33 @@ public class PlayerMovement : MonoBehaviour
                         resourceScript.SetPlayerInteracted(true);
                     }
                 }
-                //Going to have to place in grid somewhere around here.
+                if (held.gameObject.tag == "Tower") 
+                { 
+                    Collider2D[] overlaps = Physics2D.OverlapBoxAll(new Vector2(indicator.transform.position.x,indicator.transform.position.y), new Vector2(0.5f, 0.5f), 0f);
+                    foreach (Collider2D o in overlaps)
+                    {
+                        Debug.Log(o.tag);
+                        if (o.tag == "Tower")
+                        {
+                            return;
+                        }
+                    }
+                }
                 var oldHeld = held;
                 held = null;
                 SpriteRenderer heldSprite = oldHeld.GetComponent<SpriteRenderer>();
                 heldSprite.color = new Color(1f, 1f, 1f, 1f);
                 indicatorSprite.color = new Color(1f, 1f, 1f, 0f);
-                oldHeld.transform.position = groundMap.WorldToCell(this.transform.position + NormalizedDirection * 1.2f);
+                oldHeld.transform.position = groundMap.WorldToCell(this.transform.position + NormalizedDirection);
                 oldHeld.enabled = true;
-                oldHeld.GetComponent<TowerClass>().enableTower();
+                if(oldHeld.gameObject.tag == "Tower")
+                {
+                   oldHeld.GetComponent<TowerClass>().enableTower();
+                }
+                //Going to have to place in grid somewhere around here.
                 return;
             }
+
             RaycastHit2D hit = Physics2D.Raycast(this.transform.position, this.transform.rotation * NormalizedDirection, playerInteractRange);
             //Debug.Log(hit.collider.tag);
             if (hit && hit.transform.tag == "Tower")
@@ -91,6 +107,7 @@ public class PlayerMovement : MonoBehaviour
                 // held.transform.SetActive(false);
                 indicatorSprite.color = new Color(1f, 1f, 1f, 1f);
             }
+
             else if (hit && hit.transform.tag == "Resource")
             {
                 //Probably also need a check for the resource so it doesn't get stuck in something
