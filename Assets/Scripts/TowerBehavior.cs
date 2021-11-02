@@ -84,7 +84,7 @@ public class TowerBehavior : TowerClass
         Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
         transform.rotation = q;
         GameObject newBullet = Instantiate(bullet, this.gameObject.transform.GetChild(0).position, Quaternion.identity);
-        newBullet.GetComponent<ProjectileBehavoir>().setTarget(target);
+        newBullet.GetComponent<ProjectileClass>().setTarget(target);
         if (buffed)
             timer = bulletRespawn - (bulletRespawn * buffMultiplier);
         else

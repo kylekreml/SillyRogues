@@ -2,28 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileBehavoir : MonoBehaviour
+public class ProjectileBehavoir : ProjectileClass
 {
     // Start is called before the first frame update
 
     public float damage = 1;
     public float speed = 1f;
-    public GameObject target;
 
-    void Start()
-    {
-        
-    }
-
-    public void setTarget (GameObject t)
-    {
-        target = t;
-    }
-
-    private void Awake()
-    {
-        
-    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
