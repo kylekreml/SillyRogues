@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField]
+    private Tilemap groundMap;
+
     public float speed = 10f;
     public int lootCount = 0;
     public float playerInteractRange = 1.5f;
@@ -64,6 +68,9 @@ public class PlayerMovement : MonoBehaviour
                 //Going to have to place in grid somewhere around here.
                 var oldHeld = held;
                 held = null;
+                SpriteRenderer heldSprite = oldHeld.GetComponent<SpriteRenderer>();
+                heldSprite.color = new Color(1f, 1f, 1f, 1f);
+                oldHeld.transform.position = groundMap.WorldToCell(this.transform.position + NormalizedDirection * 1.2f);
                 oldHeld.enabled = true;
                 oldHeld.GetComponent<TowerClass>().enableTower();
                 return;
@@ -75,6 +82,8 @@ public class PlayerMovement : MonoBehaviour
                 hit.collider.GetComponent<TowerClass>().disableTower();
                 hit.collider.enabled = false;
                 held = hit.collider;
+                SpriteRenderer heldSprite = held.GetComponent<SpriteRenderer>();
+                heldSprite.color = new Color(1f, 0.5f, 0.5f, 0.2f);
                 // held.transform.SetActive(false);
             }
             else if (hit && hit.transform.tag == "Resource")
