@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BasicEnemyScript : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class BasicEnemyScript : MonoBehaviour
     public float defaultSpeed = 3;
 
     public string type;
+    public Slider healthSlider;
 
     [SerializeField]
     private GameObject destination;
@@ -39,6 +41,10 @@ public class BasicEnemyScript : MonoBehaviour
                 waypoints[i] = route.transform.GetChild(i);
             }
         }
+
+        healthSlider = this.gameObject.transform.Find("enemyCanvas").GetChild(0).GetComponent<Slider>();
+        healthSlider.maxValue = health;
+        healthSlider.value = health;
     }
 
     // Update is called once per frame
@@ -61,11 +67,11 @@ public class BasicEnemyScript : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, walkTowards.position, speed * Time.deltaTime);
 
         //Rotation of enemy
-        Vector3 vectorToTarget = walkTowards.position - transform.position;
-        float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - 90;
-        Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
-        transform.rotation = q;
-        Debug.DrawRay(transform.position, transform.up, Color.red);
+        //Vector3 vectorToTarget = walkTowards.position - transform.position;
+        //float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - 90;
+        //Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+        //transform.rotation = q;
+        //Debug.DrawRay(transform.position, transform.up, Color.red);
 
         if (transform.position == walkTowards.position)
         {
@@ -90,6 +96,7 @@ public class BasicEnemyScript : MonoBehaviour
     public void damage(float amount)
     {
         health = health - amount;
+        healthSlider.value = health;
         if (health <= 0)
         {
             if(holdingLoot)

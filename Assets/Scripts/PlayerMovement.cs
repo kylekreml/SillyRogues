@@ -17,11 +17,16 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector3 NormalizedDirection = new Vector3(0, 0, 0);
     private Vector3 direction;
+    private GameObject indicator;
+    private SpriteRenderer indicatorSprite;
 
     // Start is called before the first frame update
     void Start()
     {
         Physics2D.queriesStartInColliders = false;
+        indicator = transform.Find("Indicator").gameObject;
+        indicatorSprite = indicator.GetComponent<SpriteRenderer>();
+        indicatorSprite.color = new Color(1f, 1f, 1f, 0f);
     }
 
     private void FixedUpdate()
@@ -62,14 +67,13 @@ public class PlayerMovement : MonoBehaviour
                     {
                         resourceScript.SetPlayerInteracted(true);
                     }
-                    held = null;
-                    return;
                 }
                 //Going to have to place in grid somewhere around here.
                 var oldHeld = held;
                 held = null;
                 SpriteRenderer heldSprite = oldHeld.GetComponent<SpriteRenderer>();
                 heldSprite.color = new Color(1f, 1f, 1f, 1f);
+                indicatorSprite.color = new Color(1f, 1f, 1f, 0f);
                 oldHeld.transform.position = groundMap.WorldToCell(this.transform.position + NormalizedDirection * 1.2f);
                 oldHeld.enabled = true;
                 oldHeld.GetComponent<TowerClass>().enableTower();
@@ -85,13 +89,17 @@ public class PlayerMovement : MonoBehaviour
                 SpriteRenderer heldSprite = held.GetComponent<SpriteRenderer>();
                 heldSprite.color = new Color(1f, 0.5f, 0.5f, 0.2f);
                 // held.transform.SetActive(false);
+                indicatorSprite.color = new Color(1f, 1f, 1f, 1f);
             }
             else if (hit && hit.transform.tag == "Resource")
             {
                 //Probably also need a check for the resource so it doesn't get stuck in something
                 ResourceScript resourceScript = hit.collider.gameObject.GetComponent<ResourceScript>();
                 if (resourceScript.GetResourceType() != Resource.Node)
+                {
                     held = hit.collider;
+                    indicatorSprite.color = new Color(1f, 1f, 1f, 1f);
+                }
                 else
                 {
                     ResourceNodeScript node = hit.collider.gameObject.GetComponent<ResourceNodeScript>();
@@ -107,7 +115,8 @@ public class PlayerMovement : MonoBehaviour
         {
             return;
         }
-        held.transform.position = this.transform.position + NormalizedDirection * 1.2f;
+        indicator.transform.position = groundMap.WorldToCell(this.transform.position + NormalizedDirection * 1.2f);
+        held.transform.position = this.transform.position;
     }
 
     private void CheckLoot()
