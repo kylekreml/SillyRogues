@@ -9,7 +9,7 @@ public class TreasureCart : MonoBehaviour
     [SerializeField]
     private int lootCount;
 
-    void start()
+    void Start()
     {
         lootCount = totalLoot;
     }
