@@ -19,6 +19,9 @@ public class TowerBehavior : TowerClass
     float targetDistance = 1000000;
 
     public LineRenderer circleRenderer;
+
+    public float buffMultiplier = .90f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -82,7 +85,10 @@ public class TowerBehavior : TowerClass
         transform.rotation = q;
         GameObject newBullet = Instantiate(bullet, this.gameObject.transform.GetChild(0).position, Quaternion.identity);
         newBullet.GetComponent<ProjectileBehavoir>().setTarget(target);
-        timer = bulletRespawn;
+        if (buffed)
+            timer = bulletRespawn - (bulletRespawn * buffMultiplier);
+        else
+            timer = bulletRespawn;
     }
 
 

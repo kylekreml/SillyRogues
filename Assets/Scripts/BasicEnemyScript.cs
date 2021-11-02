@@ -110,7 +110,7 @@ public class BasicEnemyScript : MonoBehaviour
     public float getSpeed()
     {
         //Call this funciton to get the speed of the enemy to do movement calculations
-        return speed;
+        return defaultSpeed;
     }
 
     public void resetSpeed()
