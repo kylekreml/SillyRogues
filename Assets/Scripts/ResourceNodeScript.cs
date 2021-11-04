@@ -24,7 +24,7 @@ public class ResourceNodeScript : ResourceScript
     {
         interactsLeft = interactsNeeded;
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.color = Color.green;
+        //spriteRenderer.color = Color.green;
     }
 
     // Update is called once per frame
@@ -40,7 +40,9 @@ public class ResourceNodeScript : ResourceScript
         if (interactsLeft <= 0)
         {
             interactsLeft = interactsNeeded;
-            spriteRenderer.color = Color.green;
+            var temp = spriteRenderer.color;
+            temp.a = 1f;
+            spriteRenderer.color = temp;
             GameObject r = Instantiate(resource);
             r.GetComponent<ResourceScript>().SetResourceType(resourceType);
             
@@ -65,11 +67,15 @@ public class ResourceNodeScript : ResourceScript
             //TEMPORARY SPRITE CHANGE
             if (interactsLeft <= 1)
             {
-                spriteRenderer.color = Color.red;
+                var temp = spriteRenderer.color;
+                temp.a = 0.3f;
+                spriteRenderer.color = temp;
             }
             else if (interactsLeft <= (interactsNeeded/2))
             {
-                spriteRenderer.color = Color.yellow;
+                var temp = spriteRenderer.color;
+                temp.a = 0.7f;
+                spriteRenderer.color = temp;
             }
         }
     }

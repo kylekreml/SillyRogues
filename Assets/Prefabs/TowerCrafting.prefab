@@ -135,7 +135,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 7930764248342598337, guid: ef2500227e00ac94992024527272a9cc, type: 3}
   spawnpoint: {fileID: 152518278011620383}
   dummyResource: {fileID: 198647377356624096, guid: d04efc025d050cb419a2cff1b5d77eee, type: 3}
   resource1: 0
