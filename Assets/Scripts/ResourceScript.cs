@@ -11,11 +11,15 @@ public enum Resource
     Crystal,
     Oil,
 }
+
 public class ResourceScript : MonoBehaviour
 {
     [SerializeField]
     private Resource type;
     private bool playerInteracted;
+
+    [SerializeField] private List<Sprite> sprites;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +35,7 @@ public class ResourceScript : MonoBehaviour
     public void SetResourceType(Resource r)
     {
         type = r;
+        this.GetComponent<SpriteRenderer>().sprite = sprites[(int)r];
     }
 
     public Resource GetResourceType()
