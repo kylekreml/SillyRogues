@@ -128,6 +128,10 @@ public class PlayerMovement : MonoBehaviour
                     node.interactResourceNode();
                 }
             }
+            else if (hit && hit.transform.tag == "Upgrade")
+            {
+                held = hit.collider;
+            }
         }
     }
 

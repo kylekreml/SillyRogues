@@ -9,6 +9,7 @@ public class TowerClass : MonoBehaviour
 
     public bool disabled = false;
     public bool buffed = false;
+    //public int tier = 1;
     // Start is called before the first frame update
     void Start()
     {

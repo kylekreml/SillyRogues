@@ -9,6 +9,7 @@ TagManager:
   - Tower
   - Ground
   - Resource
+  - Upgrade
   layers:
   - Default
   - TransparentFX

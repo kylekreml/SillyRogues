@@ -22,6 +22,8 @@ public class TowerBehavior : TowerClass
 
     public float buffMultiplier = .90f;
 
+    public int tier = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -85,12 +87,36 @@ public class TowerBehavior : TowerClass
         transform.rotation = q;
         GameObject newBullet = Instantiate(bullet, this.gameObject.transform.GetChild(0).position, Quaternion.identity);
         newBullet.GetComponent<ProjectileClass>().setTarget(target);
+        newBullet.transform.rotation = q;
+
         if (buffed)
             timer = bulletRespawn - (bulletRespawn * buffMultiplier);
         else
             timer = bulletRespawn;
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Upgrade"))
+        {
+            //upgrade tower
+            if (tier != 2)
+            //tower is below tier 3
+            {
+                tier += 1;
+                Destroy(collision.gameObject);
+
+
+                //temp tower upgrade
+                bulletRespawn = bulletRespawn - (.25f * tier);
+
+                //temp visual to see tower upgrade
+                if (tier == 1) this.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 1);
+                else if (tier == 2) this.GetComponent<SpriteRenderer>().color = new Color(1, 0, 1, 1);
+            }
+            
+        }
+    }
 
 
 }

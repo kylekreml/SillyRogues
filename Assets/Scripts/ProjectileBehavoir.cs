@@ -29,6 +29,10 @@ public class ProjectileBehavoir : ProjectileClass
         if (target)
         {
             this.transform.position = Vector3.MoveTowards(gameObject.transform.position, target.transform.position, speed);
+            Vector3 vectorToTarget = target.transform.position - transform.position;
+            float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - 90;
+            Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+            transform.rotation = q;
         }
         else
         {
