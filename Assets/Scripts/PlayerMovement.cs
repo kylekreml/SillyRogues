@@ -8,9 +8,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private Tilemap groundMap;
 
-    public float speed = 10f;
+    public float maxSpeed = 10f;
+    public float speed = 0f;
+    public float speedReduction = 15f;
     public int lootCount = 0;
     public float playerInteractRange = 1.5f;
+    public float playerInteractWidth = 0.7f;
     public Collider2D held = null;
     public char playerNumber = (char)1;
     public Animator animator;
@@ -33,12 +36,22 @@ public class PlayerMovement : MonoBehaviour
     {
         if (direction != Vector3.zero)
         {
+            // Scuffed acceleration :) - Justin
+            speed = speed + maxSpeed/speedReduction;
+            if (speed >= maxSpeed)
+            {
+                speed = maxSpeed;
+            }
             NormalizedDirection = direction.normalized;
             animator.SetFloat("LastX", direction.x);
             animator.SetFloat("LastY", direction.y);
         }
+        else
+        {
+            // Instant deceleration
+            speed = 0f;
+        }
         transform.Translate(direction.normalized * speed * Time.deltaTime);
-
     }
 
     // Update is called once per frame
@@ -52,6 +65,24 @@ public class PlayerMovement : MonoBehaviour
         CheckInteract();
         CheckHeld();
         CheckLoot();
+
+        //Debug for drawing the area box that the player can interact with in blue
+        // Vector2 pVector = new Vector2(NormalizedDirection.y, -NormalizedDirection.x) / Mathf.Sqrt(Mathf.Pow(NormalizedDirection.x, 2f) + Mathf.Pow(NormalizedDirection.y, 2f));
+        // Vector3 perpendicular = new Vector3(pVector.x, pVector.y, 0);
+        // Vector3 closeLeft = transform.position - perpendicular * (playerInteractWidth/2) - NormalizedDirection/3;
+        // Vector3 farRight = transform.position + perpendicular * (playerInteractWidth/2) + NormalizedDirection * playerInteractRange;
+        // Debug.DrawLine(transform.position - perpendicular * (playerInteractWidth/2) - NormalizedDirection/3,
+        //     transform.position + perpendicular * (playerInteractWidth/2) - NormalizedDirection/3,
+        //     Color.blue);
+        // Debug.DrawLine(transform.position - perpendicular * (playerInteractWidth/2) - NormalizedDirection/3,
+        //     transform.position - perpendicular * (playerInteractWidth/2) + NormalizedDirection * playerInteractRange,
+        //     Color.blue);
+        // Debug.DrawLine(transform.position + perpendicular * (playerInteractWidth/2) - NormalizedDirection/3,
+        //     transform.position + perpendicular * (playerInteractWidth/2) + NormalizedDirection * playerInteractRange,
+        //     Color.blue);
+        // Debug.DrawLine(transform.position - perpendicular * (playerInteractWidth/2) + NormalizedDirection * playerInteractRange,
+        //     transform.position + perpendicular * (playerInteractWidth/2) + NormalizedDirection * playerInteractRange,
+        //     Color.blue);
     }
 
     private void CheckInteract()
@@ -100,13 +131,15 @@ public class PlayerMovement : MonoBehaviour
                 return;
             }
 
-            RaycastHit2D hit = Physics2D.Raycast(this.transform.position, this.transform.rotation * NormalizedDirection, playerInteractRange);
-            //Debug.Log(hit.collider.tag);
+            // RaycastHit2D hit = Physics2D.Raycast(this.transform.position, this.transform.rotation * NormalizedDirection, playerInteractRange);
+            // Replacing Raycast with overlap area so interact is not as narrow
+            Collider2D hit = overlapInteract();
+
             if (hit && hit.transform.tag == "Tower")
             {
-                hit.collider.GetComponent<TowerClass>().disableTower();
-                hit.collider.enabled = false;
-                held = hit.collider;
+                hit.gameObject.GetComponent<TowerClass>().disableTower();
+                hit.enabled = false;
+                held = hit;
                 SpriteRenderer heldSprite = held.GetComponent<SpriteRenderer>();
                 heldSprite.color = new Color(1f, 0.5f, 0.5f, 0.2f);
                 // held.transform.SetActive(false);
@@ -116,21 +149,21 @@ public class PlayerMovement : MonoBehaviour
             else if (hit && hit.transform.tag == "Resource")
             {
                 //Probably also need a check for the resource so it doesn't get stuck in something
-                ResourceScript resourceScript = hit.collider.gameObject.GetComponent<ResourceScript>();
+                ResourceScript resourceScript = hit.gameObject.GetComponent<ResourceScript>();
                 if (resourceScript.GetResourceType() != Resource.Node)
                 {
-                    held = hit.collider;
+                    held = hit;
                     indicatorSprite.color = new Color(1f, 1f, 1f, 1f);
                 }
                 else
                 {
-                    ResourceNodeScript node = hit.collider.gameObject.GetComponent<ResourceNodeScript>();
+                    ResourceNodeScript node = hit.gameObject.GetComponent<ResourceNodeScript>();
                     node.interactResourceNode();
                 }
             }
             else if (hit && hit.transform.tag == "Upgrade")
             {
-                held = hit.collider;
+                held = hit;
             }
         }
     }
@@ -160,5 +193,47 @@ public class PlayerMovement : MonoBehaviour
                 lootCount++;
             }
         }
+    }
+
+    // overlapInteract() finds colliders inside of the OverlapAreaAll (a rectangle) and returns the closest collider
+    private Collider2D overlapInteract()
+    {
+        // Does Vector math on a Vector2 then made into a Vector3
+        // Finds the vector that is perpendicular to NormalizedDirection
+        Vector2 pVector = new Vector2(NormalizedDirection.y, -NormalizedDirection.x) / Mathf.Sqrt(Mathf.Pow(NormalizedDirection.x, 2f) + Mathf.Pow(NormalizedDirection.y, 2f));
+        Vector3 perpendicular = new Vector3(pVector.x, pVector.y, 0) * (playerInteractWidth/2);
+
+        // If the player is looking up, names are self-explanatory
+        // NormalizedDirection/3 is to cover the player sprite within the overlap
+        Vector3 closeLeft = transform.position - perpendicular - NormalizedDirection/3;
+        Vector3 farRight = transform.position + perpendicular + NormalizedDirection * playerInteractRange;
+
+        Collider2D[] hits = Physics2D.OverlapAreaAll(
+            new Vector2(closeLeft.x, closeLeft.y),
+            new Vector2(farRight.x, farRight.y)
+        );
+
+        // Finds the closest collider to the player
+        Collider2D closest = null;
+        foreach (Collider2D hit in hits)
+        {
+            if (hit.transform.tag != "Player")
+            {
+                if (closest == null)
+                    closest = hit;
+                else
+                {
+                    if (Vector3.Distance(transform.position, hit.transform.position) < Vector3.Distance(transform.position, closest.transform.position))
+                        closest = hit;
+                }
+            }
+        }
+
+        // Uncomment if you need to find the name of what is being returned
+        // if (closest)
+        // {
+        //     Debug.Log(closest.gameObject.name);
+        // }
+        return closest;
     }
 }
