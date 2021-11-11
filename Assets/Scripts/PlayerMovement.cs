@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float maxSpeed = 10f;
     public float speed = 0f;
-    public float speedReduction = 15f;
+    public float speedIncrease = 1.5f;
     public int lootCount = 0;
     public float playerInteractRange = 1.5f;
     public float playerInteractWidth = 0.7f;
@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
         if (direction != Vector3.zero)
         {
             // Scuffed acceleration :) - Justin
-            speed = speed + maxSpeed/speedReduction;
+            speed = speed + speedIncrease;
             if (speed >= maxSpeed)
             {
                 speed = maxSpeed;
