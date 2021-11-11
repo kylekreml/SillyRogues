@@ -109,7 +109,7 @@ public class TowerCreationScript : MonoBehaviour
     }
 
     //Today I learned that triggers don't get detected in OnCollisionStay2d but just change with OnTriggerStay2D and the collider will detect triggers
-    private void OnTriggerStay2D(Collider2D collider)
+    private void OnCollisionEnter2D(Collision2D collider)
     {
         Debug.Log(collider.gameObject.name);
         if (collider.gameObject.tag == "Resource")

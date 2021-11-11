@@ -127,6 +127,10 @@ public class PlayerMovement : MonoBehaviour
                 {
                    oldHeld.GetComponent<TowerClass>().enableTower();
                 }
+                else if (oldHeld.gameObject.tag == "Resource")
+                {
+                    oldHeld.isTrigger = false;
+                }
                 //Going to have to place in grid somewhere around here.
                 return;
             }
@@ -153,6 +157,7 @@ public class PlayerMovement : MonoBehaviour
                 if (resourceScript.GetResourceType() != Resource.Node)
                 {
                     held = hit;
+                    held.isTrigger = true;
                     indicatorSprite.color = new Color(1f, 1f, 1f, 1f);
                 }
                 else
