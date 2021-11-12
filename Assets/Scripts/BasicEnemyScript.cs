@@ -55,6 +55,7 @@ public class BasicEnemyScript : MonoBehaviour
         //destroys this instance when it reaches the destination
         if (transform.position == destination.transform.position && walkToExit)
         {
+            GameManager.Instance.ChangeGold(-1);
             Destroy(gameObject);
         }
     }

@@ -10,6 +10,8 @@ public class TowerCreationScript : MonoBehaviour
     private Transform spawnpoint;
     [SerializeField]
     private GameObject dummyResource;
+    [SerializeField]
+    private GameObject upgradeKit;
 
     [SerializeField]
     private Resource resource1;
@@ -82,20 +84,32 @@ public class TowerCreationScript : MonoBehaviour
                 return i;
             }
         }
-        return -1;
+        else
+            return -1;
+        return -2;
     }
 
     //Given an int to create a tower
     void createTower(int tower)
     {
-        if (tower == -1)
+        if (tower == -2)
         {
+            // Old code to spit duplicate resources back out
+            // This should never happen
+            // If it does, something is majorly fucked
+            
             GameObject r1 = Instantiate(dummyResource);
             r1.GetComponent<ResourceScript>().SetResourceType(resource1);
             GameObject r2 = Instantiate(dummyResource);
             r2.GetComponent<ResourceScript>().SetResourceType(resource2);
             r1.transform.position = spawnpoint.position;
             r2.transform.position = spawnpoint.position;
+        }
+        if (tower == -1)
+        {
+            GameObject uk = Instantiate(upgradeKit);
+            uk.transform.position = spawnpoint.position;
+
             resource1 = Resource.Node;
             resource2 = Resource.Node;
         }
@@ -109,13 +123,15 @@ public class TowerCreationScript : MonoBehaviour
     }
 
     //Today I learned that triggers don't get detected in OnCollisionStay2d but just change with OnTriggerStay2D and the collider will detect triggers
+    //
+    // Want to detect trigger inside collider -> OnTriggerStay2D/similar function call
+    // Want to detect collider with collider -> OnCollisionStay2D/similar function call
     private void OnCollisionEnter2D(Collision2D collider)
     {
-        Debug.Log(collider.gameObject.name);
+        // Debug.Log(collider.gameObject.name);
         if (collider.gameObject.tag == "Resource")
         {
             ResourceScript resourceScript = collider.gameObject.GetComponent<ResourceScript>();
-            // resourceScript.SetUseAsCraft(true);
             if (resource1 == Resource.Node && resourceScript.GetPlayerInteracted())
             {
                 resource1 = resourceScript.GetResourceType();
