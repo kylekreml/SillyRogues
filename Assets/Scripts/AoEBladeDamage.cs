@@ -21,7 +21,7 @@ public class AoEBladeDamage : MonoBehaviour
 
         if (other.gameObject.CompareTag("Enemy"))
         {
-            other.gameObject.GetComponent<BasicEnemyScript>().damage(damage);
+            other.gameObject.GetComponent<BasicEnemyScript>().damage(damage, this.transform.parent.gameObject);
         }
     }
 }

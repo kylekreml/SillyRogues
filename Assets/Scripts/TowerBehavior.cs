@@ -22,12 +22,16 @@ public class TowerBehavior : TowerClass
 
     public float buffMultiplier = .90f;
 
-    public int tier = 0;
+    private SpriteRenderer radiusCircle;
+
+    public enum type { Basic, Dom, Line }
+    public type TowerType;
 
     // Start is called before the first frame update
     void Start()
     {
         timer = bulletRespawn;
+        radiusCircle = this.transform.Find("Circle").GetComponent<SpriteRenderer>();
     }
 
 
@@ -54,16 +58,16 @@ public class TowerBehavior : TowerClass
             {
                 timer -= Time.deltaTime;
             }
-            if (this.transform.Find("Circle").GetComponent<SpriteRenderer>().enabled)
+            if (radiusCircle.enabled)
             {
-                this.transform.Find("Circle").GetComponent<SpriteRenderer>().enabled = false;
+                radiusCircle.enabled = false;
             }
         }
         else 
         {
-            if (!this.transform.Find("Circle").GetComponent<SpriteRenderer>().enabled)
+            if (!radiusCircle.enabled)
             {
-                this.transform.Find("Circle").GetComponent<SpriteRenderer>().enabled = true;
+                radiusCircle.enabled = true;
             }
         }
     }
@@ -87,6 +91,7 @@ public class TowerBehavior : TowerClass
         transform.rotation = q;
         GameObject newBullet = Instantiate(bullet, this.gameObject.transform.GetChild(0).position, Quaternion.identity);
         newBullet.GetComponent<ProjectileClass>().setTarget(target);
+        newBullet.GetComponent<ProjectileClass>().setShooter(this.gameObject);
         newBullet.transform.rotation = q;
 
         if (buffed)
@@ -95,28 +100,26 @@ public class TowerBehavior : TowerClass
             timer = bulletRespawn;
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    public override void upgradeTower()
     {
-        if (collision.CompareTag("Upgrade"))
+        base.upgradeTower();
+        if (TowerType == type.Basic)
         {
-            //upgrade tower
-            if (tier != 2)
-            //tower is below tier 3
-            {
-                tier += 1;
-                Destroy(collision.gameObject);
-
-
-                //temp tower upgrade
-                bulletRespawn = bulletRespawn - (.25f * tier);
-
-                //temp visual to see tower upgrade
-                if (tier == 1) this.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 1);
-                else if (tier == 2) this.GetComponent<SpriteRenderer>().color = new Color(1, 0, 1, 1);
+            if (tier == 1)
+            { // TOWER JUST UPGRADED TO TIER ONE SO UPGRADE SPEED CHANGE AT FUTURE TIME
+                bulletRespawn = 1.5f;
             }
-            
+        }
+        else if (TowerType == type.Dom)
+        {
+            if (tier == 1)
+            {
+                bulletRespawn = 2.5f;
+            }
+
         }
     }
+
 
 
 }

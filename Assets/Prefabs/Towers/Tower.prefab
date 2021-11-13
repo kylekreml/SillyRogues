@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 3137337180425928767}
   - component: {fileID: 3137337180425928766}
   - component: {fileID: 2935540410962972069}
-  - component: {fileID: 1439013250}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Tower
@@ -140,12 +139,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   disabled: 0
   buffed: 0
+  xp: 0
+  xpToTierOne: 10
+  xpToTierTwo: 10
+  tier: 0
+  spriteList:
+  - {fileID: 21300000, guid: 6d1f93e18ca81bb4bb6abd5500ad76b9, type: 3}
+  - {fileID: 21300000, guid: efbfb69f22293f24288ab2332a639604, type: 3}
   bulletRespawn: 2
   bullet: {fileID: 6418467644957234089, guid: ce101b6f1152f014d965985a6360f753, type: 3}
   radius: 6
   circleRenderer: {fileID: 0}
   buffMultiplier: 0.3
-  tier: 0
 --- !u!61 &2935540410962972069
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -172,20 +177,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1439013250
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3137337180425928737}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2db706b097a3f448b5dd4e61340445b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  disabled: 1
-  buffed: 0
 --- !u!1 &3137337180491827310
 GameObject:
   m_ObjectHideFlags: 0

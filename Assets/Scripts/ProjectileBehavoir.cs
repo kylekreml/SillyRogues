@@ -2,12 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class ProjectileBehavoir : ProjectileClass
 {
     // Start is called before the first frame update
 
     public float damage = 1;
     public float speed = 1f;
+
+
+    public enum type { Basic, Dom }
+    private type bulletType;
+
+    private int shooterTier;
+
+    private void Start()
+    {
+        shooterTier = shooter.GetComponent<TowerBehavior>().getTier();
+    }
 
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -18,8 +30,39 @@ public class ProjectileBehavoir : ProjectileClass
         // }
         if (other.gameObject.CompareTag("Enemy"))
         {
-            other.gameObject.GetComponent<BasicEnemyScript>().damage(damage);
-            Destroy(gameObject);
+            if (bulletType == type.Basic)
+            {// Tower that Shot the bullet is basic tower
+                if (shooterTier >= 1)
+                {
+                    damage = damage * 2; //CHANGE THIS TO DIFFERENT MULTIPLIER LATER 
+                }
+                other.gameObject.GetComponent<BasicEnemyScript>().damage(damage, shooter);
+                Destroy(gameObject);
+            }
+            else if (bulletType == type.Dom)
+            { // tower that shot bullet is Dom tower
+                if (shooterTier == 2)
+                {
+
+                    //overlap circle for all enemies in a radius of the enemy hit CHANGE RADIUS SIZE AFTER BALANCING
+                    Collider2D[] objects = Physics2D.OverlapCircleAll(this.transform.position, 3f);
+                    for (int i = 0; i < objects.Length; i++)
+                    {
+                        if (objects[i].gameObject.CompareTag("Enemy") && Vector3.Distance(objects[i].transform.position, this.transform.position) < 3f)
+                        {
+                            objects[i].gameObject.GetComponent<BasicEnemyScript>().damage(damage, shooter);
+                            
+                        }
+                    }
+
+                }
+                else
+                {
+                    other.gameObject.GetComponent<BasicEnemyScript>().damage(damage, shooter);
+                }
+                Destroy(gameObject);
+            }
+
         }
     }
 
@@ -40,4 +83,12 @@ public class ProjectileBehavoir : ProjectileClass
         }
         
     }
+
+    public void setType(type t)
+    {
+        bulletType = t;
+    }
+
+    
+
 }

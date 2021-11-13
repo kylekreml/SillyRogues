@@ -112,7 +112,7 @@ public class PlayerMovement : MonoBehaviour
                     
                     foreach (Collider2D o in overlaps)
                     {
-                        Debug.Log(o.tag);
+                        //Debug.Log(o.tag);
                         if (o.tag == "Tower")
                         {
                             return;

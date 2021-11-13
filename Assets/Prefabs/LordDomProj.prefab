@@ -98,8 +98,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  shooter: {fileID: 0}
   damage: 5
   speed: 2
+  bulletType: 1
 --- !u!50 &7834319045722432706
 Rigidbody2D:
   serializedVersion: 4

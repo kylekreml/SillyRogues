@@ -159,7 +159,7 @@ SpriteRenderer:
   m_SortingLayerID: -393618257
   m_SortingLayer: 1
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: d396a07e5efbe014ca7539b177c0cab8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d31cdbf7f8848b44d8dfd03f93bbe86f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -221,12 +221,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   disabled: 0
   buffed: 0
+  xp: 0
+  xpToTierOne: 10
+  xpToTierTwo: 10
+  tier: 0
+  readyToUpgrade: 0
+  spriteList:
+  - {fileID: 21300000, guid: 806624d43f89f0347a710c18915c10c8, type: 3}
+  - {fileID: 21300000, guid: 84efdfff93be9d04f8690b645676812c, type: 3}
   bulletRespawn: 3
   bullet: {fileID: 7834319045722432704, guid: f9ed548129e37fa4ebe8f1a6afffaf9a, type: 3}
   radius: 6
   circleRenderer: {fileID: 0}
   buffMultiplier: 0.3
-  tier: 0
+  TowerType: 1
 --- !u!61 &2588484445895219004
 BoxCollider2D:
   m_ObjectHideFlags: 0

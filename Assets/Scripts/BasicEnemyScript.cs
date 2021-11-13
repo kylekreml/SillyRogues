@@ -26,6 +26,11 @@ public class BasicEnemyScript : MonoBehaviour
     private GameObject loot;
     private bool holdingLoot = false;
 
+    private float timer = 0; 
+
+    public HashSet<GameObject> towers = new HashSet<GameObject>();
+
+
     //for walking to exit destination when done with waypoints
     private bool walkToExit = false;
 
@@ -50,7 +55,16 @@ public class BasicEnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        walk();
+        //check if frozen due to line tower
+        if (timer <= 0)
+        {
+            walk();
+        }
+        else
+        {
+            timer -= Time.deltaTime;
+        }
+
         
         //destroys this instance when it reaches the destination
         if (transform.position == destination.transform.position && walkToExit)
@@ -94,10 +108,12 @@ public class BasicEnemyScript : MonoBehaviour
         }
     }
 
-    public void damage(float amount)
+    public void damage(float amount, GameObject shooter)
     {
         health = health - amount;
         healthSlider.value = health;
+        //Debug.Log(shooter.name);
+        towers.Add(shooter);
         if (health <= 0)
         {
             if(holdingLoot)
@@ -106,6 +122,12 @@ public class BasicEnemyScript : MonoBehaviour
                 GameObject l = Instantiate(loot);
                 l.transform.position = transform.position;
             }
+            foreach (GameObject tower in towers)
+            {
+                tower.GetComponent<TowerClass>().giveXp();
+                //Debug.Log(tower);
+            }
+            
             Destroy(gameObject);
         }
     }
@@ -194,4 +216,12 @@ public class BasicEnemyScript : MonoBehaviour
         
         return ret;
     }
+
+
+    public void freeze(float duration)
+    {
+        timer = duration;
+    }
+
+
 }
