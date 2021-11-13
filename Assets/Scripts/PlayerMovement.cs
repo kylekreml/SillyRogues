@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float maxSpeed = 10f;
     public float speed = 0f;
-    public float speedReduction = 15f;
+    public float speedIncrease = 45f;
     public int lootCount = 0;
     public float playerInteractRange = 1.5f;
     public float playerInteractWidth = 0.7f;
@@ -36,9 +36,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if (direction != Vector3.zero)
         {
-            // Scuffed acceleration :) - Justin
-            speed = speed + maxSpeed/speedReduction;
-            if (speed >= maxSpeed)
+            // Now less scuffed acceleration :) - Justin
+            if (speed < maxSpeed)
+            {
+                speed = speed + speedIncrease * Time.fixedDeltaTime;
+            }
+            else
             {
                 speed = maxSpeed;
             }
@@ -51,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
             // Instant deceleration
             speed = 0f;
         }
-        transform.Translate(direction.normalized * speed * Time.deltaTime);
+        transform.Translate(direction.normalized * speed * Time.fixedDeltaTime);
     }
 
     // Update is called once per frame
@@ -127,6 +130,10 @@ public class PlayerMovement : MonoBehaviour
                 {
                    oldHeld.GetComponent<TowerClass>().enableTower();
                 }
+                else if (oldHeld.gameObject.tag == "Resource")
+                {
+                    oldHeld.isTrigger = false;
+                }
                 //Going to have to place in grid somewhere around here.
                 return;
             }
@@ -153,6 +160,7 @@ public class PlayerMovement : MonoBehaviour
                 if (resourceScript.GetResourceType() != Resource.Node)
                 {
                     held = hit;
+                    held.isTrigger = true;
                     indicatorSprite.color = new Color(1f, 1f, 1f, 1f);
                 }
                 else

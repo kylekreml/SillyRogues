@@ -231,6 +231,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2367496044584639140, guid: d816faf3e663420429309fadd87a3ec6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d31cdbf7f8848b44d8dfd03f93bbe86f, type: 3}
     - target: {fileID: 2367496044584639160, guid: d816faf3e663420429309fadd87a3ec6, type: 3}
       propertyPath: m_Name
       value: LordDom
@@ -385,9 +389,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundMap: {fileID: 641311388}
+  maxSpeed: 10
   speed: 10
+  speedIncrease: 1.5
   lootCount: 0
   playerInteractRange: 1.5
+  playerInteractWidth: 0.7
   held: {fileID: 0}
   playerNumber: 49
   animator: {fileID: 502261778}
@@ -3730,6 +3737,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7930764248342598341, guid: ef2500227e00ac94992024527272a9cc, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 44c25f8a9fc902340aaa88cfe1e11bcc, type: 3}
     - target: {fileID: 7930764248342598341, guid: ef2500227e00ac94992024527272a9cc, type: 3}
       propertyPath: m_SortingLayer
       value: 3

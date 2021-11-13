@@ -6,12 +6,10 @@ public class TreasureCart : MonoBehaviour
 {
     public int totalLoot = 25;
     public int lootCollectRadius = 2;
-    [SerializeField]
-    private int lootCount;
 
     void Start()
     {
-        lootCount = totalLoot;
+        GameManager.Instance.SetGold(totalLoot);
     }
     void Update()
     {
@@ -31,14 +29,14 @@ public class TreasureCart : MonoBehaviour
             if (objCol.tag == "Player")
             {
                 PlayerMovement player = objCol.GetComponent<PlayerMovement>();
-                lootCount += player.lootCount;
+                GameManager.Instance.ChangeGold(player.lootCount);
                 player.lootCount = 0;
             }
-            else if (objCol.tag == "Enemy" && lootCount > 0)
+            else if (objCol.tag == "Enemy" && GameManager.Instance.GetGold() > 0)
             {
                 if (objCol.gameObject.GetComponent<BasicEnemyScript>().giveLoot())
                 {
-                    lootCount--;
+                    GameManager.Instance.ChangeGold(-1);
                 }
             }
         }

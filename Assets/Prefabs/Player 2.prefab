@@ -147,9 +147,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundMap: {fileID: 0}
+  maxSpeed: 10
   speed: 10
+  speedIncrease: 45
   lootCount: 0
   playerInteractRange: 1.5
+  playerInteractWidth: 0.7
   held: {fileID: 0}
   playerNumber: 50
   animator: {fileID: 1882489586367982613}
