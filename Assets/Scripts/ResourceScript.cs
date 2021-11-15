@@ -18,7 +18,7 @@ public class ResourceScript : MonoBehaviour
     private Resource type;
     private bool playerInteracted;
 
-    [SerializeField] private List<Sprite> sprites;
+    public List<Sprite> sprites;
 
     // Start is called before the first frame update
     void Start()

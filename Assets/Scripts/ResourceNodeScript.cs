@@ -19,11 +19,13 @@ public class ResourceNodeScript : ResourceScript
     Directions direction;
     [SerializeField]
     private float spawnDistance;
+
     // Start is called before the first frame update
     void Start()
     {
         interactsLeft = interactsNeeded;
         spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = sprites[(int)resourceType];
         //spriteRenderer.color = Color.green;
     }
 
