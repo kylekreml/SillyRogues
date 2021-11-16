@@ -21,7 +21,6 @@ public class EnemySpawnerManager : MonoBehaviour
     public float timeSinceStart;
     private int wavesLeft;
     private int enemiesLeft;
-    private bool doneSpawning;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +28,6 @@ public class EnemySpawnerManager : MonoBehaviour
         timeSinceStart = 0;
         wavesLeft = groups.Count;
         enemiesLeft = 0;
-        doneSpawning = false;
         GameManager.Instance.ChangeSpawnersLeft(1);
         for (int i = 0; i < groups.Count; i++)
         {
@@ -44,7 +42,7 @@ public class EnemySpawnerManager : MonoBehaviour
     {
         timeSinceStart += Time.deltaTime; //left because possibly could use later?
 
-        if (doneSpawning)
+        if (wavesLeft == 0 && enemiesLeft == 0)
         {
             GameManager.Instance.ChangeSpawnersLeft(-1);
         }

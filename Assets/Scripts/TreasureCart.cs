@@ -5,10 +5,12 @@ using UnityEngine;
 public class TreasureCart : MonoBehaviour
 {
     public int totalLoot = 25;
+    private int currentLoot;
     public int lootCollectRadius = 2;
 
     void Start()
     {
+        currentLoot = totalLoot;
         GameManager.Instance.SetGold(totalLoot);
     }
     void Update()
@@ -32,12 +34,9 @@ public class TreasureCart : MonoBehaviour
                 GameManager.Instance.ChangeGold(player.lootCount);
                 player.lootCount = 0;
             }
-            else if (objCol.tag == "Enemy" && GameManager.Instance.GetGold() > 0)
+            else if (objCol.tag == "Enemy" && currentLoot > 0)
             {
-                if (objCol.gameObject.GetComponent<BasicEnemyScript>().giveLoot())
-                {
-                    GameManager.Instance.ChangeGold(-1);
-                }
+                objCol.gameObject.GetComponent<BasicEnemyScript>().giveLoot();
             }
         }
     }
