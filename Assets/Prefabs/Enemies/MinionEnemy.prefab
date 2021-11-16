@@ -259,6 +259,7 @@ GameObject:
   - component: {fileID: 4485696606817315174}
   - component: {fileID: 7907811754672960918}
   - component: {fileID: 8381659010797864396}
+  - component: {fileID: -7859094319390622220}
   m_Layer: 0
   m_Name: MinionEnemy
   m_TagString: Enemy
@@ -275,7 +276,7 @@ Transform:
   m_GameObject: {fileID: 4485696606817315175}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8730826430266792110}
   m_Father: {fileID: 0}
@@ -321,7 +322,7 @@ SpriteRenderer:
   m_SortingLayerID: -393618257
   m_SortingLayer: 1
   m_SortingOrder: 2
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: -2297750810372975540, guid: 767b91d278ac8bc4685a8c5e150ef19f, type: 3}
   m_Color: {r: 0.920245, g: 1, b: 0.02352941, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -388,6 +389,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &-7859094319390622220
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4485696606817315175}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 91a811e7f27260847ad02fbc2c101318, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5104446410829157922
 GameObject:
   m_ObjectHideFlags: 0

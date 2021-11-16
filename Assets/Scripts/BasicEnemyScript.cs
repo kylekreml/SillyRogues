@@ -18,6 +18,7 @@ public class BasicEnemyScript : MonoBehaviour
     private GameObject destination;
     [SerializeField]
     private GameObject route;
+    private Animator animator;
     private Transform[] waypoints;
     private int currentWaypoint;
     private Transform walkTowards;
@@ -51,6 +52,8 @@ public class BasicEnemyScript : MonoBehaviour
         healthSlider = this.gameObject.transform.Find("enemyCanvas").GetChild(0).GetComponent<Slider>();
         healthSlider.maxValue = health;
         healthSlider.value = health;
+        animator = this.GetComponent<Animator>();
+        animator.SetFloat("Speed", speed);
     }
 
     // Update is called once per frame
@@ -81,7 +84,9 @@ public class BasicEnemyScript : MonoBehaviour
     {
         if (walkTowards == null)
             walkTowards = waypoints[currentWaypoint];
-
+        Vector2 direction = Vector2.MoveTowards(transform.position, walkTowards.position, speed * Time.deltaTime);
+        animator.SetFloat("Horizontal", transform.position.x - direction.x);
+        animator.SetFloat("Vertical", transform.position.y - direction.y);
         transform.position = Vector2.MoveTowards(transform.position, walkTowards.position, speed * Time.deltaTime);
 
         //Rotation of enemy
