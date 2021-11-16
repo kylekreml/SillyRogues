@@ -509,7 +509,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5993ee815d4a4f044aca0e67601a7b30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
+  health: 3
   defaultSpeed: 3
   type: 
   healthSlider: {fileID: 0}
