@@ -19,39 +19,63 @@ public class EnemySpawnerManager : MonoBehaviour
 
     public List<SpawnGroup> groups;
     public float timeSinceStart;
+    private int wavesLeft;
 
     // Start is called before the first frame update
     void Start()
     {
         timeSinceStart = 0;
+        wavesLeft = groups.Count;
         for (int i = 0; i < groups.Count; i++)
         {
             SpawnGroup g = groups[i];
             if (g.destination == null) g.destination = gameObject;
+            StartCoroutine(SpawnWave(g));
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        timeSinceStart += Time.deltaTime;
-        for (int i = 0; i < groups.Count; i++)
-        {
-            SpawnGroup g = groups[i];
-            if (g.spawnTime > timeSinceStart || g.numberOfEnemies == 0)
-                continue;
-            if (g.curSpawnDelay > 0)
-                g.curSpawnDelay -= Time.deltaTime;
+        timeSinceStart += Time.deltaTime; //left because possibly could use later?
 
-            if (g.curSpawnDelay <= 0)
-            {
-                GameObject child = Instantiate(g.enemy);
-                child.GetComponent<BasicEnemyScript>().SetRoute(g.route);
-                child.GetComponent<BasicEnemyScript>().SetDestination(g.destination);
-                child.transform.position = g.spawnPoint.position;
-                g.curSpawnDelay = g.spawnDelay;
-                g.numberOfEnemies -= 1;
-            }
+
+        // for (int i = 0; i < groups.Count; i++)
+        // {
+        //     SpawnGroup g = groups[i];
+        //     if (g.spawnTime > timeSinceStart || g.numberOfEnemies == 0)
+        //         continue;
+        //     if (g.curSpawnDelay > 0)
+        //         g.curSpawnDelay -= Time.deltaTime;
+
+        //     if (g.curSpawnDelay <= 0)
+        //     {
+        //         GameObject child = Instantiate(g.enemy);
+        //         child.GetComponent<BasicEnemyScript>().SetRoute(g.route);
+        //         child.GetComponent<BasicEnemyScript>().SetDestination(g.destination);
+        //         child.transform.position = g.spawnPoint.position;
+        //         g.curSpawnDelay = g.spawnDelay;
+        //         g.numberOfEnemies -= 1;
+        //     }
+        // }
+    }
+
+    IEnumerator SpawnWave(SpawnGroup g)
+    {
+        yield return new WaitForSeconds(g.spawnTime);
+        for (int i = 0; i < g.numberOfEnemies; i++)
+        {
+            GameObject child = Instantiate(g.enemy);
+            child.GetComponent<BasicEnemyScript>().SetRoute(g.route);
+            child.GetComponent<BasicEnemyScript>().SetDestination(g.destination);
+            child.transform.position = g.spawnPoint.position;
+            yield return new WaitForSeconds(g.spawnDelay);
         }
+        wavesLeft--;
+    }
+
+    public void RemovedEnemy()
+    {
+
     }
 }

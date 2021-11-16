@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class BasicEnemyScript : MonoBehaviour
 {
     public float health = 5;
+    private EnemySpawnerManager spawnerScript;
     private float speed;
     //not sure if this is how i'm doing it yet
     public float defaultSpeed = 3;
@@ -70,6 +71,7 @@ public class BasicEnemyScript : MonoBehaviour
         if (transform.position == destination.transform.position && walkToExit)
         {
             GameManager.Instance.ChangeGold(-1);
+            spawnerScript.RemovedEnemy();
             Destroy(gameObject);
         }
     }
@@ -128,6 +130,7 @@ public class BasicEnemyScript : MonoBehaviour
                 //Debug.Log(tower);
             }
             
+            spawnerScript.RemovedEnemy();
             Destroy(gameObject);
         }
     }
@@ -189,6 +192,12 @@ public class BasicEnemyScript : MonoBehaviour
     public void SetDestination(GameObject d)
     {
         destination = d;
+    }
+
+    //Called by EnemySpawner. Setter to find the script and keep count of enemies left in the scene
+    public void SetSpawnerScript(EnemySpawnerManager sScript)
+    {
+        spawnerScript = sScript;
     }
 
     //Calculates distance between waypoints and returns a float of the remaining distance
