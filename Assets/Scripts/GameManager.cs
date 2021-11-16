@@ -10,6 +10,10 @@ public class GameManager: MonoBehaviour
     [SerializeField]
     private int levelGold;
     [SerializeField]
+    private int spawnersLeft;
+    [SerializeField]
+    private bool levelComplete;
+    [SerializeField]
     private string nextScene;
     [SerializeField]
     private bool debugChange = false;
@@ -18,6 +22,8 @@ public class GameManager: MonoBehaviour
     {
         // Initialize GameManager
         levelGold = 0;
+        spawnersLeft = 0;
+        levelComplete = false;
     }
 
     public static GameManager Instance
@@ -34,13 +40,32 @@ public class GameManager: MonoBehaviour
 
     void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
         DontDestroyOnLoad(instance);
     }
 
     void Update()
     {
         DebugSceneChange();
+        if (levelComplete)
+        {
+            //Do finished level stuff
+            //also reset values
+            levelGold = 0;
+            levelComplete = false;
+            ChangeScene(nextScene);
+        }
+        else if (levelGold != 0 && spawnersLeft == 0)
+        {
+            levelComplete = true;
+        }
     }
     
     public void Pause(bool paused)
@@ -65,6 +90,11 @@ public class GameManager: MonoBehaviour
     public void SetGold(int gold)
     {
         levelGold = gold;
+    }
+
+    public void ChangeSpawnersLeft(int spawner)
+    {
+        spawnersLeft += spawner;
     }
 
     private void GameOver()
