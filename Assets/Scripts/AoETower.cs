@@ -11,11 +11,16 @@ public class AoETower : TowerClass
 
     private BoxCollider2D swordCollider;
 
+    private GameObject Sword;
+
     // Start is called before the first frame update
     void Start()
     {
-        swordSprite = this.transform.Find("pointer").GetComponent<SpriteRenderer>();
-        swordCollider = this.transform.Find("pointer").GetComponent<BoxCollider2D>();
+        Sword = this.transform.GetChild(0).gameObject;
+
+
+        swordSprite = Sword.GetComponent<SpriteRenderer>();
+        swordCollider = Sword.GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
@@ -48,15 +53,18 @@ public class AoETower : TowerClass
         {// TEMP CODE IN PLACE OF SPRITE
             swordSprite.color = new Color(1, 0, 0, 1);
             //CHANGE THIS TO CHANGE SIZE OF SWORD
-            swordCollider.size = new Vector2(swordCollider.size.x, swordCollider.size.y * 2);
-            
+            //swordCollider.size = new Vector2(swordCollider.size.x, swordCollider.size.y * 2);
+            //swordSprite.size = new Vector2(swordSprite.size.x, swordSprite.size.y * 2);
+            this.transform.GetChild(0).localScale = new Vector3(Sword.transform.localScale.x, Sword.transform.localScale.y * 2, Sword.transform.localScale.z);
+
+
         }
         else if (tier == 2)
             // tower got upgraded to tier 2 so the speed of rotation is faster
         {//TEMP CODE IN PLACE OF SPRITE
             swordSprite.color = new Color(1, 0, 1, 1);
             //CHANGE THIS LATER TO CHANGE SPEED OF UPGRADED TOWER
-            attackSpeed = 2;
+            attackSpeed = 1.5f;
         }
         readyToUpgrade = false;
 
