@@ -216,6 +216,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LineAoeTower
       objectReference: {fileID: 0}
+    - target: {fileID: 7930764248342598337, guid: ef2500227e00ac94992024527272a9cc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7930764248342598340, guid: ef2500227e00ac94992024527272a9cc, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1222,6 +1226,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2367496044584639143, guid: d816faf3e663420429309fadd87a3ec6, type: 3}
+      propertyPath: xpToTierOne
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2367496044584639143, guid: d816faf3e663420429309fadd87a3ec6, type: 3}
+      propertyPath: xpToTierTwo
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2367496044584639160, guid: d816faf3e663420429309fadd87a3ec6, type: 3}
       propertyPath: m_Name
       value: LordDom
@@ -1477,7 +1489,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1552374781822248200, guid: b7066255d6d4f32488aba2612070cfef, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1552374781822248211, guid: b7066255d6d4f32488aba2612070cfef, type: 3}
       propertyPath: m_RootOrder
@@ -1523,6 +1535,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1552374781822248212, guid: b7066255d6d4f32488aba2612070cfef, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bcec1dc85aa6cc246bc112b004eb1408, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7066255d6d4f32488aba2612070cfef, type: 3}
 --- !u!1001 &1837269673
