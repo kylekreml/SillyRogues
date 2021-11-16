@@ -2816,20 +2816,24 @@ MonoBehaviour:
     enemy: {fileID: 5038858920877382330, guid: 0bb66abe89c9f3145a86360b57b9be60, type: 3}
     numberOfEnemies: 2
     spawnPoint: {fileID: 1264991130}
+    route: {fileID: 818380870}
+    destination: {fileID: 1140655726}
   - spawnTime: 5
     spawnDelay: 0.5
     curSpawnDelay: 0
     enemy: {fileID: 473488541409166241, guid: 289a1802b7d759b49a78f4de941f29e2, type: 3}
     numberOfEnemies: 2
     spawnPoint: {fileID: 1264991130}
+    route: {fileID: 818380870}
+    destination: {fileID: 1140655726}
   - spawnTime: 1
     spawnDelay: 2
     curSpawnDelay: 0
     enemy: {fileID: 473488541409166241, guid: 289a1802b7d759b49a78f4de941f29e2, type: 3}
     numberOfEnemies: 2
     spawnPoint: {fileID: 1264991130}
-  route: {fileID: 818380870}
-  destination: {fileID: 1140655726}
+    route: {fileID: 818380870}
+    destination: {fileID: 1140655726}
   timeSinceStart: 0
 --- !u!4 &1818473846
 Transform:
