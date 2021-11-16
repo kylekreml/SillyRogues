@@ -14,7 +14,7 @@ public class TowerBehavior : TowerClass
 
     public int radius;
 
-    GameObject target = null;
+    private GameObject target = null;
 
     float targetDistance = 1000000;
 
