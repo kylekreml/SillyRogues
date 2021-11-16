@@ -61,10 +61,9 @@ public class TowerClass : MonoBehaviour
             { //tower is tier 0 and ready to upgrade when player brings an upgrade kit
                 readyToUpgrade = true;
                 xp = 0;
-                // insert Updgrade Indicator Here, IDK how to do animations
-                //
-                //
-                //
+
+                this.transform.Find("Upgrade Ready").gameObject.SetActive(true);
+                
             }
         }
     }
@@ -93,6 +92,7 @@ public class TowerClass : MonoBehaviour
 
             tier += 1;
             readyToUpgrade = false;
+            this.transform.Find("Upgrade Ready").gameObject.SetActive(false);
     }
 
     public int getTier()

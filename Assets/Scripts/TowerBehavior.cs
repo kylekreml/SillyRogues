@@ -89,6 +89,8 @@ public class TowerBehavior : TowerClass
         float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - 90;
         Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
         transform.rotation = q;
+
+
         GameObject newBullet = Instantiate(bullet, this.gameObject.transform.GetChild(0).position, Quaternion.identity);
         newBullet.GetComponent<ProjectileClass>().setTarget(target);
         newBullet.GetComponent<ProjectileClass>().setShooter(this.gameObject);
