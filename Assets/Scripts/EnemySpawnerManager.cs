@@ -20,12 +20,17 @@ public class EnemySpawnerManager : MonoBehaviour
     public List<SpawnGroup> groups;
     public float timeSinceStart;
     private int wavesLeft;
+    private int enemiesLeft;
+    private bool doneSpawning;
 
     // Start is called before the first frame update
     void Start()
     {
         timeSinceStart = 0;
         wavesLeft = groups.Count;
+        enemiesLeft = 0;
+        doneSpawning = false;
+        GameManager.Instance.ChangeSpawnersLeft(1);
         for (int i = 0; i < groups.Count; i++)
         {
             SpawnGroup g = groups[i];
@@ -39,7 +44,10 @@ public class EnemySpawnerManager : MonoBehaviour
     {
         timeSinceStart += Time.deltaTime; //left because possibly could use later?
 
-
+        if (doneSpawning)
+        {
+            GameManager.Instance.ChangeSpawnersLeft(-1);
+        }
         // for (int i = 0; i < groups.Count; i++)
         // {
         //     SpawnGroup g = groups[i];
@@ -62,12 +70,14 @@ public class EnemySpawnerManager : MonoBehaviour
 
     IEnumerator SpawnWave(SpawnGroup g)
     {
+        enemiesLeft += g.numberOfEnemies;
         yield return new WaitForSeconds(g.spawnTime);
         for (int i = 0; i < g.numberOfEnemies; i++)
         {
             GameObject child = Instantiate(g.enemy);
             child.GetComponent<BasicEnemyScript>().SetRoute(g.route);
             child.GetComponent<BasicEnemyScript>().SetDestination(g.destination);
+            child.GetComponent<BasicEnemyScript>().SetSpawnerScript(this);
             child.transform.position = g.spawnPoint.position;
             yield return new WaitForSeconds(g.spawnDelay);
         }
@@ -76,6 +86,6 @@ public class EnemySpawnerManager : MonoBehaviour
 
     public void RemovedEnemy()
     {
-
+        enemiesLeft--;
     }
 }
