@@ -13,19 +13,22 @@ public class EnemySpawnerManager : MonoBehaviour
         public GameObject enemy;
         public int numberOfEnemies;
         public Transform spawnPoint;
+        public GameObject route;
+        public GameObject destination;
     }
 
     public List<SpawnGroup> groups;
-    public GameObject route;
-    public GameObject destination;
     public float timeSinceStart;
 
     // Start is called before the first frame update
     void Start()
     {
         timeSinceStart = 0;
-        if (destination == null)
-            destination = gameObject;
+        for (int i = 0; i < groups.Count; i++)
+        {
+            SpawnGroup g = groups[i];
+            if (g.destination == null) g.destination = gameObject;
+        }
     }
 
     // Update is called once per frame
@@ -43,8 +46,8 @@ public class EnemySpawnerManager : MonoBehaviour
             if (g.curSpawnDelay <= 0)
             {
                 GameObject child = Instantiate(g.enemy);
-                child.GetComponent<BasicEnemyScript>().SetRoute(route);
-                child.GetComponent<BasicEnemyScript>().SetDestination(destination);
+                child.GetComponent<BasicEnemyScript>().SetRoute(g.route);
+                child.GetComponent<BasicEnemyScript>().SetDestination(g.destination);
                 child.transform.position = g.spawnPoint.position;
                 g.curSpawnDelay = g.spawnDelay;
                 g.numberOfEnemies -= 1;
