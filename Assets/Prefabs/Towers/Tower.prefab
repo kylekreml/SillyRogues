@@ -237,8 +237,8 @@ MonoBehaviour:
   disabled: 0
   buffed: 0
   xp: 0
-  xpToTierOne: 1
-  xpToTierTwo: 1
+  xpToTierOne: 10
+  xpToTierTwo: 10
   tier: 0
   readyToUpgrade: 0
   spriteList:

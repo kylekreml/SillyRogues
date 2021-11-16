@@ -54,10 +54,12 @@ public class LineProjectile : ProjectileClass
             //this.transform.position = Vector3.MoveTowards(this.transform.position, position, speed);
             this.GetComponent<Rigidbody2D>().AddForce(position);
         }
+
         timer -= Time.deltaTime;
         if (timer <= 0)
             {
             Destroy(gameObject);
         }
+        
     }
 }
