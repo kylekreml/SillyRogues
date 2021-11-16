@@ -314,7 +314,7 @@ MonoBehaviour:
   radius: 6
   circleRenderer: {fileID: 0}
   buffMultiplier: 0.3
-  TowerType: 0
+  TowerType: 2
 --- !u!61 &7930764248342598336
 BoxCollider2D:
   m_ObjectHideFlags: 0

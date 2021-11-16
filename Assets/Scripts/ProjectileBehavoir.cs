@@ -18,6 +18,8 @@ public class ProjectileBehavoir : ProjectileClass
 
     private int bounce = 1;
 
+    
+
     private void Start()
     {
         shooterTier = shooter.GetComponent<TowerBehavior>().getTier();
@@ -53,16 +55,26 @@ public class ProjectileBehavoir : ProjectileClass
                     }
                     //ARBITRARY NUMBER FOR HOW BIG THE RADIUS OF THE BOUNCE ARROW IS
                     Collider2D[] objects = Physics2D.OverlapCircleAll(this.transform.position, 6f);
-                    for (int i = 0; i < objects.Length; i++)
+                    if (objects.Length != 0)
                     {
-                        if (objects[i].gameObject.CompareTag("Enemy") && Vector3.Distance(objects[i].transform.position, this.transform.position) < 6f)
+                        for (int i = 0; i < objects.Length; i++)
                         {
-                            //objects[i].gameObject.GetComponent<BasicEnemyScript>().damage(damage, shooter);
-                            target = objects[i].gameObject;
-
+                            if (objects[i].gameObject.CompareTag("Enemy") && Vector3.Distance(objects[i].transform.position, this.transform.position) < 6f && objects[i] != originalTarget)
+                            {
+                                //objects[i].gameObject.GetComponent<BasicEnemyScript>().damage(damage, shooter);
+                                
+                                target = objects[i].gameObject;
+                               
+                            }
+                            
                         }
+                        if (target == originalTarget)
+                        {
+                            Destroy(gameObject);
+                        }
+                        bounce = 0;
                     }
-                    bounce = 0; 
+                                        
                 }
                 else
                 {

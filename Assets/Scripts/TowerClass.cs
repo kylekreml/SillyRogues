@@ -56,14 +56,17 @@ public class TowerClass : MonoBehaviour
     {  
         if (tier < 2)
         {
-            xp += 1;
-            if((xp >= xpToTierOne && tier == 0) || (xp >= xpToTierTwo && tier == 1))
-            { //tower is tier 0 and ready to upgrade when player brings an upgrade kit
-                readyToUpgrade = true;
-                xp = 0;
+            if (!readyToUpgrade)
+            {
+                xp += 1;
+                if ((xp >= xpToTierOne && tier == 0) || (xp >= xpToTierTwo && tier == 1))
+                { //tower is tier 0 and ready to upgrade when player brings an upgrade kit
+                    readyToUpgrade = true;
+                    xp = 0;
 
-                this.transform.Find("Upgrade Ready").gameObject.SetActive(true);
-                
+                    this.transform.Find("Upgrade Ready").gameObject.SetActive(true);
+
+                }
             }
         }
     }

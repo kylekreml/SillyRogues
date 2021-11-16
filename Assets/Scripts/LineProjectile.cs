@@ -10,7 +10,6 @@ public class LineProjectile : ProjectileClass
     public float speed = 1f;
     public float life;
     Vector2 position;
-    Vector2 newvector;
     Rigidbody2D rb;
     float timer = .25f;
 
@@ -52,7 +51,7 @@ public class LineProjectile : ProjectileClass
         if (target)
         {
             //this.transform.position = Vector3.MoveTowards(this.transform.position, position, speed);
-            this.GetComponent<Rigidbody2D>().AddForce(position);
+            rb.AddForce(position);
         }
 
         timer -= Time.deltaTime;
