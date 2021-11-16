@@ -116,7 +116,7 @@ public class TowerBehavior : TowerClass
         {
             if (tier == 1)
             {
-                bulletRespawn = 2.5f;
+                bulletRespawn = 2.0f;
             }
 
         }

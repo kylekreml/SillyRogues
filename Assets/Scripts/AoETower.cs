@@ -67,6 +67,7 @@ public class AoETower : TowerClass
             attackSpeed = 1.5f;
         }
         readyToUpgrade = false;
+        this.transform.Find("Upgrade Ready").gameObject.SetActive(false);
 
     }
 
