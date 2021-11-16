@@ -16,7 +16,7 @@ public class GameManager: MonoBehaviour
     [SerializeField]
     private string nextScene;
     [SerializeField]
-    private bool debugChange = false;
+    private bool debugChange = true;
 
     private GameManager()
     {
@@ -102,12 +102,11 @@ public class GameManager: MonoBehaviour
     private void GameOver()
     {
         //TODO: gameover stuff here
-        Debug.Log("GameOver not implemented :)");
+        ChangeScene("Game Over");
     }
 
     public void ChangeScene(string changeScene)
     {
-        Debug.Log("Change to " + changeScene);
         SceneManager.LoadScene(changeScene);
     }
 

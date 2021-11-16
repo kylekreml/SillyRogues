@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Prototype.unity
     guid: 8a6c5cf46b1b513488fc85e2e1e80685
+  - enabled: 1
+    path: Assets/Scenes/Game Over.unity
+    guid: 0b5eeb3d063a5ec4bb71fd965a69fb79
   m_configObjects: {}

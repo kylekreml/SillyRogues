@@ -12,11 +12,17 @@ public class TreasureCart : MonoBehaviour
     private int lootCollectRadius = 100;
     [SerializeField]
     private float enemyCollectRadius = 1.5f;
+    [SerializeField]
+    private string nextLevel;
 
     void Start()
     {
         currentLoot = totalLoot;
         GameManager.Instance.SetGold(totalLoot);
+        if (nextLevel != "")
+            GameManager.Instance.SetNextScene(nextLevel);
+        else
+            GameManager.Instance.SetNextScene("Title Scene");
     }
     void Update()
     {
