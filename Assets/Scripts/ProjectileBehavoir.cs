@@ -16,6 +16,8 @@ public class ProjectileBehavoir : ProjectileClass
 
     private int shooterTier;
 
+    private int bounce = 1;
+
     private void Start()
     {
         shooterTier = shooter.GetComponent<TowerBehavior>().getTier();
@@ -32,12 +34,41 @@ public class ProjectileBehavoir : ProjectileClass
         {
             if (bulletType == type.Basic)
             {// Tower that Shot the bullet is basic tower
-                if (shooterTier >= 1)
+                
+
+
+                if (shooterTier == 1)
                 {
                     damage = damage * 2; //CHANGE THIS TO DIFFERENT MULTIPLIER LATER 
+                    other.gameObject.GetComponent<BasicEnemyScript>().damage(damage, shooter);
+                    Destroy(gameObject);
                 }
-                other.gameObject.GetComponent<BasicEnemyScript>().damage(damage, shooter);
-                Destroy(gameObject);
+                else if (shooterTier == 2)
+                {
+                    damage = damage * 2;
+                    other.gameObject.GetComponent<BasicEnemyScript>().damage(damage, shooter);
+                    if (bounce == 0)
+                    {
+                        Destroy(gameObject);
+                    }
+                    //ARBITRARY NUMBER FOR HOW BIG THE RADIUS OF THE BOUNCE ARROW IS
+                    Collider2D[] objects = Physics2D.OverlapCircleAll(this.transform.position, 6f);
+                    for (int i = 0; i < objects.Length; i++)
+                    {
+                        if (objects[i].gameObject.CompareTag("Enemy") && Vector3.Distance(objects[i].transform.position, this.transform.position) < 6f)
+                        {
+                            //objects[i].gameObject.GetComponent<BasicEnemyScript>().damage(damage, shooter);
+                            target = objects[i].gameObject;
+
+                        }
+                    }
+                    bounce = 0; 
+                }
+                else
+                {
+                    other.gameObject.GetComponent<BasicEnemyScript>().damage(damage, shooter);
+                    Destroy(gameObject);
+                }
             }
             else if (bulletType == type.Dom)
             { // tower that shot bullet is Dom tower
