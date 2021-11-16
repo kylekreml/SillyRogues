@@ -70,7 +70,8 @@ public class BasicEnemyScript : MonoBehaviour
         //destroys this instance when it reaches the destination
         if (transform.position == destination.transform.position && walkToExit)
         {
-            GameManager.Instance.ChangeGold(-1);
+            if (holdingLoot)
+                GameManager.Instance.ChangeGold(-1);
             spawnerScript.RemovedEnemy();
             Destroy(gameObject);
         }

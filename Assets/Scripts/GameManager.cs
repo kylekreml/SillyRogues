@@ -54,17 +54,20 @@ public class GameManager: MonoBehaviour
     void Update()
     {
         DebugSceneChange();
-        if (levelComplete)
+        if (levelGold > 0)
         {
-            //Do finished level stuff
-            //also reset values
-            levelGold = 0;
-            levelComplete = false;
-            ChangeScene(nextScene);
-        }
-        else if (levelGold != 0 && spawnersLeft == 0)
-        {
-            levelComplete = true;
+            if (levelComplete)
+            {
+                //Do finished level stuff
+                //also reset values
+                levelGold = 0;
+                levelComplete = false;
+                ChangeScene(nextScene);
+            }
+            else if (spawnersLeft == 0)
+            {
+                levelComplete = true;
+            }
         }
     }
     
