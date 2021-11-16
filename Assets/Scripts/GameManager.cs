@@ -53,10 +53,9 @@ public class GameManager: MonoBehaviour
 
     void Update()
     {
-        DebugSceneChange();
         if (levelGold > 0)
         {
-            if (levelComplete)
+            if (levelComplete && debugChange)
             {
                 //Do finished level stuff
                 //also reset values
@@ -115,12 +114,5 @@ public class GameManager: MonoBehaviour
     public void SetNextScene(string ns)
     {
         nextScene = ns;
-    }
-
-    public void DebugSceneChange()
-    {
-        if (debugChange)
-            ChangeScene(nextScene);
-        debugChange = false;
     }
 }
