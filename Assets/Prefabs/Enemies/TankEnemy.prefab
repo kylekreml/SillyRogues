@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 15
-  defaultSpeed: 1.5
+  defaultSpeed: 0.6
   type: 
   healthSlider: {fileID: 0}
   destination: {fileID: 0}

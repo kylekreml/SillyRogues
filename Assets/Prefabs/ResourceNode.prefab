@@ -106,7 +106,7 @@ MonoBehaviour:
   - {fileID: 7482667652216324306, guid: 920acd5894be3fa45b94d9697d5d8b19, type: 3}
   resourceType: 1
   interactsLeft: 0
-  interactsNeeded: 5
+  interactsNeeded: 4
   resource: {fileID: 198647377356624096, guid: d04efc025d050cb419a2cff1b5d77eee, type: 3}
   direction: 0
   spawnDistance: 2
