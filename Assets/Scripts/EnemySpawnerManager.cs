@@ -46,7 +46,7 @@ public class EnemySpawnerManager : MonoBehaviour
 
         if (!doneSpawning)
         {
-            if (wavesLeft == 0 && enemiesLeft == 0)
+            if (wavesLeft == 0 && enemiesLeft <= 0)
             {
                 doneSpawning = true;
                 GameManager.Instance.ChangeSpawnersLeft(-1);

@@ -8,7 +8,7 @@ public class GameManager: MonoBehaviour
     private static GameManager instance;
 
     [SerializeField]
-    private int levelGold;
+    private int levelGold = 10;
     [SerializeField]
     private int spawnersLeft;
     [SerializeField]
@@ -21,7 +21,7 @@ public class GameManager: MonoBehaviour
     private GameManager()
     {
         // Initialize GameManager
-        levelGold = 0;
+        levelGold = 10;
         spawnersLeft = 0;
         levelComplete = false;
     }
@@ -61,7 +61,7 @@ public class GameManager: MonoBehaviour
                 //also reset values
                 levelGold = 0;
                 levelComplete = false;
-                ChangeScene(nextScene);
+                StartCoroutine(SceneDelay());
             }
             else if (spawnersLeft == 0)
             {
@@ -113,5 +113,11 @@ public class GameManager: MonoBehaviour
     public void SetNextScene(string ns)
     {
         nextScene = ns;
+    }
+
+    IEnumerator SceneDelay()
+    {
+        yield return new WaitForSeconds(3f);
+        ChangeScene(nextScene);
     }
 }

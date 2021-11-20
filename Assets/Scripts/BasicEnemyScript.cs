@@ -27,6 +27,7 @@ public class BasicEnemyScript : MonoBehaviour
     [SerializeField]
     private GameObject loot;
     private bool holdingLoot = false;
+    private bool removeable = true;
 
     private float timer = 0; 
 
@@ -73,8 +74,7 @@ public class BasicEnemyScript : MonoBehaviour
         //destroys this instance when it reaches the destination
         if (transform.position == destination.transform.position && walkToExit)
         {
-            if (holdingLoot)
-                GameManager.Instance.ChangeGold(-1);
+            GameManager.Instance.ChangeGold(-1);
             spawnerScript.RemovedEnemy();
             Destroy(gameObject);
         }
@@ -136,7 +136,11 @@ public class BasicEnemyScript : MonoBehaviour
                 //Debug.Log(tower);
             }
             
-            spawnerScript.RemovedEnemy();
+            if (removeable)
+            {
+                removeable = false;
+                spawnerScript.RemovedEnemy();
+            }
             Destroy(gameObject);
         }
     }

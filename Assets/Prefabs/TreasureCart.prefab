@@ -144,6 +144,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ef6b7d2c1462db48b8bc298a4d74e94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalLoot: 25
+  totalLoot: 10
+  currentLoot: 0
   lootCollectRadius: 2
-  lootCount: 0
+  enemyCollectRadius: 1.5
+  nextLevel: 
