@@ -249,7 +249,7 @@ public class PlayerMovement : MonoBehaviour
         Collider2D closest = null;
         foreach (Collider2D hit in hits)
         {
-            if (hit.transform.tag != "Player")
+            if (hit.transform.tag != "Player" && (hit.transform.tag == "Tower" || hit.transform.tag == "Resource" || hit.transform.tag == "Upgrade"))
             {
                 if (closest == null)
                     closest = hit;
