@@ -124,7 +124,7 @@ public class PlayerMovement : MonoBehaviour
                 SpriteRenderer heldSprite = oldHeld.GetComponent<SpriteRenderer>();
                 heldSprite.color = new Color(1f, 1f, 1f, 1f);
                 indicatorSprite.color = new Color(1f, 1f, 1f, 0f);
-                oldHeld.transform.position = groundMap.WorldToCell(this.transform.position + NormalizedDirection);
+                oldHeld.transform.position = groundMap.WorldToCell(this.transform.position + NormalizedDirection * 0.8f);
                 oldHeld.enabled = true;
                 if(oldHeld.gameObject.tag == "Tower")
                 {
@@ -182,7 +182,7 @@ public class PlayerMovement : MonoBehaviour
         {
             return;
         }
-        indicator.transform.position = groundMap.WorldToCell(this.transform.position + NormalizedDirection * 1.2f);
+        indicator.transform.position = groundMap.WorldToCell(this.transform.position + NormalizedDirection * 0.8f);
         held.transform.position = this.transform.position;
     }
 
