@@ -22,6 +22,7 @@ public class EnemySpawnerManager : MonoBehaviour
     private int wavesLeft;
     private int enemiesLeft;
     private bool doneSpawning;
+    [SerializeField] private float warningTime;
 
     // Start is called before the first frame update
     void Start()
@@ -75,7 +76,25 @@ public class EnemySpawnerManager : MonoBehaviour
     IEnumerator SpawnWave(SpawnGroup g)
     {
         enemiesLeft += g.numberOfEnemies;
-        yield return new WaitForSeconds(g.spawnTime);
+        SpriteRenderer sr = g.spawnPoint.GetChild(0).GetComponent<SpriteRenderer>();
+        SpriteRenderer enemyRenderer = g.enemy.GetComponent<SpriteRenderer>();
+        yield return new WaitForSeconds(g.spawnTime - warningTime);
+        if (sr != null)
+        {
+            sr.sprite = enemyRenderer.sprite;
+            Color newColor = enemyRenderer.color;
+            newColor.a = .5f;
+            sr.color = newColor;
+            g.spawnPoint.GetChild(0).GetChild(0).GetComponent<TextMesh>().text = "x " + g.numberOfEnemies;
+            sr.enabled = true;
+            g.spawnPoint.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().enabled = true;
+        }
+        yield return new WaitForSeconds(warningTime);
+        if (sr != null) 
+        {
+            sr.enabled = false;
+            g.spawnPoint.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().enabled = false;
+        }
         for (int i = 0; i < g.numberOfEnemies; i++)
         {
             GameObject child = Instantiate(g.enemy);
