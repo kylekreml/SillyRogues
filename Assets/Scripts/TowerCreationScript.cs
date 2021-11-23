@@ -132,14 +132,18 @@ public class TowerCreationScript : MonoBehaviour
         if (collider.gameObject.tag == "Resource")
         {
             ResourceScript resourceScript = collider.gameObject.GetComponent<ResourceScript>();
+            SpriteRenderer spriteRenderer = this.transform.GetChild(1).GetComponent<SpriteRenderer>();
             if (resource1 == Resource.Node && resourceScript.GetPlayerInteracted())
             {
                 resource1 = resourceScript.GetResourceType();
+                spriteRenderer.sprite = collider.gameObject.GetComponent<SpriteRenderer>().sprite;
+                spriteRenderer.enabled = true;
                 Destroy(collider.gameObject);
             }
             else if (resource2 == Resource.Node && resourceScript.GetPlayerInteracted())
             {
                 resource2 = resourceScript.GetResourceType();
+                spriteRenderer.enabled = false;
                 Destroy(collider.gameObject);
             }
         }
