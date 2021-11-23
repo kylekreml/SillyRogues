@@ -38,7 +38,14 @@ public class AoETower : TowerClass
     }
     void Rotate()
     {
-        gameObject.transform.Rotate(0, 0, attackSpeed * 10);
+        if (buffed)
+        {
+            gameObject.transform.Rotate(0, 0, attackSpeed * 1.25f * 10);
+        }
+        else
+        {
+            gameObject.transform.Rotate(0, 0, attackSpeed * 10);
+        }
     }
 
 
