@@ -107,6 +107,8 @@ MonoBehaviour:
   resourceType: 1
   interactsLeft: 0
   interactsNeeded: 4
+  interactTimeLeft: 0
+  interactTimeNeeded: 3
   resource: {fileID: 198647377356624096, guid: d04efc025d050cb419a2cff1b5d77eee, type: 3}
   direction: 0
   spawnDistance: 2

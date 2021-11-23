@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 direction;
     private GameObject indicator;
     private SpriteRenderer indicatorSprite;
+    private Collider2D nodeCollider;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
         indicator = transform.Find("Indicator").gameObject;
         indicatorSprite = indicator.GetComponent<SpriteRenderer>();
         indicatorSprite.color = new Color(1f, 1f, 1f, 0f);
+        nodeCollider = null;
     }
 
     private void FixedUpdate()
@@ -140,7 +142,7 @@ public class PlayerMovement : MonoBehaviour
 
             // RaycastHit2D hit = Physics2D.Raycast(this.transform.position, this.transform.rotation * NormalizedDirection, playerInteractRange);
             // Replacing Raycast with overlap area so interact is not as narrow
-            Collider2D hit = overlapInteract();
+            Collider2D hit = findClosestInInteractArea(overlapInteract());
 
             if (hit && hit.transform.tag == "Tower")
             {
@@ -165,13 +167,29 @@ public class PlayerMovement : MonoBehaviour
                 }
                 else
                 {
-                    ResourceNodeScript node = hit.gameObject.GetComponent<ResourceNodeScript>();
-                    node.interactResourceNode();
+                    nodeCollider = hit;
+                    nodeCollider.gameObject.GetComponent<ResourceNodeScript>().interactTimeResourceNode(true);
                 }
             }
             else if (hit && hit.transform.tag == "Upgrade")
             {
                 held = hit;
+            }
+        }
+
+        if (Input.GetButtonUp("Interact" + playerNumber) && nodeCollider != null)
+        {
+            nodeCollider.gameObject.GetComponent<ResourceNodeScript>().interactTimeResourceNode(false);
+            nodeCollider = null;
+        }
+
+        if (nodeCollider != null)
+        {
+            List<Collider2D> check = new List<Collider2D>(overlapInteract());
+            if (!check.Contains(nodeCollider))
+            {
+                nodeCollider.gameObject.GetComponent<ResourceNodeScript>().interactTimeResourceNode(false);
+                nodeCollider = null;
             }
         }
     }
@@ -203,8 +221,8 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    // overlapInteract() finds colliders inside of the OverlapAreaAll (a rectangle) and returns the closest collider
-    private Collider2D overlapInteract()
+    // overlapInteract() finds colliders inside of the OverlapAreaAll (a rectangle)
+    private Collider2D[] overlapInteract()
     {
         // Does Vector math on a Vector2 then made into a Vector3
         // Finds the vector that is perpendicular to NormalizedDirection
@@ -221,6 +239,12 @@ public class PlayerMovement : MonoBehaviour
             new Vector2(farRight.x, farRight.y)
         );
 
+        return hits;
+    }
+
+    // findClosestInInteractArea finds the closest collider in the list of Collider2D
+    private Collider2D findClosestInInteractArea(Collider2D[] hits)
+    {
         // Finds the closest collider to the player
         Collider2D closest = null;
         foreach (Collider2D hit in hits)

@@ -10,6 +10,11 @@ public class ResourceNodeScript : ResourceScript
     private int interactsLeft;
     [SerializeField]
     private int interactsNeeded;
+    [SerializeField]
+    private float interactTimeLeft;
+    [SerializeField]
+    private float interactTimeNeeded;
+    private bool isHeld;
     private SpriteRenderer spriteRenderer;
 
     [SerializeField]
@@ -24,6 +29,8 @@ public class ResourceNodeScript : ResourceScript
     void Start()
     {
         interactsLeft = interactsNeeded;
+        interactTimeLeft = interactTimeNeeded;
+        isHeld = false;
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = sprites[(int)resourceType];
         //spriteRenderer.color = Color.green;
@@ -32,22 +39,34 @@ public class ResourceNodeScript : ResourceScript
     // Update is called once per frame
     void Update()
     {
-        
+        if (isHeld)
+            interactTimeLeft -= Time.deltaTime;
+
+        handleInteractTime();
     }
 
+    // Temporary disabled to test holding node
     public void interactResourceNode()
     {
         interactsLeft--;
+    }
 
-        if (interactsLeft <= 0)
+    public void interactTimeResourceNode(bool held)
+    {
+        isHeld = held;
+    }
+
+    private void handleInteractTime()
+    {
+        if (interactTimeLeft <= 0)
         {
-            interactsLeft = interactsNeeded;
+            interactTimeLeft = interactTimeNeeded;
             var temp = spriteRenderer.color;
             temp.a = 1f;
             spriteRenderer.color = temp;
             GameObject r = Instantiate(resource);
             r.GetComponent<ResourceScript>().SetResourceType(resourceType);
-            
+
             switch(direction)
             {
                 case Directions.up:
@@ -67,20 +86,61 @@ public class ResourceNodeScript : ResourceScript
         else
         {
             //TEMPORARY SPRITE CHANGE
-            if (interactsLeft <= 1)
+            if (interactTimeLeft/interactsNeeded <= .1f)
             {
                 var temp = spriteRenderer.color;
                 temp.a = 0.3f;
                 spriteRenderer.color = temp;
             }
-            else if (interactsLeft <= (interactsNeeded/2))
+            else if (interactTimeLeft/interactsNeeded <= .5f)
             {
                 var temp = spriteRenderer.color;
                 temp.a = 0.7f;
                 spriteRenderer.color = temp;
             }
         }
-    }
 
-    
+        // spam interact logic
+        // if (interactsLeft <= 0)
+        // {
+        //     interactsLeft = interactsNeeded;
+        //     var temp = spriteRenderer.color;
+        //     temp.a = 1f;
+        //     spriteRenderer.color = temp;
+        //     GameObject r = Instantiate(resource);
+        //     r.GetComponent<ResourceScript>().SetResourceType(resourceType);
+            
+        //     switch(direction)
+        //     {
+        //         case Directions.up:
+        //             r.transform.position = transform.position + new Vector3(0, spawnDistance, 0);
+        //             break;
+        //         case Directions.right:
+        //             r.transform.position = transform.position + new Vector3(spawnDistance, 0, 0);
+        //             break;
+        //         case Directions.down:
+        //             r.transform.position = transform.position + new Vector3(0, -spawnDistance, 0);
+        //             break;
+        //         case Directions.left:
+        //             r.transform.position = transform.position + new Vector3(-spawnDistance, 0, 0);
+        //             break;
+        //     }
+        // }
+        // else
+        // {
+        //     //TEMPORARY SPRITE CHANGE
+        //     if (interactsLeft <= 1)
+        //     {
+        //         var temp = spriteRenderer.color;
+        //         temp.a = 0.3f;
+        //         spriteRenderer.color = temp;
+        //     }
+        //     else if (interactsLeft <= (interactsNeeded/2))
+        //     {
+        //         var temp = spriteRenderer.color;
+        //         temp.a = 0.7f;
+        //         spriteRenderer.color = temp;
+        //     }
+        // }
+    }
 }
