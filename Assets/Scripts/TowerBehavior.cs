@@ -109,7 +109,7 @@ public class TowerBehavior : TowerClass
         {
             if (tier == 1)
             { // TOWER JUST UPGRADED TO TIER ONE SO UPGRADE SPEED CHANGE AT FUTURE TIME
-                bulletRespawn = 1.5f;
+                bulletRespawn = .40f;
             }
         }
         else if (TowerType == type.Dom)

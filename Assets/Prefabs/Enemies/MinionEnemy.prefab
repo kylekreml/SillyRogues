@@ -348,7 +348,7 @@ MonoBehaviour:
   health: 1
   defaultSpeed: 3
   type: 
-  healthSlider: {fileID: 0}
+  healthSlider: {fileID: 2045290108275923196}
   destination: {fileID: 0}
   route: {fileID: 0}
   loot: {fileID: 1052501217885132493, guid: 77fecd29d5a669f44bdf454dbf79cbf5, type: 3}

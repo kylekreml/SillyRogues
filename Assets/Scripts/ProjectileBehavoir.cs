@@ -18,7 +18,7 @@ public class ProjectileBehavoir : ProjectileClass
 
     private int bounce = 1;
 
-    
+    private bool hit = true;
 
     private void Start()
     {
@@ -32,7 +32,7 @@ public class ProjectileBehavoir : ProjectileClass
         //{
         //    Destroy(gameObject); //Change this to do damage later or something
         // }
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Enemy") && other.gameObject == target)
         {
             if (bulletType == type.Basic)
             {// Tower that Shot the bullet is basic tower
@@ -73,6 +73,7 @@ public class ProjectileBehavoir : ProjectileClass
                             Destroy(gameObject);
                         }
                         bounce = 0;
+
                     }
                                         
                 }

@@ -122,9 +122,11 @@ public class BasicEnemyScript : MonoBehaviour
         healthSlider.value = health;
         //Debug.Log(shooter.name);
         towers.Add(shooter);
-        if (health <= 0)
+        if (health <= 0 && removeable)
         {
-            if(holdingLoot)
+            removeable = false;
+            spawnerScript.RemovedEnemy();
+            if (holdingLoot)
             {
                 holdingLoot = false;
                 GameObject l = Instantiate(loot);
@@ -134,12 +136,6 @@ public class BasicEnemyScript : MonoBehaviour
             {
                 tower.GetComponent<TowerClass>().giveXp();
                 //Debug.Log(tower);
-            }
-            
-            if (removeable)
-            {
-                removeable = false;
-                spawnerScript.RemovedEnemy();
             }
             Destroy(gameObject);
         }
