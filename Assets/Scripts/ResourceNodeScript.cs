@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ResourceNodeScript : ResourceScript
 {
@@ -14,6 +15,7 @@ public class ResourceNodeScript : ResourceScript
     private float interactTimeLeft;
     [SerializeField]
     private float interactTimeNeeded;
+    private Slider interactBar;
     private bool isHeld;
     private SpriteRenderer spriteRenderer;
 
@@ -30,6 +32,9 @@ public class ResourceNodeScript : ResourceScript
     {
         interactsLeft = interactsNeeded;
         interactTimeLeft = interactTimeNeeded;
+        interactBar = transform.GetChild(0).GetChild(0).GetComponent<Slider>();
+        interactBar.maxValue = interactTimeNeeded;
+        interactBar.value = interactTimeLeft;
         isHeld = false;
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = sprites[(int)resourceType];
@@ -41,6 +46,7 @@ public class ResourceNodeScript : ResourceScript
     {
         if (isHeld)
             interactTimeLeft -= Time.deltaTime;
+            interactBar.value = interactTimeLeft;
 
         handleInteractTime();
     }
@@ -61,9 +67,9 @@ public class ResourceNodeScript : ResourceScript
         if (interactTimeLeft <= 0)
         {
             interactTimeLeft = interactTimeNeeded;
-            var temp = spriteRenderer.color;
-            temp.a = 1f;
-            spriteRenderer.color = temp;
+            // var temp = spriteRenderer.color;
+            // temp.a = 1f;
+            // spriteRenderer.color = temp;
             GameObject r = Instantiate(resource);
             r.GetComponent<ResourceScript>().SetResourceType(resourceType);
 
@@ -83,22 +89,22 @@ public class ResourceNodeScript : ResourceScript
                     break;
             }
         }
-        else
-        {
-            //TEMPORARY SPRITE CHANGE
-            if (interactTimeLeft/interactsNeeded <= .1f)
-            {
-                var temp = spriteRenderer.color;
-                temp.a = 0.3f;
-                spriteRenderer.color = temp;
-            }
-            else if (interactTimeLeft/interactsNeeded <= .5f)
-            {
-                var temp = spriteRenderer.color;
-                temp.a = 0.7f;
-                spriteRenderer.color = temp;
-            }
-        }
+        // else
+        // {
+        //     //TEMPORARY SPRITE CHANGE
+        //     if (interactTimeLeft/interactsNeeded <= .1f)
+        //     {
+        //         var temp = spriteRenderer.color;
+        //         temp.a = 0.3f;
+        //         spriteRenderer.color = temp;
+        //     }
+        //     else if (interactTimeLeft/interactsNeeded <= .5f)
+        //     {
+        //         var temp = spriteRenderer.color;
+        //         temp.a = 0.7f;
+        //         spriteRenderer.color = temp;
+        //     }
+        // }
 
         // spam interact logic
         // if (interactsLeft <= 0)

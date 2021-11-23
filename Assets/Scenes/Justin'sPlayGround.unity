@@ -4199,9 +4199,5 @@ PrefabInstance:
       propertyPath: resource
       value: 
       objectReference: {fileID: 198647377356624096, guid: d04efc025d050cb419a2cff1b5d77eee, type: 3}
-    - target: {fileID: 9179066643606580569, guid: 0627b65830816c64591da8c27ed60a3f, type: 3}
-      propertyPath: interactTimeNeeded
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0627b65830816c64591da8c27ed60a3f, type: 3}
