@@ -133,9 +133,9 @@ MonoBehaviour:
   towers:
   - {fileID: 3137337180425928737, guid: dd947afb2686cb345af2d059e005aa5c, type: 3}
   - {fileID: 2367496044584639160, guid: d816faf3e663420429309fadd87a3ec6, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8407595542026247688, guid: 4346e0e23e16ece4b8923ba8ce4db8aa, type: 3}
+  - {fileID: 1552374781822248200, guid: b7066255d6d4f32488aba2612070cfef, type: 3}
+  - {fileID: 1969162195268416447, guid: 822262b751b22034790d8b7c8c25b8df, type: 3}
   - {fileID: 7930764248342598337, guid: ef2500227e00ac94992024527272a9cc, type: 3}
   spawnpoint: {fileID: 152518278011620383}
   dummyResource: {fileID: 198647377356624096, guid: d04efc025d050cb419a2cff1b5d77eee, type: 3}
@@ -208,7 +208,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.7
 --- !u!50 &152518278163843818
 Rigidbody2D:
   serializedVersion: 4
