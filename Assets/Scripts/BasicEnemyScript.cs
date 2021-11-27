@@ -124,6 +124,7 @@ public class BasicEnemyScript : MonoBehaviour
         towers.Add(shooter);
         if (health <= 0 && removeable)
         {
+            animator.SetBool("Dead", true);
             removeable = false;
             spawnerScript.RemovedEnemy();
             if (holdingLoot)
