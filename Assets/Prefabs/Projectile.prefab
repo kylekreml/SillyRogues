@@ -99,6 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   shooter: {fileID: 0}
+  originalTarget: {fileID: 0}
   damage: 1
   speed: 0.75
 --- !u!50 &6418467644957234091

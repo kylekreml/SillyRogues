@@ -35,7 +35,7 @@ public class LineProjectile : ProjectileClass
             other.gameObject.GetComponent<BasicEnemyScript>().damage(damage, shooter);
             if (shooterTier >= 1)
             {// If the shooter tower is tier 1 or above, freeze the enemy for .5 seconds
-                other.gameObject.GetComponent<BasicEnemyScript>().freeze(.5f);
+                other.gameObject.GetComponent<BasicEnemyScript>().freeze(.2f);
             }
             if (shooterTier == 2)
             {// If the shooter tower is tier 2, double the damage CHANGE FOR BALANCING LATER

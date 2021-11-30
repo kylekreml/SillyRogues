@@ -149,4 +149,4 @@ MonoBehaviour:
   originalTarget: {fileID: 0}
   damage: 1
   speed: 100
-  life: 5
+  life: 4

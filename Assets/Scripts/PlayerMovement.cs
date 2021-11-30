@@ -157,11 +157,10 @@ public class PlayerMovement : MonoBehaviour
             {
                 hit.gameObject.GetComponent<TowerClass>().disableTower();
                 hit.enabled = false;
-                held = hit;
+                SetHeld(hit);
                 SpriteRenderer heldSprite = held.GetComponent<SpriteRenderer>();
                 heldSprite.color = new Color(1f, 0.5f, 0.5f, 0.2f);
                 // held.transform.SetActive(false);
-                indicatorSprite.color = new Color(1f, 1f, 1f, 1f);
             }
 
             else if (hit && hit.transform.tag == "Resource")
@@ -170,19 +169,19 @@ public class PlayerMovement : MonoBehaviour
                 ResourceScript resourceScript = hit.gameObject.GetComponent<ResourceScript>();
                 if (resourceScript.GetResourceType() != Resource.Node)
                 {
-                    held = hit;
+                    SetHeld(hit);
                     held.isTrigger = true;
-                    indicatorSprite.color = new Color(1f, 1f, 1f, 1f);
                 }
                 else
                 {
                     nodeCollider = hit;
+                    nodeCollider.gameObject.GetComponent<ResourceNodeScript>().PlayerInteracting(gameObject);
                     nodeCollider.gameObject.GetComponent<ResourceNodeScript>().interactTimeResourceNode(true);
                 }
             }
             else if (hit && hit.transform.tag == "Upgrade")
             {
-                held = hit;
+                SetHeld(hit);
             }
         }
 
@@ -276,5 +275,20 @@ public class PlayerMovement : MonoBehaviour
         //     Debug.Log(closest.gameObject.name);
         // }
         return closest;
+    }
+
+    public bool SetHeld(Collider2D obj)
+    {
+        if (held == null)
+        {
+            held = obj;
+            indicatorSprite.color = new Color(1f, 1f, 1f, 1f);
+        }
+        if (nodeCollider != null)
+        {
+            nodeCollider.gameObject.GetComponent<ResourceNodeScript>().interactTimeResourceNode(false);
+            nodeCollider = null;
+        }
+        return false;
     }
 }

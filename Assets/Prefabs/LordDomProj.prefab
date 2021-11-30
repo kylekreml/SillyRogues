@@ -99,7 +99,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   shooter: {fileID: 0}
-  damage: 5
+  originalTarget: {fileID: 0}
+  damage: 8
   speed: 0.75
 --- !u!50 &7834319045722432706
 Rigidbody2D:

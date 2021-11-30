@@ -83,7 +83,7 @@ public class EnemySpawnerManager : MonoBehaviour
         {
             sr.sprite = enemyRenderer.sprite;
             Color newColor = enemyRenderer.color;
-            newColor.a = .5f;
+            newColor.a = .8f;
             sr.color = newColor;
             g.spawnPoint.GetChild(0).GetChild(0).GetComponent<TextMesh>().text = "x " + g.numberOfEnemies;
             sr.enabled = true;
