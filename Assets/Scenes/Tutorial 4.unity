@@ -6267,18 +6267,18 @@ MonoBehaviour:
     route: {fileID: 818380870}
     destination: {fileID: 557509253}
   - spawnTime: 50
-    spawnDelay: 0.5
+    spawnDelay: 2
     curSpawnDelay: 0
     enemy: {fileID: 5038858920877382330, guid: 0bb66abe89c9f3145a86360b57b9be60, type: 3}
-    numberOfEnemies: 10
+    numberOfEnemies: 5
     spawnPoint: {fileID: 881247877}
     route: {fileID: 818380870}
     destination: {fileID: 557509253}
   - spawnTime: 85
-    spawnDelay: 0.8
+    spawnDelay: 1
     curSpawnDelay: 0
     enemy: {fileID: 5038858920877382330, guid: 0bb66abe89c9f3145a86360b57b9be60, type: 3}
-    numberOfEnemies: 20
+    numberOfEnemies: 10
     spawnPoint: {fileID: 881247877}
     route: {fileID: 818380870}
     destination: {fileID: 557509253}
@@ -6286,7 +6286,7 @@ MonoBehaviour:
     spawnDelay: 0.5
     curSpawnDelay: 0
     enemy: {fileID: 4485696606817315175, guid: 52620d400615cd74482ebc042e808a28, type: 3}
-    numberOfEnemies: 50
+    numberOfEnemies: 20
     spawnPoint: {fileID: 881247877}
     route: {fileID: 818380870}
     destination: {fileID: 557509253}
@@ -6670,15 +6670,15 @@ MonoBehaviour:
     spawnDelay: 0.8
     curSpawnDelay: 0
     enemy: {fileID: 5038858920877382330, guid: 0bb66abe89c9f3145a86360b57b9be60, type: 3}
-    numberOfEnemies: 15
+    numberOfEnemies: 10
     spawnPoint: {fileID: 1351030311}
     route: {fileID: 1236497969}
     destination: {fileID: 699613287}
   - spawnTime: 70
-    spawnDelay: 0.8
+    spawnDelay: 1
     curSpawnDelay: 0
     enemy: {fileID: 4485696606817315175, guid: 52620d400615cd74482ebc042e808a28, type: 3}
-    numberOfEnemies: 25
+    numberOfEnemies: 10
     spawnPoint: {fileID: 1351030311}
     route: {fileID: 1236497969}
     destination: {fileID: 699613287}
@@ -6908,10 +6908,10 @@ MonoBehaviour:
     route: {fileID: 1357680408}
     destination: {fileID: 114348304}
   - spawnTime: 45
-    spawnDelay: 0.5
+    spawnDelay: 1
     curSpawnDelay: 0
     enemy: {fileID: 4485696606817315175, guid: 52620d400615cd74482ebc042e808a28, type: 3}
-    numberOfEnemies: 15
+    numberOfEnemies: 10
     spawnPoint: {fileID: 783700272}
     route: {fileID: 1357680408}
     destination: {fileID: 114348304}
