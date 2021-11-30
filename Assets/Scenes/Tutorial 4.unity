@@ -701,6 +701,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9179066643606580564, guid: 0627b65830816c64591da8c27ed60a3f, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.03125
+      objectReference: {fileID: 0}
     - target: {fileID: 9179066643606580566, guid: 0627b65830816c64591da8c27ed60a3f, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -6287,7 +6291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groups:
-  - spawnTime: 3
+  - spawnTime: 20
     spawnDelay: 3
     curSpawnDelay: 0
     enemy: {fileID: 5038858920877382330, guid: 0bb66abe89c9f3145a86360b57b9be60, type: 3}
@@ -6742,7 +6746,7 @@ MonoBehaviour:
     spawnPoint: {fileID: 1351030311}
     route: {fileID: 1236497969}
     destination: {fileID: 699613287}
-  - spawnTime: 5
+  - spawnTime: 70
     spawnDelay: 1
     curSpawnDelay: 0
     enemy: {fileID: 4485696606817315175, guid: 52620d400615cd74482ebc042e808a28, type: 3}
@@ -6991,7 +6995,7 @@ MonoBehaviour:
     spawnPoint: {fileID: 783700272}
     route: {fileID: 1357680408}
     destination: {fileID: 114348304}
-  - spawnTime: 5
+  - spawnTime: 85
     spawnDelay: 1
     curSpawnDelay: 0
     enemy: {fileID: 242025649482435655, guid: 261fdc79a200153429bc68380c269281, type: 3}
