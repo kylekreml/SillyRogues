@@ -27,6 +27,11 @@ public class ResourceNodeScript : ResourceScript
     [SerializeField]
     private float spawnDistance;
 
+    [SerializeField]
+    private bool giveDirectlyToPlayer = true;
+    [SerializeField]
+    private GameObject interactingPlayer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,7 +64,16 @@ public class ResourceNodeScript : ResourceScript
 
     public void interactTimeResourceNode(bool held)
     {
+        if (held == false)
+        {
+            interactingPlayer = null;
+        }
         isHeld = held;
+    }
+
+    public void PlayerInteracting(GameObject p)
+    {
+        interactingPlayer = p;
     }
 
     private void handleInteractTime()
@@ -73,20 +87,28 @@ public class ResourceNodeScript : ResourceScript
             GameObject r = Instantiate(resource);
             r.GetComponent<ResourceScript>().SetResourceType(resourceType);
 
-            switch(direction)
+            if (!giveDirectlyToPlayer)
             {
-                case Directions.up:
-                    r.transform.position = transform.position + new Vector3(0, spawnDistance, 0);
-                    break;
-                case Directions.right:
-                    r.transform.position = transform.position + new Vector3(spawnDistance, 0, 0);
-                    break;
-                case Directions.down:
-                    r.transform.position = transform.position + new Vector3(0, -spawnDistance, 0);
-                    break;
-                case Directions.left:
-                    r.transform.position = transform.position + new Vector3(-spawnDistance, 0, 0);
-                    break;
+                switch(direction)
+                {
+                    case Directions.up:
+                        r.transform.position = transform.position + new Vector3(0, spawnDistance, 0);
+                        break;
+                    case Directions.right:
+                        r.transform.position = transform.position + new Vector3(spawnDistance, 0, 0);
+                        break;
+                    case Directions.down:
+                        r.transform.position = transform.position + new Vector3(0, -spawnDistance, 0);
+                        break;
+                    case Directions.left:
+                        r.transform.position = transform.position + new Vector3(-spawnDistance, 0, 0);
+                        break;
+                }
+            }
+            else
+            {
+                r.GetComponent<CircleCollider2D>().isTrigger = true;
+                interactingPlayer.GetComponent<PlayerMovement>().SetHeld(r.GetComponent<CircleCollider2D>());
             }
         }
         // else
