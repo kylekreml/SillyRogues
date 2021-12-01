@@ -23,6 +23,7 @@ public class EnemySpawnerManager : MonoBehaviour
     private int enemiesLeft;
     private bool doneSpawning;
     [SerializeField] private float warningTime;
+    public AudioSource wave;
 
     // Start is called before the first frame update
     void Start()
@@ -82,6 +83,7 @@ public class EnemySpawnerManager : MonoBehaviour
         if (sr != null)
         {
             sr.sprite = enemyRenderer.sprite;
+            wave.Play();
             Color newColor = enemyRenderer.color;
             newColor.a = .8f;
             sr.color = newColor;
