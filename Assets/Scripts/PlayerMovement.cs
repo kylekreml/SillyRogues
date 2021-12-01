@@ -74,12 +74,6 @@ public class PlayerMovement : MonoBehaviour
         CheckHeld();
         CheckLoot();
 
-        //lazy pause button, if I don't add playerNumber, will pause twice since we don't have controller support so both have escape running
-        if (Input.GetKeyDown(KeyCode.Escape) && playerNumber.Equals('1'))
-        {
-            GameManager.Instance.Pause(true);
-        }
-
         //Debug for drawing the area box that the player can interact with in blue
         // Vector2 pVector = new Vector2(NormalizedDirection.y, -NormalizedDirection.x) / Mathf.Sqrt(Mathf.Pow(NormalizedDirection.x, 2f) + Mathf.Pow(NormalizedDirection.y, 2f));
         // Vector3 perpendicular = new Vector3(pVector.x, pVector.y, 0);
