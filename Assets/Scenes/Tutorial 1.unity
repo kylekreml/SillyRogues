@@ -472,6 +472,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 610432191}
     m_Modifications:
+    - target: {fileID: 2935540410962972069, guid: dd947afb2686cb345af2d059e005aa5c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3137337180425928737, guid: dd947afb2686cb345af2d059e005aa5c, type: 3}
       propertyPath: m_Name
       value: Tower (4)
@@ -5429,6 +5433,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 610432191}
     m_Modifications:
+    - target: {fileID: 2935540410962972069, guid: dd947afb2686cb345af2d059e005aa5c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3137337180425928737, guid: dd947afb2686cb345af2d059e005aa5c, type: 3}
       propertyPath: m_Name
       value: Tower (3)
@@ -5601,6 +5609,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 610432191}
     m_Modifications:
+    - target: {fileID: 2935540410962972069, guid: dd947afb2686cb345af2d059e005aa5c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3137337180425928737, guid: dd947afb2686cb345af2d059e005aa5c, type: 3}
       propertyPath: m_Name
       value: Tower (1)
@@ -5707,6 +5719,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 610432191}
     m_Modifications:
+    - target: {fileID: 2935540410962972069, guid: dd947afb2686cb345af2d059e005aa5c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3137337180425928737, guid: dd947afb2686cb345af2d059e005aa5c, type: 3}
       propertyPath: m_Name
       value: Tower
@@ -5881,6 +5897,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 610432191}
     m_Modifications:
+    - target: {fileID: 2935540410962972069, guid: dd947afb2686cb345af2d059e005aa5c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3137337180425928737, guid: dd947afb2686cb345af2d059e005aa5c, type: 3}
       propertyPath: m_Name
       value: Tower (2)
