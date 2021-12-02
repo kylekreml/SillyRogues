@@ -36,6 +36,7 @@ public class BasicEnemyScript : MonoBehaviour
 
     //for walking to exit destination when done with waypoints
     private bool walkToExit = false;
+    private bool dead = false;
 
     // Start is called before the first frame update
     void Start()
@@ -61,7 +62,7 @@ public class BasicEnemyScript : MonoBehaviour
     void Update()
     {
         //check if frozen due to line tower
-        if (timer <= 0)
+        if (timer <= 0 && !dead)
         {
             walk();
         }
@@ -125,6 +126,7 @@ public class BasicEnemyScript : MonoBehaviour
         if (health <= 0 && removeable)
         {
             animator.SetBool("Dead", true);
+            gameObject.GetComponent<CircleCollider2D>().enabled = false;
             removeable = false;
             spawnerScript.RemovedEnemy();
             if (holdingLoot)
@@ -138,7 +140,7 @@ public class BasicEnemyScript : MonoBehaviour
                 tower.GetComponent<TowerClass>().giveXp();
                 //Debug.Log(tower);
             }
-            Destroy(gameObject);
+            StartCoroutine(deathAnimation());
         }
     }
 
@@ -239,5 +241,12 @@ public class BasicEnemyScript : MonoBehaviour
         timer = duration;
     }
 
-
+    IEnumerator deathAnimation()
+    {
+        dead = true;
+        // for()
+        // drop opacity
+            yield return new WaitForSeconds(.5f);
+        Destroy(gameObject);
+    }
 }

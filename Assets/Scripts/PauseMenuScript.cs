@@ -32,4 +32,9 @@ public class PauseMenuScript : MonoBehaviour
     {
         GameManager.Instance.ChangeScene("Title Scene");
     }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }
