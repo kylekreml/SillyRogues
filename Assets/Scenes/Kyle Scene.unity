@@ -2753,6 +2753,10 @@ PrefabInstance:
       propertyPath: resourceType
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 9179066643606580569, guid: 0627b65830816c64591da8c27ed60a3f, type: 3}
+      propertyPath: sprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 25cc3a6ad3aeee04aa44a70cc03efd4c, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0627b65830816c64591da8c27ed60a3f, type: 3}
 --- !u!1 &1563495752
@@ -3320,7 +3324,7 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 557411448, guid: caed952f16df1a240821960cc96d6399, type: 3}
-      propertyPath: gm
+      propertyPath: gameManager
       value: 
       objectReference: {fileID: 1319142636}
     - target: {fileID: 6406006044730613642, guid: caed952f16df1a240821960cc96d6399, type: 3}
