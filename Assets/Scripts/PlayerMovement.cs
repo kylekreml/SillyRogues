@@ -169,8 +169,8 @@ public class PlayerMovement : MonoBehaviour
                 else
                 {
                     nodeCollider = hit;
-                    nodeCollider.gameObject.GetComponent<ResourceNodeScript>().PlayerInteracting(gameObject);
-                    nodeCollider.gameObject.GetComponent<ResourceNodeScript>().interactTimeResourceNode(true);
+                    if (nodeCollider.gameObject.GetComponent<ResourceNodeScript>().PlayerInteracting(gameObject));
+                        nodeCollider.gameObject.GetComponent<ResourceNodeScript>().interactTimeResourceNode(true);
                 }
             }
             else if (hit && hit.transform.tag == "Upgrade")

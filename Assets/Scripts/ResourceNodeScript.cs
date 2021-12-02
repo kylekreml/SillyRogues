@@ -71,9 +71,14 @@ public class ResourceNodeScript : ResourceScript
         isHeld = held;
     }
 
-    public void PlayerInteracting(GameObject p)
+    public bool PlayerInteracting(GameObject p)
     {
-        interactingPlayer = p;
+        if (interactingPlayer == null)
+        {
+            interactingPlayer = p;
+            return true;
+        }
+        return false;
     }
 
     private void handleInteractTime()
