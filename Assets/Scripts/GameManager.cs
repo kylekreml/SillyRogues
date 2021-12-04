@@ -132,4 +132,14 @@ public class GameManager: MonoBehaviour
         yield return new WaitForSeconds(3f);
         ChangeScene(nextScene);
     }
+
+    public void exitGame()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit ();
+#endif
+    }
+
 }

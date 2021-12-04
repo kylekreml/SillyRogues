@@ -5,16 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Title Scene.unity
     guid: 86a998c0bcbb7f34b9b9bbc56e174a0f
-  - enabled: 0
-    path: Assets/Scenes/Game Over.unity
-    guid: 0b5eeb3d063a5ec4bb71fd965a69fb79
-  - enabled: 0
+  - enabled: 1
+    path: Assets/Scenes/TEMPLEVELSELECTOR.unity
+    guid: dfb16afbfd7053c4ab9dbfb907a02475
+  - enabled: 1
     path: Assets/Scenes/Tutorial 1.unity
     guid: cb5169ba378a1f345931241bc00674cb
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Tutorial 2.unity
     guid: 10fa76c80a611a442ae06bbf81bd276c
   - enabled: 0
@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Prototype.unity
     guid: 8a6c5cf46b1b513488fc85e2e1e80685
+  - enabled: 1
+    path: Assets/Scenes/Game Over.unity
+    guid: 0b5eeb3d063a5ec4bb71fd965a69fb79
   m_configObjects: {}
