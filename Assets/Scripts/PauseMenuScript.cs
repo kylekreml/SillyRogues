@@ -6,11 +6,11 @@ public class PauseMenuScript : MonoBehaviour
 {
     private bool paused;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         paused = false;
         Time.timeScale = 1f;
-        transform.GetChild(0).gameObject.SetActive(paused);
+        transform.GetChild(0).gameObject.SetActive(false);
     }
 
     // Update is called once per frame
