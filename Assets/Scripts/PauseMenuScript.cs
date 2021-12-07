@@ -40,7 +40,7 @@ public class PauseMenuScript : MonoBehaviour
     public void MainMenu()
     {
         //GameManager.Instance.Pause(false);
-        paused = false;
+        Pause();
         GameManager.Instance.ChangeScene("Title Scene");
     }
 
