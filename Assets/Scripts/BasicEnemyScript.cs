@@ -28,6 +28,7 @@ public class BasicEnemyScript : MonoBehaviour
     private GameObject loot;
     private bool holdingLoot = false;
     private bool removeable = true;
+    private SpriteRenderer enemySprite;
 
     private float timer = 0; 
 
@@ -41,6 +42,7 @@ public class BasicEnemyScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        enemySprite = this.GetComponent<SpriteRenderer>();
         speed = defaultSpeed;
         if (waypoints == null)
         {
@@ -244,9 +246,15 @@ public class BasicEnemyScript : MonoBehaviour
     IEnumerator deathAnimation()
     {
         dead = true;
-        // for()
-        // drop opacity
-            yield return new WaitForSeconds(.5f);
+        Color eColor = enemySprite.color;
+        float temp;
+        for(int i = 0; i< 10; i++)
+        {
+            temp = eColor.a - 0.1f;
+            eColor.a = temp;
+            enemySprite.color = eColor;
+            yield return new WaitForSeconds(.1f);
+        }
         Destroy(gameObject);
     }
 }
