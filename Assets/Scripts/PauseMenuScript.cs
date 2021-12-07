@@ -19,6 +19,7 @@ public class PauseMenuScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Pause();
+            transform.GetChild(0).gameObject.SetActive(paused);
         }
     }
 
@@ -29,7 +30,6 @@ public class PauseMenuScript : MonoBehaviour
         else
             Time.timeScale = 0f;
         paused = !paused;
-        transform.GetChild(0).gameObject.SetActive(paused);
     }
 
     public bool IsPaused()
