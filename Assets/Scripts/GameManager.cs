@@ -17,7 +17,6 @@ public class GameManager: MonoBehaviour
     private string nextScene;
     [SerializeField]
     private bool debugChange = true;
-    private bool paused = false;
     public GameObject hp;
     private GameManager()
     {
@@ -72,20 +71,6 @@ public class GameManager: MonoBehaviour
                 levelComplete = true;
             }
         }
-    }
-    
-    public bool Pause(bool pausing)
-    {
-        //TODO: figure out how to pause
-        if (pausing)
-        {
-            if (paused)
-                Time.timeScale = 1f;
-            else
-                Time.timeScale = 0f;
-            paused = !paused;
-        }
-        return paused;
     }
 
     public void ChangeGold(int gold)

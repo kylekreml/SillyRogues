@@ -9,6 +9,7 @@ public class PauseMenuScript : MonoBehaviour
     void Start()
     {
         paused = false;
+        Time.timeScale = 1f;
         transform.GetChild(0).gameObject.SetActive(paused);
     }
 
@@ -23,14 +24,23 @@ public class PauseMenuScript : MonoBehaviour
 
     public void Pause()
     {
-        GameManager.Instance.Pause(true);
+        if (paused)
+            Time.timeScale = 1f;
+        else
+            Time.timeScale = 0f;
         paused = !paused;
         transform.GetChild(0).gameObject.SetActive(paused);
+    }
+
+    public bool IsPaused()
+    {
+        return paused;
     }
 
     public void MainMenu()
     {
         //GameManager.Instance.Pause(false);
+        paused = false;
         GameManager.Instance.ChangeScene("Title Scene");
     }
 

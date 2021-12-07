@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
     {
         direction.x = Input.GetAxisRaw("Horizontal" + playerNumber);
         direction.y = Input.GetAxisRaw("Vertical" + playerNumber);
-        if (!GameManager.Instance.Pause(false))
+        if (Time.timeScale == 1f)
         {
             animator.SetFloat("Horizontal", direction.x);
             animator.SetFloat("Vertical", direction.y);
