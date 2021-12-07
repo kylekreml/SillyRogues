@@ -839,6 +839,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: caed952f16df1a240821960cc96d6399, type: 3}
+--- !u!1 &685696663 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6406006044946585199, guid: caed952f16df1a240821960cc96d6399, type: 3}
+  m_PrefabInstance: {fileID: 685696662}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &735382178
 GameObject:
   m_ObjectHideFlags: 0
@@ -6039,6 +6044,7 @@ MonoBehaviour:
   levelComplete: 0
   nextScene: 
   debugChange: 1
+  hp: {fileID: 685696663}
 --- !u!4 &1881302361
 Transform:
   m_ObjectHideFlags: 0

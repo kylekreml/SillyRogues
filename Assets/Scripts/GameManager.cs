@@ -18,7 +18,7 @@ public class GameManager: MonoBehaviour
     [SerializeField]
     private bool debugChange = true;
     private bool paused = false;
-
+    public GameObject hp;
     private GameManager()
     {
         // Initialize GameManager
@@ -62,6 +62,7 @@ public class GameManager: MonoBehaviour
             {
                 //Do finished level stuff
                 //also reset values
+                hp.SetActive(false);
                 levelGold = 0;
                 levelComplete = false;
                 StartCoroutine(SceneDelay());
@@ -129,7 +130,7 @@ public class GameManager: MonoBehaviour
 
     IEnumerator SceneDelay()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         ChangeScene(nextScene);
     }
 

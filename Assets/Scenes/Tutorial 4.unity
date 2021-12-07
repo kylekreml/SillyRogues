@@ -728,6 +728,7 @@ MonoBehaviour:
   levelComplete: 0
   nextScene: 
   debugChange: 1
+  hp: {fileID: 1502566263}
 --- !u!4 &250069793
 Transform:
   m_ObjectHideFlags: 0
@@ -6553,6 +6554,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: caed952f16df1a240821960cc96d6399, type: 3}
+--- !u!1 &1502566263 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6406006044946585199, guid: caed952f16df1a240821960cc96d6399, type: 3}
+  m_PrefabInstance: {fileID: 1502566262}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1531787546
 PrefabInstance:
   m_ObjectHideFlags: 0
