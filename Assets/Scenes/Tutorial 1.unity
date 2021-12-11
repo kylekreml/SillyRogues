@@ -5770,6 +5770,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd947afb2686cb345af2d059e005aa5c, type: 3}
+--- !u!114 &1561396448 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 566943235515588998, guid: cb4f48e078f8e8e419948b3aa6e8892e, type: 3}
+  m_PrefabInstance: {fileID: 1461346217}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 860fa318d8a644b41a253cb37fb14a85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1602538641
 GameObject:
   m_ObjectHideFlags: 0
@@ -5946,6 +5957,15 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 457870290}
+    - target: {fileID: 792936421, guid: caed952f16df1a240821960cc96d6399, type: 3}
+      propertyPath: m_Text
+      value: "Use the interact key to pick up and place towers. \nPress Any Key to
+        Continue"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1687571221, guid: caed952f16df1a240821960cc96d6399, type: 3}
+      propertyPath: pause
+      value: 
+      objectReference: {fileID: 1561396448}
     - target: {fileID: 6406006044730613642, guid: caed952f16df1a240821960cc96d6399, type: 3}
       propertyPath: m_Name
       value: UI

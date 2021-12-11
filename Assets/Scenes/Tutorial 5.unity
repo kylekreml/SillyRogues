@@ -396,7 +396,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5092543566946960751, guid: 428df9af584163f4aafe020db162523d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.09
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 5092543567122839158, guid: 428df9af584163f4aafe020db162523d, type: 3}
       propertyPath: m_Name
@@ -6993,14 +6993,6 @@ MonoBehaviour:
     spawnPoint: {fileID: 1351030311}
     route: {fileID: 1236497969}
     destination: {fileID: 699613287}
-  - spawnTime: 140
-    spawnDelay: 1
-    curSpawnDelay: 0
-    enemy: {fileID: 242025649482435655, guid: 261fdc79a200153429bc68380c269281, type: 3}
-    numberOfEnemies: 20
-    spawnPoint: {fileID: 1351030311}
-    route: {fileID: 1236497969}
-    destination: {fileID: 699613287}
   timeSinceStart: 0
   warningTime: 3
   wave: {fileID: 849091255}
@@ -7248,14 +7240,6 @@ MonoBehaviour:
     curSpawnDelay: 0
     enemy: {fileID: 473488541409166241, guid: 289a1802b7d759b49a78f4de941f29e2, type: 3}
     numberOfEnemies: 10
-    spawnPoint: {fileID: 783700272}
-    route: {fileID: 1357680408}
-    destination: {fileID: 114348304}
-  - spawnTime: 130
-    spawnDelay: 0.5
-    curSpawnDelay: 0
-    enemy: {fileID: 4485696606817315175, guid: 52620d400615cd74482ebc042e808a28, type: 3}
-    numberOfEnemies: 50
     spawnPoint: {fileID: 783700272}
     route: {fileID: 1357680408}
     destination: {fileID: 114348304}
