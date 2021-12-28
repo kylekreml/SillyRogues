@@ -16,9 +16,8 @@ public class GameManager: MonoBehaviour
     [SerializeField]
     private string nextScene;
     [SerializeField]
-    private bool debugChange = true;
     public GameObject hp;
-    private GameManager()
+    private void Start()
     {
         // Initialize GameManager
         levelGold = 10;
@@ -26,44 +25,14 @@ public class GameManager: MonoBehaviour
         levelComplete = false;
     }
 
-    public static GameManager Instance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                GameObject GM = new GameObject();
-                GM.AddComponent<GameManager>();
-                instance = GM.GetComponent<GameManager>();
-            }
-            return instance;
-        }
-    }
-
-    void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
-        DontDestroyOnLoad(instance);
-    }
-
     void Update()
     {
         if (levelGold > 0)
         {
-            if (levelComplete && debugChange)
+            if (levelComplete)
             {
                 //Do finished level stuff
-                //also reset values
                 hp.SetActive(false);
-                levelGold = 0;
-                levelComplete = false;
                 StartCoroutine(SceneDelay());
             }
             else if (spawnersLeft == 0)
@@ -100,12 +69,7 @@ public class GameManager: MonoBehaviour
     private void GameOver()
     {
         //TODO: gameover stuff here
-        ChangeScene("Game Over");
-    }
-
-    public void ChangeScene(string changeScene)
-    {
-        SceneManager.LoadScene(changeScene);
+        transform.parent.Find("SceneLoader").GetComponent<SceneLoader>().LoadScene("Game Over");
     }
 
     public void SetNextScene(string ns)
@@ -116,7 +80,7 @@ public class GameManager: MonoBehaviour
     IEnumerator SceneDelay()
     {
         yield return new WaitForSeconds(2f);
-        ChangeScene(nextScene);
+        transform.parent.Find("SceneLoader").GetComponent<SceneLoader>().LoadScene(nextScene);
     }
 
     public void exitGame()

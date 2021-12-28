@@ -169,7 +169,7 @@ public class PlayerMovement : MonoBehaviour
                 else
                 {
                     nodeCollider = hit;
-                    if (nodeCollider.gameObject.GetComponent<ResourceNodeScript>().PlayerInteracting(gameObject));
+                    if (nodeCollider.gameObject.GetComponent<ResourceNodeScript>().PlayerInteracting(gameObject))
                         nodeCollider.gameObject.GetComponent<ResourceNodeScript>().interactTimeResourceNode(true);
                 }
             }

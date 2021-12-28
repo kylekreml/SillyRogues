@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class KillMe : MonoBehaviour
 {
     public float time = 5;
-    private float timeSinceStart = 0;
     public PauseMenuScript pause;
     Slider slider;
     // Start is called before the first frame update

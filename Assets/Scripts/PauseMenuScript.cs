@@ -16,7 +16,7 @@ public class PauseMenuScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !paused)
         {
             Pause();
             transform.GetChild(0).gameObject.SetActive(paused);
@@ -37,11 +37,17 @@ public class PauseMenuScript : MonoBehaviour
         return paused;
     }
 
+    public void Resume()
+    {
+        Pause();
+        transform.GetChild(0).gameObject.SetActive(paused);
+    }
+
     public void MainMenu()
     {
         //GameManager.Instance.Pause(false);
         Pause();
-        GameManager.Instance.ChangeScene("Title Scene");
+        transform.parent.Find("SceneLoader").GetComponent<SceneLoader>().LoadScene("Title Scene");
     }
 
     public void Quit()

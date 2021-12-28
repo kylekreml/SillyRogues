@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class UI_Manager : MonoBehaviour
 {
 
-    [SerializeField] GameManager gameManager;
+    GameManager gameManager;
     int totalGold;
     int currentGold;
     Slider slider;
@@ -14,6 +14,7 @@ public class UI_Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = transform.parent.Find("GameManager").GetComponent<GameManager>();
         totalGold = gameManager.GetGold();
         currentGold = totalGold;
         slider = this.transform.GetChild(0).Find("GoldBar").gameObject.GetComponent<Slider>();

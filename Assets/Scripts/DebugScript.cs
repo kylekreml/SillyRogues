@@ -19,6 +19,7 @@ public class DebugScript : MonoBehaviour
     public void TitleButton()
     {
         Debug.Log("button");
-        GameManager.Instance.ChangeScene("Tutorial 1");
+        // Changed how GameManager works, so this doesn't work
+        // GameManager.Instance.ChangeScene("Tutorial 1");
     }
 }

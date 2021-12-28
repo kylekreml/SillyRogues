@@ -8,7 +8,6 @@ public class BasicEnemyScript : MonoBehaviour
     public float health = 5;
     private EnemySpawnerManager spawnerScript;
     private float speed;
-    //not sure if this is how i'm doing it yet
     public float defaultSpeed = 3;
 
     public string type;
@@ -33,6 +32,7 @@ public class BasicEnemyScript : MonoBehaviour
     private float timer = 0; 
 
     public HashSet<GameObject> towers = new HashSet<GameObject>();
+    private GameManager gameManager;
 
 
     //for walking to exit destination when done with waypoints
@@ -77,7 +77,7 @@ public class BasicEnemyScript : MonoBehaviour
         //destroys this instance when it reaches the destination
         if (transform.position == destination.transform.position && walkToExit)
         {
-            GameManager.Instance.ChangeGold(-1);
+            gameManager.ChangeGold(-1);
             spawnerScript.RemovedEnemy();
             Destroy(gameObject);
         }
@@ -92,20 +92,9 @@ public class BasicEnemyScript : MonoBehaviour
         animator.SetFloat("Vertical", transform.position.y - direction.y);
         transform.position = Vector2.MoveTowards(transform.position, walkTowards.position, speed * Time.deltaTime);
 
-        //Rotation of enemy
-        //Vector3 vectorToTarget = walkTowards.position - transform.position;
-        //float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg - 90;
-        //Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
-        //transform.rotation = q;
-        //Debug.DrawRay(transform.position, transform.up, Color.red);
-
         if (transform.position == walkTowards.position)
         {
             currentWaypoint++;
-            //TODO: closest enemy walks to dropped loot
-            //REMINDER OF LOOT PICKUP PROCESS
-            //WAYPOINT WILL TELL CLOSEST ENEMY THERE IS LOOT AND REDIRECT THEM
-            //OR DYING ENEMY TELLS CLOSEST ENEMY
             if (currentWaypoint >= waypoints.Length)
             {
                 walkToExit = true;
@@ -241,6 +230,11 @@ public class BasicEnemyScript : MonoBehaviour
     public void freeze(float duration)
     {
         timer = duration;
+    }
+
+    public void SetGameManager(GameManager gm)
+    {
+        gameManager = gm;
     }
 
     IEnumerator deathAnimation()

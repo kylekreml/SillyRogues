@@ -9,7 +9,6 @@ public class EnemySpawnerManager : MonoBehaviour
     {
         public float spawnTime; //seconds into the level.
         public float spawnDelay;
-        [HideInInspector] public float curSpawnDelay;
         public GameObject enemy;
         public int numberOfEnemies;
         public Transform spawnPoint;
@@ -24,6 +23,7 @@ public class EnemySpawnerManager : MonoBehaviour
     private bool doneSpawning;
     [SerializeField] private float warningTime;
     public AudioSource wave;
+    private GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +32,8 @@ public class EnemySpawnerManager : MonoBehaviour
         wavesLeft = groups.Count;
         enemiesLeft = 0;
         doneSpawning = false;
-        GameManager.Instance.ChangeSpawnersLeft(1);
+        gameManager = transform.parent.GetComponent<GameManager>();
+        gameManager.ChangeSpawnersLeft(1);
         for (int i = 0; i < groups.Count; i++)
         {
             SpawnGroup g = groups[i];
@@ -51,27 +52,9 @@ public class EnemySpawnerManager : MonoBehaviour
             if (wavesLeft == 0 && enemiesLeft <= 0)
             {
                 doneSpawning = true;
-                GameManager.Instance.ChangeSpawnersLeft(-1);
+                gameManager.ChangeSpawnersLeft(-1);
             }
         }
-        // for (int i = 0; i < groups.Count; i++)
-        // {
-        //     SpawnGroup g = groups[i];
-        //     if (g.spawnTime > timeSinceStart || g.numberOfEnemies == 0)
-        //         continue;
-        //     if (g.curSpawnDelay > 0)
-        //         g.curSpawnDelay -= Time.deltaTime;
-
-        //     if (g.curSpawnDelay <= 0)
-        //     {
-        //         GameObject child = Instantiate(g.enemy);
-        //         child.GetComponent<BasicEnemyScript>().SetRoute(g.route);
-        //         child.GetComponent<BasicEnemyScript>().SetDestination(g.destination);
-        //         child.transform.position = g.spawnPoint.position;
-        //         g.curSpawnDelay = g.spawnDelay;
-        //         g.numberOfEnemies -= 1;
-        //     }
-        // }
     }
 
     IEnumerator SpawnWave(SpawnGroup g)
@@ -103,6 +86,7 @@ public class EnemySpawnerManager : MonoBehaviour
             child.GetComponent<BasicEnemyScript>().SetRoute(g.route);
             child.GetComponent<BasicEnemyScript>().SetDestination(g.destination);
             child.GetComponent<BasicEnemyScript>().SetSpawnerScript(this);
+            child.GetComponent<BasicEnemyScript>().SetGameManager(gameManager);
             child.transform.position = g.spawnPoint.position;
             yield return new WaitForSeconds(g.spawnDelay);
         }

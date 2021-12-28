@@ -18,8 +18,6 @@ public class ProjectileBehavoir : ProjectileClass
 
     private int bounce = 1;
 
-    private bool hit = true;
-
     private void Start()
     {
         shooterTier = shooter.GetComponent<TowerBehavior>().getTier();

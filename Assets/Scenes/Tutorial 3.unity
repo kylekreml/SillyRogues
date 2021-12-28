@@ -5476,7 +5476,6 @@ MonoBehaviour:
   groups:
   - spawnTime: 25
     spawnDelay: 0.6
-    curSpawnDelay: 0
     enemy: {fileID: 5038858920877382330, guid: 0bb66abe89c9f3145a86360b57b9be60, type: 3}
     numberOfEnemies: 10
     spawnPoint: {fileID: 642614940}
@@ -5484,7 +5483,6 @@ MonoBehaviour:
     destination: {fileID: 934929904}
   - spawnTime: 40
     spawnDelay: 3
-    curSpawnDelay: 0
     enemy: {fileID: 242025649482435655, guid: 261fdc79a200153429bc68380c269281, type: 3}
     numberOfEnemies: 4
     spawnPoint: {fileID: 642614940}
@@ -5492,7 +5490,6 @@ MonoBehaviour:
     destination: {fileID: 934929904}
   - spawnTime: 60
     spawnDelay: 0.7
-    curSpawnDelay: 0
     enemy: {fileID: 5038858920877382330, guid: 0bb66abe89c9f3145a86360b57b9be60, type: 3}
     numberOfEnemies: 20
     spawnPoint: {fileID: 642614940}
@@ -5500,7 +5497,6 @@ MonoBehaviour:
     destination: {fileID: 934929904}
   - spawnTime: 80
     spawnDelay: 0.7
-    curSpawnDelay: 0
     enemy: {fileID: 5038858920877382330, guid: 0bb66abe89c9f3145a86360b57b9be60, type: 3}
     numberOfEnemies: 30
     spawnPoint: {fileID: 642614940}
@@ -5508,7 +5504,6 @@ MonoBehaviour:
     destination: {fileID: 934929904}
   - spawnTime: 100
     spawnDelay: 0.5
-    curSpawnDelay: 0
     enemy: {fileID: 5038858920877382330, guid: 0bb66abe89c9f3145a86360b57b9be60, type: 3}
     numberOfEnemies: 40
     spawnPoint: {fileID: 642614940}
@@ -5516,13 +5511,14 @@ MonoBehaviour:
     destination: {fileID: 934929904}
   - spawnTime: 100
     spawnDelay: 2
-    curSpawnDelay: 0
     enemy: {fileID: 242025649482435655, guid: 261fdc79a200153429bc68380c269281, type: 3}
     numberOfEnemies: 10
     spawnPoint: {fileID: 642614940}
     route: {fileID: 1236497969}
     destination: {fileID: 934929904}
   timeSinceStart: 0
+  warningTime: 0
+  wave: {fileID: 0}
 --- !u!4 &1207666242
 Transform:
   m_ObjectHideFlags: 0
@@ -5866,7 +5862,7 @@ MonoBehaviour:
   spawnersLeft: 0
   levelComplete: 0
   nextScene: 
-  debugChange: 1
+  hp: {fileID: 0}
 --- !u!4 &1618248407
 Transform:
   m_ObjectHideFlags: 0
@@ -5913,7 +5909,6 @@ MonoBehaviour:
   groups:
   - spawnTime: 15
     spawnDelay: 1
-    curSpawnDelay: 0
     enemy: {fileID: 5038858920877382330, guid: 0bb66abe89c9f3145a86360b57b9be60, type: 3}
     numberOfEnemies: 10
     spawnPoint: {fileID: 1264991130}
@@ -5921,7 +5916,6 @@ MonoBehaviour:
     destination: {fileID: 1602538641}
   - spawnTime: 30
     spawnDelay: 0.3
-    curSpawnDelay: 0
     enemy: {fileID: 5038858920877382330, guid: 0bb66abe89c9f3145a86360b57b9be60, type: 3}
     numberOfEnemies: 25
     spawnPoint: {fileID: 1264991130}
@@ -5929,7 +5923,6 @@ MonoBehaviour:
     destination: {fileID: 1602538641}
   - spawnTime: 35
     spawnDelay: 0.3
-    curSpawnDelay: 0
     enemy: {fileID: 242025649482435655, guid: 261fdc79a200153429bc68380c269281, type: 3}
     numberOfEnemies: 1
     spawnPoint: {fileID: 1264991130}
@@ -5937,7 +5930,6 @@ MonoBehaviour:
     destination: {fileID: 1602538641}
   - spawnTime: 90
     spawnDelay: 0.3
-    curSpawnDelay: 0
     enemy: {fileID: 5038858920877382330, guid: 0bb66abe89c9f3145a86360b57b9be60, type: 3}
     numberOfEnemies: 50
     spawnPoint: {fileID: 1264991130}
@@ -5945,7 +5937,6 @@ MonoBehaviour:
     destination: {fileID: 1602538641}
   - spawnTime: 90
     spawnDelay: 4
-    curSpawnDelay: 0
     enemy: {fileID: 242025649482435655, guid: 261fdc79a200153429bc68380c269281, type: 3}
     numberOfEnemies: 12
     spawnPoint: {fileID: 1264991130}
@@ -5953,7 +5944,6 @@ MonoBehaviour:
     destination: {fileID: 1602538641}
   - spawnTime: 110
     spawnDelay: 2
-    curSpawnDelay: 0
     enemy: {fileID: 242025649482435655, guid: 261fdc79a200153429bc68380c269281, type: 3}
     numberOfEnemies: 10
     spawnPoint: {fileID: 1264991130}
@@ -5961,13 +5951,14 @@ MonoBehaviour:
     destination: {fileID: 1602538641}
   - spawnTime: 110
     spawnDelay: 0.5
-    curSpawnDelay: 0
     enemy: {fileID: 5038858920877382330, guid: 0bb66abe89c9f3145a86360b57b9be60, type: 3}
     numberOfEnemies: 50
     spawnPoint: {fileID: 1264991130}
     route: {fileID: 818380870}
     destination: {fileID: 1602538641}
   timeSinceStart: 0
+  warningTime: 0
+  wave: {fileID: 0}
 --- !u!4 &1818473846
 Transform:
   m_ObjectHideFlags: 0
