@@ -17,12 +17,14 @@ public class TowerCreationScript : MonoBehaviour
     private Resource resource1;
     [SerializeField]
     private Resource resource2;
+    private GameObject craftingAssistant;
     static Dictionary<Resource, HashSet<int>> recipes = new Dictionary<Resource, HashSet<int>>();
 
     // Start is called before the first frame update
     void Start()
     {
         spawnpoint = transform.GetChild(0);
+        craftingAssistant = transform.GetChild(2).gameObject;
         resource1 = Resource.Node;
         resource2 = Resource.Node;
 
@@ -138,12 +140,16 @@ public class TowerCreationScript : MonoBehaviour
                 resource1 = resourceScript.GetResourceType();
                 spriteRenderer.sprite = collider.gameObject.GetComponent<SpriteRenderer>().sprite;
                 spriteRenderer.enabled = true;
+                craftingAssistant.SetActive(true);
+                craftingAssistant.transform.GetChild((int)resource1 - 1).gameObject.SetActive(true);
                 Destroy(collider.gameObject);
             }
             else if (resource2 == Resource.Node && resourceScript.GetPlayerInteracted())
             {
                 resource2 = resourceScript.GetResourceType();
                 spriteRenderer.enabled = false;
+                craftingAssistant.transform.GetChild((int)resource1 - 1).gameObject.SetActive(false);
+                craftingAssistant.SetActive(false);
                 Destroy(collider.gameObject);
             }
         }
