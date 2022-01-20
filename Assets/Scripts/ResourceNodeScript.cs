@@ -113,6 +113,7 @@ public class ResourceNodeScript : ResourceScript
             else
             {
                 r.GetComponent<CircleCollider2D>().isTrigger = true;
+                interactingPlayer.GetComponent<Animator>().SetBool("Gathering", false);
                 interactingPlayer.GetComponent<PlayerMovement>().SetHeld(r.GetComponent<CircleCollider2D>());
             }
         }

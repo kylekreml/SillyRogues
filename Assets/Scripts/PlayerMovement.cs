@@ -142,7 +142,6 @@ public class PlayerMovement : MonoBehaviour
                 //Going to have to place in grid somewhere around here.
                 return;
             }
-
             // RaycastHit2D hit = Physics2D.Raycast(this.transform.position, this.transform.rotation * NormalizedDirection, playerInteractRange);
             // Replacing Raycast with overlap area so interact is not as narrow
             Collider2D hit = findClosestInInteractArea(overlapInteract());
@@ -181,12 +180,14 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonUp("Interact" + playerNumber) && nodeCollider != null)
         {
+            animator.SetBool("Gathering", false);
             nodeCollider.gameObject.GetComponent<ResourceNodeScript>().interactTimeResourceNode(false);
             nodeCollider = null;
         }
 
         if (nodeCollider != null)
         {
+            animator.SetBool("Gathering", true);
             List<Collider2D> check = new List<Collider2D>(overlapInteract());
             if (!check.Contains(nodeCollider))
             {
@@ -194,7 +195,9 @@ public class PlayerMovement : MonoBehaviour
                 nodeCollider = null;
             }
         }
+
     }
+
 
     private void CheckHeld()
     {
