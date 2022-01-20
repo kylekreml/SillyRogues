@@ -17,7 +17,7 @@ public class GameManager: MonoBehaviour
     private string nextScene;
     [SerializeField]
     public GameObject hp;
-    private void Start()
+    private void Awake()
     {
         // Initialize GameManager
         levelGold = 10;

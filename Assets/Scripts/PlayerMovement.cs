@@ -191,6 +191,7 @@ public class PlayerMovement : MonoBehaviour
             List<Collider2D> check = new List<Collider2D>(overlapInteract());
             if (!check.Contains(nodeCollider))
             {
+                animator.SetBool("Gathering", false);
                 nodeCollider.gameObject.GetComponent<ResourceNodeScript>().interactTimeResourceNode(false);
                 nodeCollider = null;
             }
