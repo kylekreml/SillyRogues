@@ -6570,7 +6570,7 @@ MonoBehaviour:
   - spawnTime: 24
     spawnDelay: 0.5
     enemy: {fileID: 5038858920877382330, guid: 0bb66abe89c9f3145a86360b57b9be60, type: 3}
-    numberOfEnemies: 25
+    numberOfEnemies: 10
     spawnPoint: {fileID: 1189479033}
     route: {fileID: 818380870}
     destination: {fileID: 1602538641}
@@ -6578,13 +6578,6 @@ MonoBehaviour:
     spawnDelay: 0.3
     enemy: {fileID: 473488541409166241, guid: 289a1802b7d759b49a78f4de941f29e2, type: 3}
     numberOfEnemies: 5
-    spawnPoint: {fileID: 1189479033}
-    route: {fileID: 818380870}
-    destination: {fileID: 1602538641}
-  - spawnTime: 32
-    spawnDelay: 1
-    enemy: {fileID: 5038858920877382330, guid: 0bb66abe89c9f3145a86360b57b9be60, type: 3}
-    numberOfEnemies: 10
     spawnPoint: {fileID: 1189479033}
     route: {fileID: 818380870}
     destination: {fileID: 1602538641}
