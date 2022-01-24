@@ -30,6 +30,8 @@ public class ResourceNodeScript : ResourceScript
     [SerializeField]
     private bool giveDirectlyToPlayer = true;
     [SerializeField]
+    private bool oneTimeUse = false;
+    [SerializeField]
     private GameObject interactingPlayer;
 
     // Start is called before the first frame update
@@ -115,6 +117,10 @@ public class ResourceNodeScript : ResourceScript
                 r.GetComponent<CircleCollider2D>().isTrigger = true;
                 interactingPlayer.GetComponent<Animator>().SetBool("Gathering", false);
                 interactingPlayer.GetComponent<PlayerMovement>().SetHeld(r.GetComponent<CircleCollider2D>());
+            }
+            if (oneTimeUse)
+            {
+                Destroy(gameObject);
             }
         }
         // else
