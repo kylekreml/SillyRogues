@@ -17,13 +17,13 @@ public class SceneLoader : MonoBehaviour
     }
     public void LoadScene(string sceneName)
     {
-        Debug.Log("LOAD SCENE");
+        // Debug.Log("LOAD SCENE");
         SceneManager.LoadScene(sceneName);
     }
 
     public void debugButton()
     {
-        Debug.Log("PRESSED");
+        // Debug.Log("PRESSED");
     }
 
 }
