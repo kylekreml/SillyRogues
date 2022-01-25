@@ -3973,6 +3973,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 520595734068663395, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: Rebinding
+      objectReference: {fileID: 0}
     - target: {fileID: 1001566043699861162, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

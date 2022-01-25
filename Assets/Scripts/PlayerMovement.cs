@@ -428,13 +428,13 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    // void OnEnable()
-    // {
-    //     input.Enable();
-    // }
+    void OnEnable()
+    {
+        input.Enable();
+    }
 
-    // void OnDisable()
-    // {
-    //     input.Disable();
-    // }
+    void OnDisable()
+    {
+        input.Disable();
+    }
 }

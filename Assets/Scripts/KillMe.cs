@@ -16,9 +16,17 @@ public class KillMe : MonoBehaviour
     {
         playerInput = gameObject.GetComponent<PlayerInput>();
 
-        InputUser.PerformPairingWithDevice(Gamepad.all[0], playerInput.user);
-        InputUser.PerformPairingWithDevice(Gamepad.all[1], playerInput.user);
-        playerInput.SwitchCurrentControlScheme(Gamepad.all[0]);
+        // InputUser.PerformPairingWithDevice(Gamepad.all[0], playerInput.user);
+        // InputUser.PerformPairingWithDevice(Gamepad.all[1], playerInput.user);
+        // playerInput.SwitchCurrentControlScheme(Gamepad.all[0]);
+    
+        for (int i = 0; i < InputSystem.devices.Count; i++)
+        {
+            InputUser.PerformPairingWithDevice(
+                InputSystem.devices[i],
+                playerInput.user
+                );
+        }
     }
 
     // Start is called before the first frame update
