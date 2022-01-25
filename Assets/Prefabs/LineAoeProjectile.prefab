@@ -147,6 +147,6 @@ MonoBehaviour:
   target: {fileID: 0}
   shooter: {fileID: 0}
   originalTarget: {fileID: 0}
-  damage: 1
+  damage: 0.5
   speed: 100
   life: 4
