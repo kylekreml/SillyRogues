@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Users;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -23,6 +25,18 @@ public class PlayerMovement : MonoBehaviour
     private GameObject indicator;
     private SpriteRenderer indicatorSprite;
     private Collider2D nodeCollider;
+
+    // PlayerControlActions input;
+    // PlayerInput playerInput;
+
+    // void Awake()
+    // {
+    //     input = new PlayerControlActions();
+    //     playerInput = gameObject.GetComponent<PlayerInput>();
+    //     // Debug.Log(string.Join("\n", Gamepad.all));
+    //     InputUser.PerformPairingWithDevice(Gamepad.all[playerNumber-1], playerInput.user, InputUserPairingOptions.UnpairCurrentDevicesFromUser);
+    //     playerInput.SwitchCurrentControlScheme(playerInput.devices[0]);
+    // }
 
     // Start is called before the first frame update
     void Start()
@@ -62,15 +76,15 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        direction.x = Input.GetAxisRaw("Horizontal" + playerNumber);
-        direction.y = Input.GetAxisRaw("Vertical" + playerNumber);
+        // direction.x = Input.GetAxisRaw("Horizontal" + playerNumber);
+        // direction.y = Input.GetAxisRaw("Vertical" + playerNumber);
         if (Time.timeScale == 1f)
         {
             animator.SetFloat("Horizontal", direction.x);
             animator.SetFloat("Vertical", direction.y);
             animator.SetFloat("Speed", Mathf.Max(Mathf.Abs(direction.x), Mathf.Abs(direction.y)));
         }
-        CheckInteract();
+        // CheckInteract();
         CheckHeld();
         CheckLoot();
 
@@ -93,11 +107,115 @@ public class PlayerMovement : MonoBehaviour
         //     Color.blue);
     }
 
-    private void CheckInteract()
+    // private void CheckInteract()
+    // {
+    //     if(Input.GetButtonDown("Interact" + playerNumber))
+    //     {
+    //         if (held != null)
+    //         {
+    //             Collider2D[] overlaps = Physics2D.OverlapBoxAll(new Vector2(indicator.transform.position.x,indicator.transform.position.y), new Vector2(0.5f, 0.5f), 0f);
+    //             if (held.gameObject.tag == "Resource")
+    //             {
+    //                 ResourceScript resourceScript = held.gameObject.GetComponent<ResourceScript>();
+    //                 //Possibly needed later, but not sure
+    //                 // foreach (Collider2D o in overlaps)
+    //                 // {
+    //                 //     if (o.name.Contains("TowerCrafting"))
+    //                 //     {
+    //                 //     }
+    //                 // }
+    //                 resourceScript.SetPlayerInteracted(true);
+    //             }
+    //             else if (held.gameObject.tag == "Tower") 
+    //             { 
+                    
+    //                 foreach (Collider2D o in overlaps)
+    //                 {
+    //                     //Debug.Log(o.tag);
+    //                     if (o.tag == "Tower")
+    //                     {
+    //                         return;
+    //                     }
+    //                 }
+    //             }
+    //             var oldHeld = held;
+    //             held = null;
+    //             SpriteRenderer heldSprite = oldHeld.GetComponent<SpriteRenderer>();
+    //             heldSprite.color = new Color(1f, 1f, 1f, 1f);
+    //             indicatorSprite.color = new Color(1f, 1f, 1f, 0f);
+    //             oldHeld.transform.position = groundMap.WorldToCell(this.transform.position + NormalizedDirection * 0.8f);
+    //             oldHeld.enabled = true;
+    //             if(oldHeld.gameObject.tag == "Tower")
+    //             {
+    //                oldHeld.GetComponent<TowerClass>().enableTower();
+    //             }
+    //             else if (oldHeld.gameObject.tag == "Resource")
+    //             {
+    //                 oldHeld.isTrigger = false;
+    //             }
+    //             //Going to have to place in grid somewhere around here.
+    //             return;
+    //         }
+    //         // RaycastHit2D hit = Physics2D.Raycast(this.transform.position, this.transform.rotation * NormalizedDirection, playerInteractRange);
+    //         // Replacing Raycast with overlap area so interact is not as narrow
+    //         Collider2D hit = findClosestInInteractArea(overlapInteract());
+
+    //         if (hit && hit.transform.tag == "Tower")
+    //         {
+    //             hit.gameObject.GetComponent<TowerClass>().disableTower();
+    //             hit.enabled = false;
+    //             SetHeld(hit);
+    //             SpriteRenderer heldSprite = held.GetComponent<SpriteRenderer>();
+    //             heldSprite.color = new Color(1f, 0.5f, 0.5f, 0.2f);
+    //             // held.transform.SetActive(false);
+    //         }
+
+    //         else if (hit && hit.transform.tag == "Resource")
+    //         {
+    //             //Probably also need a check for the resource so it doesn't get stuck in something
+    //             ResourceScript resourceScript = hit.gameObject.GetComponent<ResourceScript>();
+    //             if (resourceScript.GetResourceType() != Resource.Node)
+    //             {
+    //                 SetHeld(hit);
+    //                 held.isTrigger = true;
+    //             }
+    //             else
+    //             {
+    //                 nodeCollider = hit;
+    //                 if (nodeCollider.gameObject.GetComponent<ResourceNodeScript>().PlayerInteracting(gameObject))
+    //                     nodeCollider.gameObject.GetComponent<ResourceNodeScript>().interactTimeResourceNode(true);
+    //             }
+    //         }
+    //         else if (hit && hit.transform.tag == "Upgrade")
+    //         {
+    //             SetHeld(hit);
+    //         }
+    //     }
+
+    //     if (Input.GetButtonUp("Interact" + playerNumber) && nodeCollider != null)
+    //     {
+    //         animator.SetBool("Gathering", false);
+    //         nodeCollider.gameObject.GetComponent<ResourceNodeScript>().interactTimeResourceNode(false);
+    //         nodeCollider = null;
+    //     }
+
+    //     if (nodeCollider != null)
+    //     {
+    //         animator.SetBool("Gathering", true);
+    //         List<Collider2D> check = new List<Collider2D>(overlapInteract());
+    //         if (!check.Contains(nodeCollider))
+    //         {
+    //             animator.SetBool("Gathering", false);
+    //             nodeCollider.gameObject.GetComponent<ResourceNodeScript>().interactTimeResourceNode(false);
+    //             nodeCollider = null;
+    //         }
+    //     }
+
+    // }
+
+    private void InteractPressed()
     {
-        if(Input.GetButtonDown("Interact" + playerNumber))
-        {
-            if (held != null)
+        if (held != null)
             {
                 Collider2D[] overlaps = Physics2D.OverlapBoxAll(new Vector2(indicator.transform.position.x,indicator.transform.position.y), new Vector2(0.5f, 0.5f), 0f);
                 if (held.gameObject.tag == "Resource")
@@ -176,15 +294,20 @@ public class PlayerMovement : MonoBehaviour
             {
                 SetHeld(hit);
             }
-        }
+    }
 
-        if (Input.GetButtonUp("Interact" + playerNumber) && nodeCollider != null)
+    private void InteractReleased()
+    {
+        if (nodeCollider != null)
         {
             animator.SetBool("Gathering", false);
             nodeCollider.gameObject.GetComponent<ResourceNodeScript>().interactTimeResourceNode(false);
             nodeCollider = null;
         }
+    }
 
+    private void CheckHeld()
+    {
         if (nodeCollider != null)
         {
             animator.SetBool("Gathering", true);
@@ -197,11 +320,6 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-    }
-
-
-    private void CheckHeld()
-    {
         if(held == null)
         {
             return;
@@ -289,4 +407,34 @@ public class PlayerMovement : MonoBehaviour
         }
         return false;
     }
+
+    public void OnMovement(InputAction.CallbackContext ctx)
+    {
+        Vector2 movementInput = ctx.ReadValue<Vector2>();
+        direction.x = movementInput.x;
+        direction.y = movementInput.y;
+    }
+
+    public void OnInteract(InputAction.CallbackContext ctx)
+    {
+        // Debug.Log(ctx.performed);
+        if (ctx.started)
+        {
+            InteractPressed();
+        }
+        else if (ctx.canceled)
+        {
+            InteractReleased();
+        }
+    }
+
+    // void OnEnable()
+    // {
+    //     input.Enable();
+    // }
+
+    // void OnDisable()
+    // {
+    //     input.Disable();
+    // }
 }
