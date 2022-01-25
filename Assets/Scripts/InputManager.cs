@@ -160,6 +160,18 @@ public class InputManager : MonoBehaviour
         }
     }
 
+    public void EnablePlayerInput()
+    {
+        player1.ActivateInput();
+        player2.ActivateInput();
+    }
+
+    public void DisablePlayerInput()
+    {
+        player1.DeactivateInput();
+        player2.DeactivateInput();
+    }
+
     void OnEnable()
     {
         input.Enable();
