@@ -14,7 +14,7 @@ public class GameManager: MonoBehaviour
     [SerializeField]
     private bool levelComplete;
     [SerializeField]
-    private string nextScene;
+    private string nextScene = "TEMPLEVELSELECTOR";
     [SerializeField]
     public GameObject hp;
     private void Awake()
