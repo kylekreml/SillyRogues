@@ -39,13 +39,13 @@ public class ProjectileBehavoir : ProjectileClass
 
                 if (shooterTier == 1)
                 {
-                    damage = damage * 2; //CHANGE THIS TO DIFFERENT MULTIPLIER LATER 
+                    damage = 1.7f * damage; //CHANGE THIS TO DIFFERENT MULTIPLIER LATER 
                     other.gameObject.GetComponent<BasicEnemyScript>().damage(damage, shooter);
                     Destroy(gameObject);
                 }
                 else if (shooterTier == 2)
                 {
-                    damage = damage * 2;
+                    //damage = damage;
                     other.gameObject.GetComponent<BasicEnemyScript>().damage(damage, shooter);
                     if (bounce == 0)
                     {
