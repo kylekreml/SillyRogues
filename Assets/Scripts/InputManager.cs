@@ -25,10 +25,8 @@ public class InputManager : MonoBehaviour
                 ControlManager.player1Gamepad = true;
                 InputUser.PerformPairingWithDevice(
                     Gamepad.all[ControlManager.player1GamepadIndex],
-                    player1.user, 
-                    InputUserPairingOptions.UnpairCurrentDevicesFromUser
+                    player1.user
                 );
-                player1.SwitchCurrentControlScheme(player1.devices[0]);
             }
 
             // Debug.Log(string.Join("\n", Gamepad.all));
@@ -39,20 +37,8 @@ public class InputManager : MonoBehaviour
                 ControlManager.player2Gamepad = true;
                 InputUser.PerformPairingWithDevice(
                     Gamepad.all[ControlManager.player2GamepadIndex],
-                    player2.user, 
-                    InputUserPairingOptions.UnpairCurrentDevicesFromUser
+                    player2.user
                 );
-                player2.SwitchCurrentControlScheme(player2.devices[0]);
-            }
-
-            if (!ControlManager.player1Gamepad)
-            {
-                player1.SwitchCurrentControlScheme("Keyboard1");
-            }
-
-            if (!ControlManager.player2Gamepad)
-            {
-                player2.SwitchCurrentControlScheme("Keyboard2");
             }
         }
 
@@ -63,45 +49,45 @@ public class InputManager : MonoBehaviour
             {
                 InputUser.PerformPairingWithDevice(
                     Gamepad.all[ControlManager.player1GamepadIndex],
-                    player1.user,
-                    InputUserPairingOptions.UnpairCurrentDevicesFromUser
+                    player1.user
                 );
-                player1.SwitchCurrentControlScheme("Gamepad");
-            }
-            else
-            {
-                player1.SwitchCurrentControlScheme("Keyboard1");
             }
 
             if (ControlManager.player2Gamepad)
             {
                 InputUser.PerformPairingWithDevice(
                     Gamepad.all[ControlManager.player2GamepadIndex],
-                    player2.user,
-                    InputUserPairingOptions.UnpairCurrentDevicesFromUser
+                    player2.user
                 );
-                player2.SwitchCurrentControlScheme("Gamepad");
-            }
-            else
-            {
-                player2.SwitchCurrentControlScheme("Keyboard2");
             }
         }
+
+        InputUser.PerformPairingWithDevice(
+            Keyboard.current,
+            player1.user
+        );
+        InputUser.PerformPairingWithDevice(
+            Keyboard.current,
+            player2.user
+        );
     }
 
-    // TODO: add public functions for the pause menu to be able to switch controls
+    // TODO: fix it
     public void RebindPlayerControls(string player, InputDevice device)
     {
         if (player == "Player 1")
         {
             InputUser.PerformPairingWithDevice(
                 device,
-                player1.user, 
+                player1.user,
                 InputUserPairingOptions.UnpairCurrentDevicesFromUser
             );
-            player1.SwitchCurrentControlScheme(player1.devices[0]);
+            InputUser.PerformPairingWithDevice(
+                Keyboard.current,
+                player1.user
+            );
 
-            if (player1.currentControlScheme == "Gamepad")
+            if (player1.devices.Count > 1)
             {
                 for (int i = 0; i < Gamepad.all.Count; i++)
                 {
@@ -112,29 +98,44 @@ public class InputManager : MonoBehaviour
                     }
                 }
                 ControlManager.player1Gamepad = true;
-
-                if (device == player2.devices[0])
+                
+                for (int i = 0; i < player2.devices.Count; i++)
                 {
-                    InputUser.PerformPairingWithDevice(
-                        Keyboard.current,
-                        player2.user, 
-                        InputUserPairingOptions.UnpairCurrentDevicesFromUser
-                    );
-                    player2.SwitchCurrentControlScheme(player2.devices[0]);
-                    ControlManager.player2Gamepad = false;
+                    if (device == player2.devices[i])
+                    {
+                        InputUser.PerformPairingWithDevice(
+                            Keyboard.current,
+                            player2.user, 
+                            InputUserPairingOptions.UnpairCurrentDevicesFromUser
+                        );
+                        ControlManager.player2Gamepad = false;
+                    }
                 }
+            }
+
+            if (device == Keyboard.current)
+            {
+                InputUser.PerformPairingWithDevice(
+                    Keyboard.current,
+                    player1.user, 
+                    InputUserPairingOptions.UnpairCurrentDevicesFromUser
+                );
+                ControlManager.player1Gamepad = false;
             }
         }
         else
         {
             InputUser.PerformPairingWithDevice(
                 device,
-                player2.user, 
+                player2.user,
                 InputUserPairingOptions.UnpairCurrentDevicesFromUser
             );
-            player2.SwitchCurrentControlScheme(player2.devices[0]);
+            InputUser.PerformPairingWithDevice(
+                Keyboard.current,
+                player2.user
+            );
 
-            if (player2.currentControlScheme == "Gamepad")
+            if (player2.devices.Count > 1)
             {
                 for (int i = 0; i < Gamepad.all.Count; i++)
                 {
@@ -145,17 +146,29 @@ public class InputManager : MonoBehaviour
                     }
                 }
                 ControlManager.player2Gamepad = true;
-
-                if (device == player1.devices[0])
+                
+                for (int i = 0; i < player1.devices.Count; i++)
                 {
-                    InputUser.PerformPairingWithDevice(
-                        Keyboard.current,
-                        player1.user, 
-                        InputUserPairingOptions.UnpairCurrentDevicesFromUser
-                    );
-                    player1.SwitchCurrentControlScheme(player1.devices[0]);
-                    ControlManager.player1Gamepad = false;
+                    if (device == player1.devices[i])
+                    {
+                        InputUser.PerformPairingWithDevice(
+                            Keyboard.current,
+                            player1.user, 
+                            InputUserPairingOptions.UnpairCurrentDevicesFromUser
+                        );
+                        ControlManager.player1Gamepad = false;
+                    }
                 }
+            }
+
+            if (device == Keyboard.current)
+            {
+                InputUser.PerformPairingWithDevice(
+                    Keyboard.current,
+                    player2.user, 
+                    InputUserPairingOptions.UnpairCurrentDevicesFromUser
+                );
+                ControlManager.player2Gamepad = false;
             }
         }
     }
