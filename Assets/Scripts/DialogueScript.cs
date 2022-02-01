@@ -9,7 +9,10 @@ public class DialogueScript : MonoBehaviour
     [SerializeField]
     float time = 0;
     [SerializeField]
-    float timeBetweenDialogue = 3;
+    float timeBetweenDialogue = .3f;
+    [SerializeField]
+    bool beforeLevel = false;
+    bool dialogueStarted = false;
 
     PauseMenuScript pause;
     PlayerInput playerInput;
@@ -26,25 +29,6 @@ public class DialogueScript : MonoBehaviour
         players = transform.parent.parent.parent.Find("Players").GetComponent<InputManager>();
 
         totalDialogues = transform.childCount;
-
-        // for (int i = 0; i < InputSystem.devices.Count; i++)
-        // {
-        //     InputUser.PerformPairingWithDevice(
-        //         InputSystem.devices[i],
-        //         playerInput.user
-        //     );
-        // }
-        // Debug.Log(string.Join("\n",Gamepad.all));
-        // for (int i = 0; i < Gamepad.all.Count; i++)
-        // {
-        //     InputUser.PerformPairingWithDevice(
-        //         Gamepad.all[i],
-        //         playerInput.user
-        //     );
-        // }
-        // Debug.Log(string.Join("\n",playerInput.devices));
-
-        transform.GetChild(dialogueIndex).gameObject.SetActive(true);
     }
 
     // Start is called before the first frame update
@@ -65,33 +49,52 @@ public class DialogueScript : MonoBehaviour
             Keyboard.current,
             playerInput.user
         );
-        players.DisablePlayerInput();
 
-        pause.Pause();
+        if (beforeLevel)
+        {
+            StartDialogue();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        time += Time.unscaledDeltaTime;
+        if (dialogueStarted)
+            time += Time.unscaledDeltaTime;
+        
         if (dialogueIndex == totalDialogues)
         {
             dialogueIndex++;
-            Complete();
+            CompleteDialogue();
         }
     }
 
-    void Complete()
+    public void StartDialogue()
     {
-        Debug.Log("finished");
+        dialogueStarted = true;
+        transform.GetChild(0).gameObject.SetActive(true);
+        transform.GetChild(dialogueIndex).gameObject.SetActive(true);
+
+        players.DisablePlayerInput();
+        pause.Pause();
+    }
+
+    void CompleteDialogue()
+    {
+        transform.GetChild(0).gameObject.SetActive(false);
+
         pause.Pause();
         players.EnablePlayerInput();
+
+        if (!beforeLevel)
+        {
+            transform.parent.parent.parent.Find("GameManager").GetComponent<GameManager>().StartNextLevel();
+        }
     }
 
     public void Continue(InputAction.CallbackContext ctx)
     {
-        // Time.realtimeSinceStartup >= time
-        if (dialogueIndex < totalDialogues && time > timeBetweenDialogue && ctx.started)
+        if (dialogueIndex < totalDialogues && dialogueStarted && time > timeBetweenDialogue && ctx.started)
         {
             transform.GetChild(dialogueIndex).gameObject.SetActive(false);
 

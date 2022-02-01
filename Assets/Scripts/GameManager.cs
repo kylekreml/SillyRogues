@@ -10,9 +10,11 @@ public class GameManager: MonoBehaviour
     [SerializeField]
     private int levelGold = 10;
     [SerializeField]
-    private int spawnersLeft;
+    private int spawnersLeft = 0;
     [SerializeField]
     private bool levelComplete;
+    [SerializeField]
+    private bool startNextLevel;
     [SerializeField]
     private string nextScene = "TEMPLEVELSELECTOR";
     [SerializeField]
@@ -20,26 +22,31 @@ public class GameManager: MonoBehaviour
     private void Awake()
     {
         // Initialize GameManager
-        levelGold = 10;
-        spawnersLeft = 0;
         levelComplete = false;
+        startNextLevel = false;
     }
 
     void Update()
     {
         if (levelGold > 0)
         {
-            if (levelComplete)
+            if (levelComplete && startNextLevel)
             {
                 //Do finished level stuff
                 hp.SetActive(false);
                 StartCoroutine(SceneDelay());
             }
-            else if (spawnersLeft == 0)
+            else if (spawnersLeft == 0 && !levelComplete)
             {
+                transform.parent.Find("UI").Find("Canvas").Find("EndDialogue").GetComponent<DialogueScript>().StartDialogue();
                 levelComplete = true;
             }
         }
+    }
+
+    public void StartNextLevel()
+    {
+        startNextLevel = true;
     }
 
     public void ChangeGold(int gold)
