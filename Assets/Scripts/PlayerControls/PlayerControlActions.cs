@@ -61,7 +61,7 @@ public class @PlayerControlActions : IInputActionCollection, IDisposable
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard1"",
+                    ""groups"": ""Player1"",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -72,7 +72,7 @@ public class @PlayerControlActions : IInputActionCollection, IDisposable
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard1"",
+                    ""groups"": ""Player1"",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -83,7 +83,7 @@ public class @PlayerControlActions : IInputActionCollection, IDisposable
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard1"",
+                    ""groups"": ""Player1"",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -94,7 +94,7 @@ public class @PlayerControlActions : IInputActionCollection, IDisposable
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard1"",
+                    ""groups"": ""Player1"",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -105,7 +105,7 @@ public class @PlayerControlActions : IInputActionCollection, IDisposable
                     ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Gamepad"",
+                    ""groups"": ""Player1;Player2"",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -127,7 +127,7 @@ public class @PlayerControlActions : IInputActionCollection, IDisposable
                     ""path"": ""<Keyboard>/i"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard2"",
+                    ""groups"": ""Player2"",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -138,7 +138,7 @@ public class @PlayerControlActions : IInputActionCollection, IDisposable
                     ""path"": ""<Keyboard>/k"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard2"",
+                    ""groups"": ""Player2"",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -149,7 +149,7 @@ public class @PlayerControlActions : IInputActionCollection, IDisposable
                     ""path"": ""<Keyboard>/j"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard2"",
+                    ""groups"": ""Player2"",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -160,7 +160,7 @@ public class @PlayerControlActions : IInputActionCollection, IDisposable
                     ""path"": ""<Keyboard>/l"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard2"",
+                    ""groups"": ""Player2"",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -171,7 +171,7 @@ public class @PlayerControlActions : IInputActionCollection, IDisposable
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard1;Rebinding"",
+                    ""groups"": ""Player1;UI"",
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -182,7 +182,7 @@ public class @PlayerControlActions : IInputActionCollection, IDisposable
                     ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Gamepad;Rebinding"",
+                    ""groups"": ""UI;Player1;Player2"",
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -193,7 +193,7 @@ public class @PlayerControlActions : IInputActionCollection, IDisposable
                     ""path"": ""<Keyboard>/o"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard2;Rebinding"",
+                    ""groups"": ""Player2;UI"",
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -204,7 +204,7 @@ public class @PlayerControlActions : IInputActionCollection, IDisposable
                     ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Rebinding"",
+                    ""groups"": ""UI"",
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -215,7 +215,7 @@ public class @PlayerControlActions : IInputActionCollection, IDisposable
                     ""path"": ""<Gamepad>/start"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Rebinding;Gamepad"",
+                    ""groups"": ""UI;Player2;Player1"",
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -225,8 +225,8 @@ public class @PlayerControlActions : IInputActionCollection, IDisposable
     ],
     ""controlSchemes"": [
         {
-            ""name"": ""Keyboard1"",
-            ""bindingGroup"": ""Keyboard1"",
+            ""name"": ""Player1"",
+            ""bindingGroup"": ""Player1"",
             ""devices"": [
                 {
                     ""devicePath"": ""<Keyboard>"",
@@ -236,24 +236,13 @@ public class @PlayerControlActions : IInputActionCollection, IDisposable
             ]
         },
         {
-            ""name"": ""Gamepad"",
-            ""bindingGroup"": ""Gamepad"",
-            ""devices"": [
-                {
-                    ""devicePath"": ""<Gamepad>"",
-                    ""isOptional"": true,
-                    ""isOR"": false
-                }
-            ]
-        },
-        {
-            ""name"": ""Keyboard2"",
-            ""bindingGroup"": ""Keyboard2"",
+            ""name"": ""Player2"",
+            ""bindingGroup"": ""Player2"",
             ""devices"": []
         },
         {
-            ""name"": ""Rebinding"",
-            ""bindingGroup"": ""Rebinding"",
+            ""name"": ""UI"",
+            ""bindingGroup"": ""UI"",
             ""devices"": []
         }
     ]
@@ -357,40 +346,31 @@ public class @PlayerControlActions : IInputActionCollection, IDisposable
         }
     }
     public PlayerControlsActions @PlayerControls => new PlayerControlsActions(this);
-    private int m_Keyboard1SchemeIndex = -1;
-    public InputControlScheme Keyboard1Scheme
+    private int m_Player1SchemeIndex = -1;
+    public InputControlScheme Player1Scheme
     {
         get
         {
-            if (m_Keyboard1SchemeIndex == -1) m_Keyboard1SchemeIndex = asset.FindControlSchemeIndex("Keyboard1");
-            return asset.controlSchemes[m_Keyboard1SchemeIndex];
+            if (m_Player1SchemeIndex == -1) m_Player1SchemeIndex = asset.FindControlSchemeIndex("Player1");
+            return asset.controlSchemes[m_Player1SchemeIndex];
         }
     }
-    private int m_GamepadSchemeIndex = -1;
-    public InputControlScheme GamepadScheme
+    private int m_Player2SchemeIndex = -1;
+    public InputControlScheme Player2Scheme
     {
         get
         {
-            if (m_GamepadSchemeIndex == -1) m_GamepadSchemeIndex = asset.FindControlSchemeIndex("Gamepad");
-            return asset.controlSchemes[m_GamepadSchemeIndex];
+            if (m_Player2SchemeIndex == -1) m_Player2SchemeIndex = asset.FindControlSchemeIndex("Player2");
+            return asset.controlSchemes[m_Player2SchemeIndex];
         }
     }
-    private int m_Keyboard2SchemeIndex = -1;
-    public InputControlScheme Keyboard2Scheme
+    private int m_UISchemeIndex = -1;
+    public InputControlScheme UIScheme
     {
         get
         {
-            if (m_Keyboard2SchemeIndex == -1) m_Keyboard2SchemeIndex = asset.FindControlSchemeIndex("Keyboard2");
-            return asset.controlSchemes[m_Keyboard2SchemeIndex];
-        }
-    }
-    private int m_RebindingSchemeIndex = -1;
-    public InputControlScheme RebindingScheme
-    {
-        get
-        {
-            if (m_RebindingSchemeIndex == -1) m_RebindingSchemeIndex = asset.FindControlSchemeIndex("Rebinding");
-            return asset.controlSchemes[m_RebindingSchemeIndex];
+            if (m_UISchemeIndex == -1) m_UISchemeIndex = asset.FindControlSchemeIndex("UI");
+            return asset.controlSchemes[m_UISchemeIndex];
         }
     }
     public interface IPlayerControlsActions

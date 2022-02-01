@@ -41,16 +41,14 @@ public class PauseMenuScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (ControlManager.player1Gamepad)
+        for (int i = 0; i < Gamepad.all.Count; i++)
+        {
             InputUser.PerformPairingWithDevice(
-                Gamepad.all[ControlManager.player1GamepadIndex],
+                Gamepad.all[i],
                 playerInput.user
             );
-        if (ControlManager.player2Gamepad)
-            InputUser.PerformPairingWithDevice(
-                Gamepad.all[ControlManager.player2GamepadIndex],
-                playerInput.user
-            );
+        }
+        
 
         InputUser.PerformPairingWithDevice(
             Keyboard.current,

@@ -46,6 +46,7 @@ MonoBehaviour:
   levelGold: 10
   spawnersLeft: 0
   levelComplete: 0
+  startNextLevel: 0
   nextScene: 
   hp: {fileID: 1001566043551047296}
 --- !u!1 &231151661830647196
@@ -208,6 +209,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 231151662018076406}
     m_Modifications:
+    - target: {fileID: 831276057516750976, guid: 66df2e8c1e6f45e4faa1470328fcc7fa, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: Player2
+      objectReference: {fileID: 0}
     - target: {fileID: 6148610462172458917, guid: 66df2e8c1e6f45e4faa1470328fcc7fa, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -255,6 +260,10 @@ PrefabInstance:
     - target: {fileID: 6148610462172458919, guid: 66df2e8c1e6f45e4faa1470328fcc7fa, type: 3}
       propertyPath: m_Name
       value: Players
+      objectReference: {fileID: 0}
+    - target: {fileID: 9168816285853097734, guid: 66df2e8c1e6f45e4faa1470328fcc7fa, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: Player1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66df2e8c1e6f45e4faa1470328fcc7fa, type: 3}
@@ -318,6 +327,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2652385305403650098, guid: cb4f48e078f8e8e419948b3aa6e8892e, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: UI
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb4f48e078f8e8e419948b3aa6e8892e, type: 3}
 --- !u!4 &231151662319772735 stripped
@@ -351,6 +364,14 @@ PrefabInstance:
       propertyPath: pause
       value: 
       objectReference: {fileID: 231151662319772720}
+    - target: {fileID: 2304567560486359581, guid: caed952f16df1a240821960cc96d6399, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 2549069870310910381, guid: caed952f16df1a240821960cc96d6399, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: UI
+      objectReference: {fileID: 0}
     - target: {fileID: 5924894895037799564, guid: caed952f16df1a240821960cc96d6399, type: 3}
       propertyPath: m_DefaultControlScheme
       value: Rebinding
