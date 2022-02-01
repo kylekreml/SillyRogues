@@ -3979,7 +3979,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 520595734068663395, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
       propertyPath: m_DefaultControlScheme
-      value: Rebinding
+      value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 645060927250591495, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: Player2
       objectReference: {fileID: 0}
     - target: {fileID: 1001566043699861162, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3988,6 +3992,14 @@ PrefabInstance:
     - target: {fileID: 1001566043699861162, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2316031675612853636, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 5403057795963706098, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: UI
       objectReference: {fileID: 0}
     - target: {fileID: 5490253775538677746, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
       propertyPath: groundMap
@@ -4024,6 +4036,14 @@ PrefabInstance:
     - target: {fileID: 7080244192645005715, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8530079406888558914, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 8954514505908668545, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: Player1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 231151661830647195, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
