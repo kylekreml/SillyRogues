@@ -893,7 +893,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Silly Rogues
+  m_Text: Knightgineers
 --- !u!222 &1434049551
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1008,6 +1008,7 @@ MonoBehaviour:
   levelGold: 10
   spawnersLeft: 0
   levelComplete: 0
+  startNextLevel: 0
   nextScene: 
   hp: {fileID: 0}
 --- !u!4 &1880025660
