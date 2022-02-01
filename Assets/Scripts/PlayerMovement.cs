@@ -236,10 +236,11 @@ public class PlayerMovement : MonoBehaviour
                     foreach (Collider2D o in overlaps)
                     {
                         //Debug.Log(o.tag);
-                        if (o.tag == "Tower")
+                        if (o.tag == "Tower" || o.tag == "Wall")
                         {
                             return;
                         }
+
                     }
                 }
                 var oldHeld = held;
