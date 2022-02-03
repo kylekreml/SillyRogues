@@ -372,10 +372,6 @@ PrefabInstance:
       propertyPath: m_DefaultControlScheme
       value: UI
       objectReference: {fileID: 0}
-    - target: {fileID: 5924894895037799564, guid: caed952f16df1a240821960cc96d6399, type: 3}
-      propertyPath: m_DefaultControlScheme
-      value: Rebinding
-      objectReference: {fileID: 0}
     - target: {fileID: 6406006044730613642, guid: caed952f16df1a240821960cc96d6399, type: 3}
       propertyPath: m_Name
       value: UI
