@@ -10366,7 +10366,7 @@ MonoBehaviour:
   - spawnTime: 12
     spawnDelay: 0.7
     enemy: {fileID: 5038858920877382330, guid: 0bb66abe89c9f3145a86360b57b9be60, type: 3}
-    numberOfEnemies: 10
+    numberOfEnemies: 5
     spawnPoint: {fileID: 639073977}
     route: {fileID: 1236497969}
     destination: {fileID: 561661222}
@@ -10387,7 +10387,7 @@ MonoBehaviour:
   - spawnTime: 68
     spawnDelay: 1
     enemy: {fileID: 4485696606817315175, guid: 52620d400615cd74482ebc042e808a28, type: 3}
-    numberOfEnemies: 20
+    numberOfEnemies: 10
     spawnPoint: {fileID: 639073977}
     route: {fileID: 1236497969}
     destination: {fileID: 561661222}
@@ -11822,14 +11822,14 @@ MonoBehaviour:
   - spawnTime: 8
     spawnDelay: 1
     enemy: {fileID: 5038858920877382330, guid: 0bb66abe89c9f3145a86360b57b9be60, type: 3}
-    numberOfEnemies: 10
+    numberOfEnemies: 8
     spawnPoint: {fileID: 1189479033}
     route: {fileID: 818380870}
     destination: {fileID: 1602538641}
   - spawnTime: 24
     spawnDelay: 0.5
     enemy: {fileID: 5038858920877382330, guid: 0bb66abe89c9f3145a86360b57b9be60, type: 3}
-    numberOfEnemies: 10
+    numberOfEnemies: 8
     spawnPoint: {fileID: 1189479033}
     route: {fileID: 818380870}
     destination: {fileID: 1602538641}
@@ -11843,7 +11843,7 @@ MonoBehaviour:
   - spawnTime: 60
     spawnDelay: 0.5
     enemy: {fileID: 5038858920877382330, guid: 0bb66abe89c9f3145a86360b57b9be60, type: 3}
-    numberOfEnemies: 30
+    numberOfEnemies: 20
     spawnPoint: {fileID: 1189479033}
     route: {fileID: 818380870}
     destination: {fileID: 1602538641}
@@ -12454,11 +12454,11 @@ PrefabInstance:
       objectReference: {fileID: 931506742}
     - target: {fileID: 5490253775538677751, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.54
+      value: 1.39
       objectReference: {fileID: 0}
     - target: {fileID: 5490253775538677751, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.12
+      value: -1.18
       objectReference: {fileID: 0}
     - target: {fileID: 5490253775538677751, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12503,11 +12503,11 @@ PrefabInstance:
       objectReference: {fileID: 931506742}
     - target: {fileID: 7080244192645005715, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.75
+      value: -1.33
       objectReference: {fileID: 0}
     - target: {fileID: 7080244192645005715, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.63
+      value: -0.65
       objectReference: {fileID: 0}
     - target: {fileID: 7080244192645005715, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
       propertyPath: m_LocalPosition.z
