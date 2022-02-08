@@ -10,9 +10,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private Tilemap groundMap;
 
-    public float maxSpeed = 10f;
-    public float speed = 0f;
-    public float speedIncrease = 45f;
+    [Header("Movement")]
+    [SerializeField] private float maxSpeed = 10f;
+    [SerializeField] private float currentSpeed = 0f;
+    [SerializeField] private float timeToMaxSpeed = .3f;
+
+    [Header("Player Components")]
     public int lootCount = 0;
     public float playerInteractRange = 1.5f;
     public float playerInteractWidth = 0.7f;
@@ -26,18 +29,6 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer indicatorSprite;
     private Collider2D nodeCollider;
 
-    // PlayerControlActions input;
-    // PlayerInput playerInput;
-
-    // void Awake()
-    // {
-    //     input = new PlayerControlActions();
-    //     playerInput = gameObject.GetComponent<PlayerInput>();
-    //     // Debug.Log(string.Join("\n", Gamepad.all));
-    //     InputUser.PerformPairingWithDevice(Gamepad.all[playerNumber-1], playerInput.user, InputUserPairingOptions.UnpairCurrentDevicesFromUser);
-    //     playerInput.SwitchCurrentControlScheme(playerInput.devices[0]);
-    // }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -50,27 +41,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (direction != Vector3.zero)
-        {
-            // Now less scuffed acceleration :) - Justin
-            if (speed < maxSpeed)
-            {
-                speed = speed + speedIncrease * Time.fixedDeltaTime;
-            }
-            else
-            {
-                speed = maxSpeed;
-            }
-            NormalizedDirection = direction.normalized;
-            animator.SetFloat("LastX", direction.x);
-            animator.SetFloat("LastY", direction.y);
-        }
-        else
-        {
-            // Instant deceleration
-            speed = 0f;
-        }
-        transform.Translate(direction.normalized * speed * Time.fixedDeltaTime);
+        movement();
     }
 
     // Update is called once per frame
@@ -106,112 +77,6 @@ public class PlayerMovement : MonoBehaviour
         //     transform.position + perpendicular * (playerInteractWidth/2) + NormalizedDirection * playerInteractRange,
         //     Color.blue);
     }
-
-    // private void CheckInteract()
-    // {
-    //     if(Input.GetButtonDown("Interact" + playerNumber))
-    //     {
-    //         if (held != null)
-    //         {
-    //             Collider2D[] overlaps = Physics2D.OverlapBoxAll(new Vector2(indicator.transform.position.x,indicator.transform.position.y), new Vector2(0.5f, 0.5f), 0f);
-    //             if (held.gameObject.tag == "Resource")
-    //             {
-    //                 ResourceScript resourceScript = held.gameObject.GetComponent<ResourceScript>();
-    //                 //Possibly needed later, but not sure
-    //                 // foreach (Collider2D o in overlaps)
-    //                 // {
-    //                 //     if (o.name.Contains("TowerCrafting"))
-    //                 //     {
-    //                 //     }
-    //                 // }
-    //                 resourceScript.SetPlayerInteracted(true);
-    //             }
-    //             else if (held.gameObject.tag == "Tower") 
-    //             { 
-                    
-    //                 foreach (Collider2D o in overlaps)
-    //                 {
-    //                     //Debug.Log(o.tag);
-    //                     if (o.tag == "Tower")
-    //                     {
-    //                         return;
-    //                     }
-    //                 }
-    //             }
-    //             var oldHeld = held;
-    //             held = null;
-    //             SpriteRenderer heldSprite = oldHeld.GetComponent<SpriteRenderer>();
-    //             heldSprite.color = new Color(1f, 1f, 1f, 1f);
-    //             indicatorSprite.color = new Color(1f, 1f, 1f, 0f);
-    //             oldHeld.transform.position = groundMap.WorldToCell(this.transform.position + NormalizedDirection * 0.8f);
-    //             oldHeld.enabled = true;
-    //             if(oldHeld.gameObject.tag == "Tower")
-    //             {
-    //                oldHeld.GetComponent<TowerClass>().enableTower();
-    //             }
-    //             else if (oldHeld.gameObject.tag == "Resource")
-    //             {
-    //                 oldHeld.isTrigger = false;
-    //             }
-    //             //Going to have to place in grid somewhere around here.
-    //             return;
-    //         }
-    //         // RaycastHit2D hit = Physics2D.Raycast(this.transform.position, this.transform.rotation * NormalizedDirection, playerInteractRange);
-    //         // Replacing Raycast with overlap area so interact is not as narrow
-    //         Collider2D hit = findClosestInInteractArea(overlapInteract());
-
-    //         if (hit && hit.transform.tag == "Tower")
-    //         {
-    //             hit.gameObject.GetComponent<TowerClass>().disableTower();
-    //             hit.enabled = false;
-    //             SetHeld(hit);
-    //             SpriteRenderer heldSprite = held.GetComponent<SpriteRenderer>();
-    //             heldSprite.color = new Color(1f, 0.5f, 0.5f, 0.2f);
-    //             // held.transform.SetActive(false);
-    //         }
-
-    //         else if (hit && hit.transform.tag == "Resource")
-    //         {
-    //             //Probably also need a check for the resource so it doesn't get stuck in something
-    //             ResourceScript resourceScript = hit.gameObject.GetComponent<ResourceScript>();
-    //             if (resourceScript.GetResourceType() != Resource.Node)
-    //             {
-    //                 SetHeld(hit);
-    //                 held.isTrigger = true;
-    //             }
-    //             else
-    //             {
-    //                 nodeCollider = hit;
-    //                 if (nodeCollider.gameObject.GetComponent<ResourceNodeScript>().PlayerInteracting(gameObject))
-    //                     nodeCollider.gameObject.GetComponent<ResourceNodeScript>().interactTimeResourceNode(true);
-    //             }
-    //         }
-    //         else if (hit && hit.transform.tag == "Upgrade")
-    //         {
-    //             SetHeld(hit);
-    //         }
-    //     }
-
-    //     if (Input.GetButtonUp("Interact" + playerNumber) && nodeCollider != null)
-    //     {
-    //         animator.SetBool("Gathering", false);
-    //         nodeCollider.gameObject.GetComponent<ResourceNodeScript>().interactTimeResourceNode(false);
-    //         nodeCollider = null;
-    //     }
-
-    //     if (nodeCollider != null)
-    //     {
-    //         animator.SetBool("Gathering", true);
-    //         List<Collider2D> check = new List<Collider2D>(overlapInteract());
-    //         if (!check.Contains(nodeCollider))
-    //         {
-    //             animator.SetBool("Gathering", false);
-    //             nodeCollider.gameObject.GetComponent<ResourceNodeScript>().interactTimeResourceNode(false);
-    //             nodeCollider = null;
-    //         }
-    //     }
-
-    // }
 
     private void InteractPressed()
     {
@@ -314,6 +179,32 @@ public class PlayerMovement : MonoBehaviour
             nodeCollider.gameObject.GetComponent<ResourceNodeScript>().interactTimeResourceNode(false);
             nodeCollider = null;
         }
+    }
+
+    private void movement()
+    {
+        if (direction != Vector3.zero)
+        {
+            float smoothTime = timeToMaxSpeed;
+            float currentVelocity = 0f;
+            if (currentSpeed < maxSpeed - 1)
+            {
+                currentSpeed = Mathf.SmoothDamp(currentSpeed, maxSpeed, ref currentVelocity, smoothTime);
+            }
+            else
+            {
+                currentSpeed = maxSpeed;
+            }
+            NormalizedDirection = direction.normalized;
+            animator.SetFloat("LastX", direction.x);
+            animator.SetFloat("LastY", direction.y);
+        }
+        else
+        {
+            // Instant deceleration
+            currentSpeed = 0f;
+        }
+        transform.Translate(direction.normalized * currentSpeed * Time.fixedDeltaTime);
     }
 
     private void CheckHeld()
