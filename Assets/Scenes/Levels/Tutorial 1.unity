@@ -9384,9 +9384,9 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: fe2256477b71654458bf1ee91ddc0f10, type: 3}
     - target: {fileID: 3096017520059080247, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
       propertyPath: m_Text
-      value: 'As a knight at the academy of Knightgineering you are tasked with the
-        extremely daunting, taxing, likely too advanced for the likes of you task
-        of picking up things and moving them somewhere else as your first lesson.  '
+      value: You are a knight at the academy of Knightgineering tasked with the extremely
+        daunting, taxing, likely too advanced for the likes of you, chore of picking
+        up things and moving them somewhere else.
       objectReference: {fileID: 0}
     - target: {fileID: 3096017520059080247, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
       propertyPath: m_FontData.m_FontStyle

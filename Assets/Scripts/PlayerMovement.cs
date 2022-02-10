@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement")]
     [SerializeField] private float maxSpeed = 10f;
     [SerializeField] private float currentSpeed = 0f;
-    [SerializeField] private float timeToMaxSpeed = .3f;
+    [SerializeField] private float timeToMaxSpeed = .08f;
 
     [Header("Player Components")]
     public int lootCount = 0;
