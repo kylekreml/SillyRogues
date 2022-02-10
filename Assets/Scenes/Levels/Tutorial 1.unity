@@ -249,6 +249,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &95420750 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7478525183790519224, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
+  m_PrefabInstance: {fileID: 1704307039}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &109480724
 GameObject:
   m_ObjectHideFlags: 0
@@ -8748,6 +8753,8 @@ MonoBehaviour:
   timeSinceStart: 0
   warningTime: 3
   wave: {fileID: 417728068}
+  conveyorTile: {fileID: 6473253363657537981, guid: 6e1984bdaf40e034cbe620de61010680, type: 3}
+  conveyor: {fileID: 95420750}
 --- !u!4 &1207666242
 Transform:
   m_ObjectHideFlags: 0
@@ -10308,6 +10315,8 @@ MonoBehaviour:
   timeSinceStart: 0
   warningTime: 3
   wave: {fileID: 417728068}
+  conveyorTile: {fileID: 6473253363657537981, guid: 6e1984bdaf40e034cbe620de61010680, type: 3}
+  conveyor: {fileID: 95420750}
 --- !u!4 &1818473846
 Transform:
   m_ObjectHideFlags: 0
