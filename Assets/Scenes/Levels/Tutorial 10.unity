@@ -2351,11 +2351,24 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7478525183790519226, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
+      propertyPath: m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7478525183790519226, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
 --- !u!4 &851576119 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 231151661205364914, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
+  m_PrefabInstance: {fileID: 851576118}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &851576120 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7478525183790519224, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
   m_PrefabInstance: {fileID: 851576118}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &865697996
@@ -10273,6 +10286,8 @@ MonoBehaviour:
   timeSinceStart: 0
   warningTime: 3
   wave: {fileID: 849091255}
+  conveyorTile: {fileID: 6473253363657537981, guid: 6e1984bdaf40e034cbe620de61010680, type: 3}
+  conveyor: {fileID: 851576120}
 --- !u!4 &1409123973
 Transform:
   m_ObjectHideFlags: 0
@@ -10831,6 +10846,8 @@ MonoBehaviour:
   timeSinceStart: 0
   warningTime: 3
   wave: {fileID: 849091255}
+  conveyorTile: {fileID: 6473253363657537981, guid: 6e1984bdaf40e034cbe620de61010680, type: 3}
+  conveyor: {fileID: 851576120}
 --- !u!4 &1810524882
 Transform:
   m_ObjectHideFlags: 0
@@ -11382,6 +11399,8 @@ MonoBehaviour:
   timeSinceStart: 0
   warningTime: 3
   wave: {fileID: 849091255}
+  conveyorTile: {fileID: 6473253363657537981, guid: 6e1984bdaf40e034cbe620de61010680, type: 3}
+  conveyor: {fileID: 851576120}
 --- !u!4 &2065794157
 Transform:
   m_ObjectHideFlags: 0
