@@ -10493,16 +10493,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6125163276008224522, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
       propertyPath: m_Text
-      value: "Combine two of the same resource to make an upgrade kit. \nPress Any
-        Key to Continue"
+      value: Press any key to continue
       objectReference: {fileID: 0}
     - target: {fileID: 6125163276013768675, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6125163276959056892, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6125163277459871370, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
       propertyPath: m_LocalScale.x

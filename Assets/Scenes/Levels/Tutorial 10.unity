@@ -2325,8 +2325,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6125163276008224522, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
       propertyPath: m_Text
-      value: This level has everything. This is the Vertical Slice. Press Any Key
-        to Continue
+      value: Press Any Key to Continue
       objectReference: {fileID: 0}
     - target: {fileID: 6125163276013768675, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
       propertyPath: m_AnchorMax.y
