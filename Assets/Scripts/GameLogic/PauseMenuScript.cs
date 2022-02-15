@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class PauseMenuScript : MonoBehaviour
 {
     private bool paused;
+
     GameObject pauseCanvas;
     GameObject mainPauseMenu;
     GameObject optionsMenu;
@@ -169,6 +170,12 @@ public class PauseMenuScript : MonoBehaviour
     {
         // hiding MainPauseMenu and showing OptionsMenu
         mainPauseMenu.SetActive(false);
+        Transform craftingAssistant = optionsMenu.transform.Find("CraftingAssistantToggle");
+        craftingAssistant.GetChild(0).gameObject.GetComponent<Text>().text = "Crafting Assistant - ";
+        if (PauseMenuSettings.CraftingAssistantToggle)
+            craftingAssistant.GetChild(0).gameObject.GetComponent<Text>().text = craftingAssistant.GetChild(0).gameObject.GetComponent<Text>().text + "On";
+        else
+            craftingAssistant.GetChild(0).gameObject.GetComponent<Text>().text = craftingAssistant.GetChild(0).gameObject.GetComponent<Text>().text + "Off";
         optionsMenu.SetActive(true);
     }
 
@@ -178,6 +185,22 @@ public class PauseMenuScript : MonoBehaviour
     }
 
     // OptionsMenu
+    public void CraftingAssistantToggle()
+    {
+        Transform craftingAssistant = optionsMenu.transform.Find("CraftingAssistantToggle");
+        if (PauseMenuSettings.CraftingAssistantToggle)
+        {
+            craftingAssistant.GetChild(0).gameObject.GetComponent<Text>().text = "Crafting Assistant - Off";
+            PauseMenuSettings.CraftingAssistantToggle = false;
+        }
+        else
+        {
+            craftingAssistant.GetChild(0).gameObject.GetComponent<Text>().text = "Crafting Assistant - On";
+            PauseMenuSettings.CraftingAssistantToggle = true;
+            
+        }
+    }
+
     public void ControllerSettings()
     {
         optionsMenu.SetActive(false);

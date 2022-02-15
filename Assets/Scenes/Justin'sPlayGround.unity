@@ -2568,6 +2568,8 @@ MonoBehaviour:
   timeSinceStart: 0
   warningTime: 0
   wave: {fileID: 0}
+  conveyorTile: {fileID: 0}
+  conveyor: {fileID: 0}
 --- !u!4 &1827610590
 Transform:
   m_ObjectHideFlags: 0

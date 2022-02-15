@@ -17,7 +17,9 @@ public class TowerCreationScript : MonoBehaviour
     private Resource resource1;
     [SerializeField]
     private Resource resource2;
+
     private GameObject craftingAssistant;
+    private bool useCraftingAssistant;
     static Dictionary<Resource, HashSet<int>> recipes = new Dictionary<Resource, HashSet<int>>();
 
     // Start is called before the first frame update
@@ -25,6 +27,7 @@ public class TowerCreationScript : MonoBehaviour
     {
         spawnpoint = transform.GetChild(0);
         craftingAssistant = transform.GetChild(2).gameObject;
+        useCraftingAssistant = PauseMenuSettings.CraftingAssistantToggle;
         resource1 = Resource.Node;
         resource2 = Resource.Node;
 
@@ -64,9 +67,15 @@ public class TowerCreationScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(resource1 != Resource.Node && resource2 != Resource.Node)
+        if (resource1 != Resource.Node && resource2 != Resource.Node)
         {
             createTower(towerRecipes());
+        }
+
+        if (useCraftingAssistant != PauseMenuSettings.CraftingAssistantToggle)
+        {
+            useCraftingAssistant = PauseMenuSettings.CraftingAssistantToggle;
+            CraftingAssistantToggle(PauseMenuSettings.CraftingAssistantToggle);
         }
     }
 
@@ -124,6 +133,21 @@ public class TowerCreationScript : MonoBehaviour
         }
     }
 
+    public void CraftingAssistantToggle(bool toggle)
+    {
+        if (toggle && PauseMenuSettings.CraftingAssistantToggle)
+        {
+            craftingAssistant.SetActive(true);
+            craftingAssistant.transform.GetChild((int)resource1 - 1).gameObject.SetActive(true);
+        }
+        
+        if (!toggle)
+        {
+            craftingAssistant.transform.GetChild((int)resource1 - 1).gameObject.SetActive(false);
+            craftingAssistant.SetActive(false);
+        }
+    }
+
     //Today I learned that triggers don't get detected in OnCollisionStay2d but just change with OnTriggerStay2D and the collider will detect triggers
     //
     // Want to detect trigger inside collider -> OnTriggerStay2D/similar function call
@@ -140,16 +164,14 @@ public class TowerCreationScript : MonoBehaviour
                 resource1 = resourceScript.GetResourceType();
                 spriteRenderer.sprite = collider.gameObject.GetComponent<SpriteRenderer>().sprite;
                 spriteRenderer.enabled = true;
-                craftingAssistant.SetActive(true);
-                craftingAssistant.transform.GetChild((int)resource1 - 1).gameObject.SetActive(true);
+                CraftingAssistantToggle(true);
                 Destroy(collider.gameObject);
             }
             else if (resource2 == Resource.Node && resourceScript.GetPlayerInteracted())
             {
                 resource2 = resourceScript.GetResourceType();
                 spriteRenderer.enabled = false;
-                craftingAssistant.transform.GetChild((int)resource1 - 1).gameObject.SetActive(false);
-                craftingAssistant.SetActive(false);
+                CraftingAssistantToggle(false);
                 Destroy(collider.gameObject);
             }
         }
