@@ -509,6 +509,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  lastPlayer: {fileID: 0}
+  resourceScriptableObject: {fileID: 11400000, guid: f90c00df79f3cb94e87f5533beee3150, type: 2}
   sprites:
   - {fileID: 7482667652216324306, guid: 920acd5894be3fa45b94d9697d5d8b19, type: 3}
   - {fileID: 21300000, guid: c18889284e5f8b8439b6c7b545ba6cb1, type: 3}
@@ -525,6 +527,7 @@ MonoBehaviour:
   direction: 0
   spawnDistance: 2
   giveDirectlyToPlayer: 1
+  oneTimeUse: 0
   interactingPlayer: {fileID: 0}
 --- !u!61 &9179066643606580564
 BoxCollider2D:

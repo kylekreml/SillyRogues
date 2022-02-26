@@ -9,15 +9,25 @@ public class TowerCreationScript : MonoBehaviour
     [SerializeField]
     private Transform spawnpoint;
     [SerializeField]
-    private GameObject dummyResource;
-    [SerializeField]
     private GameObject upgradeKit;
+    [SerializeField]
+    private GameObject dummyResource;
+
+    private GameObject resource1;
+    private GameObject resource2;
+
+    private ResourceScript resourceScript1;
+    private ResourceScript resourceScript2;
 
     [SerializeField]
-    private Resource resource1;
+    private Resource resource1Type;
     [SerializeField]
-    private Resource resource2;
-
+    private Resource resource2Type;
+    [SerializeField]
+    private GameObject resource1LastPlayer;
+    [SerializeField]
+    private GameObject resource2LastPlayer;
+    
     private GameObject craftingAssistant;
     private bool useCraftingAssistant;
     static Dictionary<Resource, HashSet<int>> recipes = new Dictionary<Resource, HashSet<int>>();
@@ -28,8 +38,8 @@ public class TowerCreationScript : MonoBehaviour
         spawnpoint = transform.GetChild(0);
         craftingAssistant = transform.GetChild(2).gameObject;
         useCraftingAssistant = PauseMenuSettings.CraftingAssistantToggle;
-        resource1 = Resource.Node;
-        resource2 = Resource.Node;
+        resource1Type = Resource.Node;
+        resource2Type = Resource.Node;
 
         if (recipes.Count == 0)
         {
@@ -67,7 +77,7 @@ public class TowerCreationScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (resource1 != Resource.Node && resource2 != Resource.Node)
+        if (resource1Type != Resource.Node && resource2Type != Resource.Node)
         {
             createTower(towerRecipes());
         }
@@ -85,10 +95,10 @@ public class TowerCreationScript : MonoBehaviour
     int towerRecipes()
     {
         
-        if (resource1 != resource2)
+        if (resource1Type != resource2Type)
         {
-            HashSet<int> possibleRecipes = new HashSet<int>(recipes[resource1]);
-            possibleRecipes.IntersectWith(recipes[resource2]);
+            HashSet<int> possibleRecipes = new HashSet<int>(recipes[resource1Type]);
+            possibleRecipes.IntersectWith(recipes[resource2Type]);
             //Jank way to get the only element in the hashset because I am dumb - Justin
             foreach (int i in possibleRecipes)
             {
@@ -110,26 +120,40 @@ public class TowerCreationScript : MonoBehaviour
             // If it does, something is majorly fucked
             
             GameObject r1 = Instantiate(dummyResource);
-            r1.GetComponent<ResourceScript>().SetResourceType(resource1);
             GameObject r2 = Instantiate(dummyResource);
-            r2.GetComponent<ResourceScript>().SetResourceType(resource2);
+            r1.GetComponent<ResourceScript>().SetResourceType(resource1Type);
+            r2.GetComponent<ResourceScript>().SetResourceType(resource2Type);
             r1.transform.position = spawnpoint.position;
             r2.transform.position = spawnpoint.position;
         }
         if (tower == -1)
         {
             GameObject uk = Instantiate(upgradeKit);
-            uk.transform.position = spawnpoint.position;
 
-            resource1 = Resource.Node;
-            resource2 = Resource.Node;
+            // Places down at spawnpoint location
+            // uk.transform.position = spawnpoint.position;
+
+            // Places in last player's hands
+            resource2LastPlayer.GetComponent<PlayerMovement>().SetHeld(uk.GetComponent<BoxCollider2D>());
+
+            resource1Type = Resource.Node;
+            resource2Type = Resource.Node;
         }
         else
         {
             GameObject t = Instantiate(towers[tower]);
-            t.transform.position = spawnpoint.position;
-            resource1 = Resource.Node;
-            resource2 = Resource.Node;
+            // Places down at spawnpoint location
+            // t.transform.position = spawnpoint.position;
+
+            // Disables tower and
+            // Places in last player's hands
+            t.GetComponent<TowerClass>().disableTower();
+            t.GetComponent<BoxCollider2D>().enabled = false;
+            t.GetComponent<SpriteRenderer>().color = new Color(1f, 0.5f, 0.5f, 0.2f);
+            resource2LastPlayer.GetComponent<PlayerMovement>().SetHeld(t.GetComponent<BoxCollider2D>());
+
+            resource1Type = Resource.Node;
+            resource2Type = Resource.Node;
         }
     }
 
@@ -138,12 +162,12 @@ public class TowerCreationScript : MonoBehaviour
         if (toggle && PauseMenuSettings.CraftingAssistantToggle)
         {
             craftingAssistant.SetActive(true);
-            craftingAssistant.transform.GetChild((int)resource1 - 1).gameObject.SetActive(true);
+            craftingAssistant.transform.GetChild((int)resource1Type - 1).gameObject.SetActive(true);
         }
         
         if (!toggle)
         {
-            craftingAssistant.transform.GetChild((int)resource1 - 1).gameObject.SetActive(false);
+            craftingAssistant.transform.GetChild((int)resource1Type - 1).gameObject.SetActive(false);
             craftingAssistant.SetActive(false);
         }
     }
@@ -159,39 +183,46 @@ public class TowerCreationScript : MonoBehaviour
         {
             ResourceScript resourceScript = collider.gameObject.GetComponent<ResourceScript>();
             SpriteRenderer spriteRenderer = this.transform.GetChild(1).GetComponent<SpriteRenderer>();
-            if (resource1 == Resource.Node && resourceScript.GetPlayerInteracted())
+            Sprite newSprite = collider.gameObject.GetComponent<SpriteRenderer>().sprite;
+            Destroy(collider.gameObject);
+            if (resource1Type == Resource.Node && resourceScript.GetPlayerInteracted())
             {
-                resource1 = resourceScript.GetResourceType();
-                spriteRenderer.sprite = collider.gameObject.GetComponent<SpriteRenderer>().sprite;
+                resource1Type = resourceScript.GetResourceType();
+                resource1LastPlayer = resourceScript.GetLastPlayer();
+                spriteRenderer.sprite = newSprite;
                 spriteRenderer.enabled = true;
                 CraftingAssistantToggle(true);
-                Destroy(collider.gameObject);
             }
-            else if (resource2 == Resource.Node && resourceScript.GetPlayerInteracted())
+            else if (resource2Type == Resource.Node && resourceScript.GetPlayerInteracted())
             {
-                resource2 = resourceScript.GetResourceType();
+                resource2Type = resourceScript.GetResourceType();
+                resource2LastPlayer = resourceScript.GetLastPlayer();
                 spriteRenderer.enabled = false;
                 CraftingAssistantToggle(false);
-                Destroy(collider.gameObject);
             }
         }
     }
 
     // private void OnTriggerEnter2D(Collider2D collider)
     // {
-    //     Debug.Log(collider.gameObject.name);
+    //     // Debug.Log(collider.gameObject.name);
     //     if (collider.gameObject.tag == "Resource")
     //     {
     //         ResourceScript resourceScript = collider.gameObject.GetComponent<ResourceScript>();
-    //         // resourceScript.SetUseAsCraft(true);
-    //         if (resource1 == Resource.Node && resourceScript.GetPlayerInteracted())
+    //         SpriteRenderer spriteRenderer = this.transform.GetChild(1).GetComponent<SpriteRenderer>();
+    //         if (resource1.GetResourceType() == Resource.Node && resourceScript.GetPlayerInteracted())
     //         {
-    //             resource1 = resourceScript.GetResourceType();
+    //             resource1.SetResourceType(resourceScript.GetResourceType());
+    //             spriteRenderer.sprite = collider.gameObject.GetComponent<SpriteRenderer>().sprite;
+    //             spriteRenderer.enabled = true;
+    //             CraftingAssistantToggle(true);
     //             Destroy(collider.gameObject);
     //         }
-    //         else if (resource2 == Resource.Node && resourceScript.GetPlayerInteracted())
+    //         else if (resource2.GetResourceType() == Resource.Node && resourceScript.GetPlayerInteracted())
     //         {
-    //             resource2 = resourceScript.GetResourceType();
+    //             resource2.SetResourceType(resourceScript.GetResourceType());
+    //             spriteRenderer.enabled = false;
+    //             CraftingAssistantToggle(false);
     //             Destroy(collider.gameObject);
     //         }
     //     }

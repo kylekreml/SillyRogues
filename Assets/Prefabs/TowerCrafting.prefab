@@ -138,10 +138,11 @@ MonoBehaviour:
   - {fileID: 1969162195268416447, guid: 822262b751b22034790d8b7c8c25b8df, type: 3}
   - {fileID: 7930764248342598337, guid: ef2500227e00ac94992024527272a9cc, type: 3}
   spawnpoint: {fileID: 152518278011620383}
-  dummyResource: {fileID: 198647377356624096, guid: d04efc025d050cb419a2cff1b5d77eee, type: 3}
   upgradeKit: {fileID: 8969121097803036473, guid: 4e02b3838099ffe4b88039d4e4e01abf, type: 3}
-  resource1: 0
-  resource2: 0
+  resource1: {fileID: 198647377356624096, guid: d04efc025d050cb419a2cff1b5d77eee, type: 3}
+  resource2: {fileID: 198647377356624096, guid: d04efc025d050cb419a2cff1b5d77eee, type: 3}
+  resourceScript1: {fileID: 0}
+  resourceScript2: {fileID: 0}
 --- !u!212 &152518278163843816
 SpriteRenderer:
   m_ObjectHideFlags: 0

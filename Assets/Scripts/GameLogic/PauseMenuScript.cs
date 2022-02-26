@@ -83,6 +83,16 @@ public class PauseMenuScript : MonoBehaviour
         }
     }
 
+    public void EnablePlayerInput()
+    {
+        playerInput.ActivateInput();
+    }
+
+    public void DisablePlayerInput()
+    {
+        playerInput.DeactivateInput();
+    }
+
     public void Pause()
     {
         if (paused)

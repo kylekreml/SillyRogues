@@ -15,8 +15,13 @@ public enum Resource
 public class ResourceScript : MonoBehaviour
 {
     [SerializeField]
-    private Resource type;
+    private Resource type = Resource.Node;
     private bool playerInteracted;
+    [SerializeField]
+    private GameObject lastPlayer;
+
+    [SerializeField]
+    private ResourceScriptableObject resourceScriptableObject;
 
     public List<Sprite> sprites;
 
@@ -35,7 +40,7 @@ public class ResourceScript : MonoBehaviour
     public void SetResourceType(Resource r)
     {
         type = r;
-        this.GetComponent<SpriteRenderer>().sprite = sprites[(int)r];
+        this.GetComponent<SpriteRenderer>().sprite = resourceScriptableObject.sprites[(int)r];
     }
 
     public Resource GetResourceType()
@@ -59,5 +64,15 @@ public class ResourceScript : MonoBehaviour
     {
         yield return new WaitForSeconds(.2f);
         SetPlayerInteracted(false);
+    }
+
+    public void SetLastPlayer(GameObject player)
+    {
+        lastPlayer = player;
+    }
+
+    public GameObject GetLastPlayer()
+    {
+        return lastPlayer;
     }
 }

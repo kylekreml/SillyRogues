@@ -76,6 +76,7 @@ public class DialogueScript : MonoBehaviour
         transform.GetChild(dialogueIndex).gameObject.SetActive(true);
 
         players.DisablePlayerInput();
+        pause.DisablePlayerInput();
         pause.Pause();
     }
 
@@ -85,6 +86,7 @@ public class DialogueScript : MonoBehaviour
 
         pause.Pause();
         players.EnablePlayerInput();
+        pause.EnablePlayerInput();
 
         if (!beforeLevel)
         {

@@ -81,94 +81,89 @@ public class PlayerMovement : MonoBehaviour
     private void InteractPressed()
     {
         if (held != null)
+        {
+            Collider2D[] overlaps = Physics2D.OverlapBoxAll(new Vector2(indicator.transform.position.x,indicator.transform.position.y), new Vector2(0.5f, 0.5f), 0f);
+            if (held.gameObject.tag == "Resource")
             {
-                Collider2D[] overlaps = Physics2D.OverlapBoxAll(new Vector2(indicator.transform.position.x,indicator.transform.position.y), new Vector2(0.5f, 0.5f), 0f);
-                if (held.gameObject.tag == "Resource")
+                ResourceScript resourceScript = held.gameObject.GetComponent<ResourceScript>();
+
+                foreach (Collider2D o in overlaps)
                 {
-                    ResourceScript resourceScript = held.gameObject.GetComponent<ResourceScript>();
-                    //Possibly needed later, but not sure
-                    // foreach (Collider2D o in overlaps)
-                    // {
-                    //     if (o.name.Contains("TowerCrafting"))
-                    //     {
-                    //     }
-                    // }
-                    foreach (Collider2D o in overlaps)
+                    //Debug.Log(o.tag);
+                    if (o.tag == "Tower" || o.tag == "Wall")
                     {
-                        //Debug.Log(o.tag);
-                        if (o.tag == "Tower" || o.tag == "Wall")
-                        {
-                            return;
-                        }
-
+                        return;
                     }
-                    resourceScript.SetPlayerInteracted(true);
+
                 }
-                else if (held.gameObject.tag == "Tower") 
-                { 
-                    
-                    foreach (Collider2D o in overlaps)
+                resourceScript.SetLastPlayer(gameObject);
+                resourceScript.SetPlayerInteracted(true);
+            }
+            else if (held.gameObject.tag == "Tower") 
+            { 
+                
+                foreach (Collider2D o in overlaps)
+                {
+                    //Debug.Log(o.tag);
+                    if (o.tag == "Tower" || o.tag == "Wall")
                     {
-                        //Debug.Log(o.tag);
-                        if (o.tag == "Tower" || o.tag == "Wall")
-                        {
-                            return;
-                        }
-
+                        return;
                     }
-                }
-                var oldHeld = held;
-                held = null;
-                SpriteRenderer heldSprite = oldHeld.GetComponent<SpriteRenderer>();
-                heldSprite.color = new Color(1f, 1f, 1f, 1f);
-                indicatorSprite.color = new Color(1f, 1f, 1f, 0f);
-                oldHeld.transform.position = groundMap.WorldToCell(this.transform.position + NormalizedDirection * 0.8f);
-                oldHeld.enabled = true;
-                if(oldHeld.gameObject.tag == "Tower")
-                {
-                   oldHeld.GetComponent<TowerClass>().enableTower();
-                }
-                else if (oldHeld.gameObject.tag == "Resource")
-                {
-                    oldHeld.isTrigger = false;
-                }
-                //Going to have to place in grid somewhere around here.
-                return;
-            }
-            // RaycastHit2D hit = Physics2D.Raycast(this.transform.position, this.transform.rotation * NormalizedDirection, playerInteractRange);
-            // Replacing Raycast with overlap area so interact is not as narrow
-            Collider2D hit = findClosestInInteractArea(overlapInteract());
 
-            if (hit && hit.transform.tag == "Tower")
-            {
-                hit.gameObject.GetComponent<TowerClass>().disableTower();
-                hit.enabled = false;
-                SetHeld(hit);
-                SpriteRenderer heldSprite = held.GetComponent<SpriteRenderer>();
-                heldSprite.color = new Color(1f, 0.5f, 0.5f, 0.2f);
-                // held.transform.SetActive(false);
+                }
             }
+            var oldHeld = held;
+            held = null;
+            SpriteRenderer heldSprite = oldHeld.GetComponent<SpriteRenderer>();
+            heldSprite.color = new Color(1f, 1f, 1f, 1f);
+            indicatorSprite.color = new Color(1f, 1f, 1f, 0f);
+            oldHeld.transform.position = groundMap.WorldToCell(this.transform.position + NormalizedDirection * 0.8f);
+            oldHeld.enabled = true;
+            if(oldHeld.gameObject.tag == "Tower")
+            {
+                oldHeld.GetComponent<TowerClass>().enableTower();
+            }
+            else if (oldHeld.gameObject.tag == "Resource")
+            {
+                oldHeld.isTrigger = false;
+            }
+            //Going to have to place in grid somewhere around here.
+            return;
+        }
+        // RaycastHit2D hit = Physics2D.Raycast(this.transform.position, this.transform.rotation * NormalizedDirection, playerInteractRange);
+        // Replacing Raycast with overlap area so interact is not as narrow
+        Collider2D hit = findClosestInInteractArea(overlapInteract());
 
-            else if (hit && hit.transform.tag == "Resource")
-            {
-                //Probably also need a check for the resource so it doesn't get stuck in something
-                ResourceScript resourceScript = hit.gameObject.GetComponent<ResourceScript>();
-                if (resourceScript.GetResourceType() != Resource.Node)
-                {
-                    SetHeld(hit);
-                    held.isTrigger = true;
-                }
-                else
-                {
-                    nodeCollider = hit;
-                    if (nodeCollider.gameObject.GetComponent<ResourceNodeScript>().PlayerInteracting(gameObject))
-                        nodeCollider.gameObject.GetComponent<ResourceNodeScript>().interactTimeResourceNode(true);
-                }
-            }
-            else if (hit && hit.transform.tag == "Upgrade")
+        if (hit && hit.transform.tag == "Tower")
+        {
+            hit.gameObject.GetComponent<TowerClass>().disableTower();
+            hit.enabled = false;
+            SetHeld(hit);
+            SpriteRenderer heldSprite = held.GetComponent<SpriteRenderer>();
+            heldSprite.color = new Color(1f, 0.5f, 0.5f, 0.2f);
+            // held.transform.SetActive(false);
+        }
+
+        else if (hit && hit.transform.tag == "Resource")
+        {
+            //Probably also need a check for the resource so it doesn't get stuck in something
+            ResourceScript resourceScript = hit.gameObject.GetComponent<ResourceScript>();
+            if (resourceScript.GetResourceType() != Resource.Node)
             {
                 SetHeld(hit);
+                held.isTrigger = true;
             }
+            else
+            {
+                nodeCollider = hit;
+                if (nodeCollider.gameObject.GetComponent<ResourceNodeScript>().PlayerInteracting(gameObject))
+                    nodeCollider.gameObject.GetComponent<ResourceNodeScript>().interactTimeResourceNode(true);
+            }
+        }
+        else if (hit && hit.transform.tag == "Upgrade")
+        {
+            SetHeld(hit);
+        }
     }
 
     private void InteractReleased()
