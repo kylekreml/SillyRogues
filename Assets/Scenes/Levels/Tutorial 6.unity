@@ -1867,7 +1867,7 @@ MonoBehaviour:
     route: {fileID: 1236497969}
     destination: {fileID: 561661222}
   - spawnTime: 170
-    spawnDelay: 1
+    spawnDelay: 3
     enemy: {fileID: 242025649482435655, guid: 261fdc79a200153429bc68380c269281, type: 3}
     numberOfEnemies: 2
     spawnPoint: {fileID: 639073977}
@@ -1888,7 +1888,7 @@ MonoBehaviour:
     route: {fileID: 1236497969}
     destination: {fileID: 561661222}
   - spawnTime: 189
-    spawnDelay: 1
+    spawnDelay: 3
     enemy: {fileID: 242025649482435655, guid: 261fdc79a200153429bc68380c269281, type: 3}
     numberOfEnemies: 5
     spawnPoint: {fileID: 639073977}
@@ -10578,14 +10578,14 @@ MonoBehaviour:
     route: {fileID: 851628902}
     destination: {fileID: 1801680937}
   - spawnTime: 50
-    spawnDelay: 1
+    spawnDelay: 3
     enemy: {fileID: 242025649482435655, guid: 261fdc79a200153429bc68380c269281, type: 3}
     numberOfEnemies: 2
     spawnPoint: {fileID: 352802205}
     route: {fileID: 851628902}
     destination: {fileID: 1801680937}
   - spawnTime: 125
-    spawnDelay: 1
+    spawnDelay: 3
     enemy: {fileID: 242025649482435655, guid: 261fdc79a200153429bc68380c269281, type: 3}
     numberOfEnemies: 3
     spawnPoint: {fileID: 352802205}
@@ -12531,7 +12531,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groups:
   - spawnTime: 20
-    spawnDelay: 1
+    spawnDelay: 3
     enemy: {fileID: 242025649482435655, guid: 261fdc79a200153429bc68380c269281, type: 3}
     numberOfEnemies: 2
     spawnPoint: {fileID: 1189479033}
@@ -12545,7 +12545,7 @@ MonoBehaviour:
     route: {fileID: 818380870}
     destination: {fileID: 1602538641}
   - spawnTime: 110
-    spawnDelay: 1
+    spawnDelay: 3
     enemy: {fileID: 242025649482435655, guid: 261fdc79a200153429bc68380c269281, type: 3}
     numberOfEnemies: 3
     spawnPoint: {fileID: 1189479033}
@@ -13412,15 +13412,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1001566043263702885, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1001566043699861162, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1001566043699861162, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3096017520059080247, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
       propertyPath: m_Text
