@@ -46,13 +46,33 @@ public class TowerBehavior : TowerClass
                 Collider2D[] objects = Physics2D.OverlapCircleAll(this.transform.position, radius);
                 if (objects.Length != 0)
                 {
-                    setTarget(objects);
-                    if (target != null)
+
+                    if (TowerType == type.Dom)
                     {
-                        shootTarget();
+
+                        setTargetTankEnemy(objects);
+                        if (target != null)
+                        {
+                            shootTarget();
+                        }
+                        else
+                        {
+                            setTarget(objects);
+                            if (target != null)
+                            {
+                                shootTarget();
+                            }
+                        }
+                    }
+                    else
+                    {
+                        setTarget(objects);
+                        if (target != null)
+                        {
+                            shootTarget();
+                        }
                     }
                 }
-
             }
             else
             {
@@ -83,6 +103,20 @@ public class TowerBehavior : TowerClass
         }
 
     }
+
+    void setTargetTankEnemy(Collider2D[] objects)
+    {
+        for (int i = 0; i < objects.Length; i++)
+        {
+            if (objects[i].name == "TankEnemy(Clone)" && objects[i].gameObject.CompareTag("Enemy") && objects[i].gameObject.GetComponent<BasicEnemyScript>().RemainingDistance() < targetDistance && Vector3.Distance(objects[i].transform.position, this.transform.position) < radius)
+            {
+                target = objects[i].gameObject;
+                targetDistance = objects[i].gameObject.GetComponent<BasicEnemyScript>().RemainingDistance();
+            }
+        }
+    }
+
+
     void shootTarget()
     {
         Vector3 vectorToTarget = target.transform.position - transform.position;
