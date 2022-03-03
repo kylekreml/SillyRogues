@@ -27,6 +27,11 @@ public class TowerCreationScript : MonoBehaviour
     private GameObject resource1LastPlayer;
     [SerializeField]
     private GameObject resource2LastPlayer;
+
+    [SerializeField]
+    private bool keepCountOfTowers = false;
+    [SerializeField]
+    private GameObject finalLevelTowersTrack = null;
     
     private GameObject craftingAssistant;
     private bool useCraftingAssistant;
@@ -40,6 +45,9 @@ public class TowerCreationScript : MonoBehaviour
         useCraftingAssistant = PauseMenuSettings.CraftingAssistantToggle;
         resource1Type = Resource.Node;
         resource2Type = Resource.Node;
+
+        if (finalLevelTowersTrack != null)
+            keepCountOfTowers = true;
 
         if (recipes.Count == 0)
         {
@@ -154,6 +162,11 @@ public class TowerCreationScript : MonoBehaviour
 
             resource1Type = Resource.Node;
             resource2Type = Resource.Node;
+        }
+
+        if (keepCountOfTowers && tower >= 0)
+        {
+            finalLevelTowersTrack.GetComponent<CRUDFinalLevelTowersScript>().towerCount(tower);
         }
     }
 
