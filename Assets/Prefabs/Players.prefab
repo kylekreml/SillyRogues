@@ -186,10 +186,6 @@ PrefabInstance:
       propertyPath: speedIncrease
       value: 45
       objectReference: {fileID: 0}
-    - target: {fileID: 3777581528124063538, guid: 8389999b9ec8c89468120445c5183b3a, type: 3}
-      propertyPath: timeToMaxSpeed
-      value: 0.08
-      objectReference: {fileID: 0}
     - target: {fileID: 3777581528124063541, guid: 8389999b9ec8c89468120445c5183b3a, type: 3}
       propertyPath: m_Name
       value: Player 1
