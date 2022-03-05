@@ -24,6 +24,8 @@ public class TowerBehavior : TowerClass
 
     private SpriteRenderer radiusCircle;
 
+    public AudioSource soundEffect;
+
     public enum type { Basic, Dom, Line }
     public type TowerType;
 
@@ -124,7 +126,7 @@ public class TowerBehavior : TowerClass
         Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
         transform.rotation = q;
 
-
+        soundEffect.Play();
         GameObject newBullet = Instantiate(bullet, this.gameObject.transform.GetChild(0).position, Quaternion.identity);
         newBullet.GetComponent<ProjectileClass>().setTarget(target);
         newBullet.GetComponent<ProjectileClass>().setShooter(this.gameObject);

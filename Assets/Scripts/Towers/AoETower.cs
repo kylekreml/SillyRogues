@@ -13,12 +13,12 @@ public class AoETower : TowerClass
 
     private GameObject Sword;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
         Sword = this.transform.GetChild(0).gameObject;
-
-
         swordSprite = Sword.GetComponent<SpriteRenderer>();
         swordCollider = Sword.GetComponent<BoxCollider2D>();
     }

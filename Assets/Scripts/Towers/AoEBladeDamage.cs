@@ -5,6 +5,10 @@ using UnityEngine;
 public class AoEBladeDamage : MonoBehaviour
 {
     public float damage = 1f;
+
+    public AudioSource soundEffect;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +25,11 @@ public class AoEBladeDamage : MonoBehaviour
 
         if (other.gameObject.CompareTag("Enemy"))
         {
+            if (!soundEffect.isPlaying)
+            {
+                soundEffect.Play();
+            }
+
             other.gameObject.GetComponent<BasicEnemyScript>().damage(damage, this.transform.parent.gameObject);
         }
     }

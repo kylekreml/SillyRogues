@@ -611,7 +611,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &457559798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -627,13 +627,16 @@ MonoBehaviour:
   groups:
   - spawnTime: 0
     spawnDelay: 1
-    curSpawnDelay: 0
     enemy: {fileID: 5038858920877382330, guid: 0bb66abe89c9f3145a86360b57b9be60, type: 3}
     numberOfEnemies: 100
     spawnPoint: {fileID: 703675047}
     route: {fileID: 1558894078}
     destination: {fileID: 1116704934}
   timeSinceStart: -10
+  warningTime: 0
+  wave: {fileID: 0}
+  conveyorTile: {fileID: 0}
+  conveyor: {fileID: 0}
 --- !u!4 &457559799
 Transform:
   m_ObjectHideFlags: 0
@@ -784,6 +787,10 @@ PrefabInstance:
     - target: {fileID: 8969121097803036473, guid: 4e02b3838099ffe4b88039d4e4e01abf, type: 3}
       propertyPath: m_Name
       value: Upgrade Kit (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8969121097803036473, guid: 4e02b3838099ffe4b88039d4e4e01abf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e02b3838099ffe4b88039d4e4e01abf, type: 3}
@@ -967,7 +974,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &703675046
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1380,6 +1387,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3777581528124063541, guid: 8389999b9ec8c89468120445c5183b3a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8389999b9ec8c89468120445c5183b3a, type: 3}
 --- !u!1 &1116704934
@@ -1519,6 +1530,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Upgrade Kit (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8969121097803036473, guid: 4e02b3838099ffe4b88039d4e4e01abf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e02b3838099ffe4b88039d4e4e01abf, type: 3}
 --- !u!1001 &1251440598
@@ -1575,6 +1590,10 @@ PrefabInstance:
     - target: {fileID: 8969121097803036473, guid: 4e02b3838099ffe4b88039d4e4e01abf, type: 3}
       propertyPath: m_Name
       value: Upgrade Kit (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8969121097803036473, guid: 4e02b3838099ffe4b88039d4e4e01abf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e02b3838099ffe4b88039d4e4e01abf, type: 3}
@@ -1758,7 +1777,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!156049354 &1412610541
 Grid:
   m_ObjectHideFlags: 0
@@ -2030,7 +2049,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1558894079
 Transform:
   m_ObjectHideFlags: 0
@@ -2200,6 +2219,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Upgrade Kit (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 8969121097803036473, guid: 4e02b3838099ffe4b88039d4e4e01abf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e02b3838099ffe4b88039d4e4e01abf, type: 3}
 --- !u!1001 &1746683372
@@ -2212,6 +2235,10 @@ PrefabInstance:
     - target: {fileID: 1882489586367982614, guid: 68d606d4fd3b0c140bde2ec8c04fe64a, type: 3}
       propertyPath: m_Name
       value: Player 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1882489586367982614, guid: 68d606d4fd3b0c140bde2ec8c04fe64a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1882489586367982699, guid: 68d606d4fd3b0c140bde2ec8c04fe64a, type: 3}
       propertyPath: groundMap
@@ -2530,6 +2557,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Upgrade Kit (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 8969121097803036473, guid: 4e02b3838099ffe4b88039d4e4e01abf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e02b3838099ffe4b88039d4e4e01abf, type: 3}
 --- !u!1001 &1919371200
@@ -2712,6 +2743,10 @@ PrefabInstance:
     - target: {fileID: 8969121097803036473, guid: 4e02b3838099ffe4b88039d4e4e01abf, type: 3}
       propertyPath: m_Name
       value: Upgrade Kit (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8969121097803036473, guid: 4e02b3838099ffe4b88039d4e4e01abf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e02b3838099ffe4b88039d4e4e01abf, type: 3}
@@ -3080,6 +3115,10 @@ PrefabInstance:
     - target: {fileID: 8969121097803036473, guid: 4e02b3838099ffe4b88039d4e4e01abf, type: 3}
       propertyPath: m_Name
       value: Upgrade Kit
+      objectReference: {fileID: 0}
+    - target: {fileID: 8969121097803036473, guid: 4e02b3838099ffe4b88039d4e4e01abf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e02b3838099ffe4b88039d4e4e01abf, type: 3}
