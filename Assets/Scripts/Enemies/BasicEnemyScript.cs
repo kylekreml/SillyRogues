@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class BasicEnemyScript : MonoBehaviour
 {
+    public float maxHealth = 5;
     public float health = 5;
     private EnemySpawnerManager spawnerScript;
     private float speed;
@@ -18,6 +19,7 @@ public class BasicEnemyScript : MonoBehaviour
     [SerializeField]
     private GameObject route;
     private Animator animator;
+    [SerializeField]
     private Transform[] waypoints;
     private int currentWaypoint;
     private Transform walkTowards;
@@ -40,18 +42,11 @@ public class BasicEnemyScript : MonoBehaviour
     private bool dead = false;
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         enemySprite = this.GetComponent<SpriteRenderer>();
         speed = defaultSpeed;
-        if (waypoints == null)
-        {
-            waypoints = new Transform[route.transform.childCount];
-            for (int i = 0; i < route.transform.childCount; i++)
-            {
-                waypoints[i] = route.transform.GetChild(i);
-            }
-        }
+        SetRoute(route);
 
         healthSlider = this.gameObject.transform.Find("enemyCanvas").GetChild(0).GetComponent<Slider>();
         healthSlider.maxValue = health;
@@ -61,7 +56,7 @@ public class BasicEnemyScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         //check if frozen due to line tower
         if (timer <= 0 && !dead)
@@ -178,7 +173,7 @@ public class BasicEnemyScript : MonoBehaviour
     public void SetRoute(GameObject r)
     {
         route = r;
-        if (waypoints == null)
+        if (waypoints.Length == 0)
         {
             waypoints = new Transform[route.transform.childCount];
             for (int i = 0; i < route.transform.childCount; i++)

@@ -11,12 +11,14 @@ public class PauseMenuScript : MonoBehaviour
 
     GameObject pauseCanvas;
     GameObject mainPauseMenu;
+    GameObject tutorialsMenu;
     GameObject optionsMenu;
     GameObject controllerSettingsMenu;
     GameObject rebindPlayer1;
     GameObject rebindPlayer2;
 
     GameObject playerInputManager;
+    int tutorialCardIndex;
 
     PlayerInput playerInput;
     PlayerControlActions input;
@@ -27,12 +29,14 @@ public class PauseMenuScript : MonoBehaviour
         playerInput = gameObject.GetComponent<PlayerInput>();
         pauseCanvas = transform.GetChild(0).gameObject;
         mainPauseMenu = pauseCanvas.transform.Find("MainPauseMenu").gameObject;
+        tutorialsMenu = pauseCanvas.transform.Find("TutorialsMenu").gameObject;
         optionsMenu = pauseCanvas.transform.Find("OptionsMenu").gameObject;
         controllerSettingsMenu = pauseCanvas.transform.Find("ControllerSettingsMenu").gameObject;
         rebindPlayer1 = controllerSettingsMenu.transform.Find("Rebind1").gameObject;
         rebindPlayer2 = controllerSettingsMenu.transform.Find("Rebind2").gameObject;
 
         playerInputManager = transform.parent.Find("Players").gameObject;
+        tutorialCardIndex = 0;
 
         paused = false;
         Time.timeScale = 1f;
@@ -176,6 +180,14 @@ public class PauseMenuScript : MonoBehaviour
         transform.parent.Find("SceneLoader").GetComponent<SceneLoader>().LoadScene("Title Scene");
     }
 
+    public void Tutorials()
+    {
+        mainPauseMenu.SetActive(false);
+        tutorialsMenu.transform.Find("TutorialCards").GetChild(0).gameObject.SetActive(true);
+        tutorialsMenu.transform.Find("PreviousCard").gameObject.SetActive(false);
+        tutorialsMenu.SetActive(true);
+    }
+
     public void Options()
     {
         // hiding MainPauseMenu and showing OptionsMenu
@@ -192,6 +204,44 @@ public class PauseMenuScript : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+
+    // TutorialsMenu
+    public void NextCard()
+    {
+        tutorialsMenu.transform.Find("PreviousCard").gameObject.SetActive(true);
+        Transform tutorialCards = tutorialsMenu.transform.Find("TutorialCards");
+        tutorialCards.GetChild(tutorialCardIndex).gameObject.SetActive(false);
+        tutorialCardIndex++;
+        tutorialCards.GetChild(tutorialCardIndex).gameObject.SetActive(true);
+
+        if (tutorialCardIndex == tutorialCards.childCount-1)
+        {
+            tutorialsMenu.transform.Find("NextCard").gameObject.SetActive(false);
+        }
+    }
+
+    public void PreviousCard()
+    {
+        tutorialsMenu.transform.Find("NextCard").gameObject.SetActive(true);
+        Transform tutorialCards = tutorialsMenu.transform.Find("TutorialCards");
+        tutorialCards.transform.GetChild(tutorialCardIndex).gameObject.SetActive(false);
+        tutorialCardIndex--;
+        tutorialCards.GetChild(tutorialCardIndex).gameObject.SetActive(true);
+
+        if (tutorialCardIndex == 0)
+        {
+            tutorialsMenu.transform.Find("PreviousCard").gameObject.SetActive(false);
+        }
+    }
+
+    public void TutorialsBack()
+    {
+        mainPauseMenu.SetActive(true);
+        Transform tutorialCards = tutorialsMenu.transform.Find("TutorialCards");
+        tutorialCards.GetChild(0).gameObject.SetActive(true);
+        tutorialCardIndex = 0;
+        tutorialsMenu.SetActive(false);
     }
 
     // OptionsMenu
