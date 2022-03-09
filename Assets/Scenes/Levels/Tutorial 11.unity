@@ -732,11 +732,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5092543566946960751, guid: 428df9af584163f4aafe020db162523d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.71
+      value: -2.41
       objectReference: {fileID: 0}
     - target: {fileID: 5092543566946960751, guid: 428df9af584163f4aafe020db162523d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 5092543567122839158, guid: 428df9af584163f4aafe020db162523d, type: 3}
       propertyPath: m_Name
@@ -10457,11 +10457,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5092543566946960751, guid: 428df9af584163f4aafe020db162523d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.13
+      value: -2.07
       objectReference: {fileID: 0}
     - target: {fileID: 5092543566946960751, guid: 428df9af584163f4aafe020db162523d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.1
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 5092543567122839158, guid: 428df9af584163f4aafe020db162523d, type: 3}
       propertyPath: m_Name
@@ -12956,7 +12956,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 231151661205364913, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
       propertyPath: nextScene
-      value: TEMPLEVELSELECTOR
+      value: Credits Scene
       objectReference: {fileID: 0}
     - target: {fileID: 231151662018076406, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
       propertyPath: m_RootOrder
