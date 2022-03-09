@@ -41,6 +41,7 @@ public class ItemTeleporterScript : MonoBehaviour
     {
         Vector3Int gridPosition = groundMap.WorldToCell(transform.position + new Vector3(0,1,0));
         Collider2D[] overlaps = Physics2D.OverlapBoxAll(new Vector2(transform.position.x, transform.position.y), new Vector2(0.5f, 0.5f),0f);
+
         foreach(Collider2D obj in overlaps)
         {
             if (obj.tag == "Tower")
