@@ -166,7 +166,7 @@ Transform:
   - {fileID: 1493200535}
   - {fileID: 931506740}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &40443087
 GameObject:
@@ -12301,7 +12301,7 @@ Transform:
   - {fileID: 1236497970}
   - {fileID: 1357680409}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1351030311 stripped
 Transform:
@@ -12737,23 +12737,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groups:
   - spawnTime: 20
-    spawnDelay: 3
+    spawnDelay: 1
     enemy: {fileID: 5038858920877382330, guid: 0bb66abe89c9f3145a86360b57b9be60, type: 3}
-    numberOfEnemies: 5
+    numberOfEnemies: 8
     spawnPoint: {fileID: 881247877}
     route: {fileID: 818380870}
     destination: {fileID: 557509253}
   - spawnTime: 50
-    spawnDelay: 2
+    spawnDelay: 1
     enemy: {fileID: 5038858920877382330, guid: 0bb66abe89c9f3145a86360b57b9be60, type: 3}
-    numberOfEnemies: 5
+    numberOfEnemies: 10
     spawnPoint: {fileID: 881247877}
     route: {fileID: 818380870}
     destination: {fileID: 557509253}
   - spawnTime: 85
     spawnDelay: 1
     enemy: {fileID: 5038858920877382330, guid: 0bb66abe89c9f3145a86360b57b9be60, type: 3}
-    numberOfEnemies: 10
+    numberOfEnemies: 30
     spawnPoint: {fileID: 881247877}
     route: {fileID: 818380870}
     destination: {fileID: 557509253}
@@ -13000,7 +13000,7 @@ Transform:
   m_Children:
   - {fileID: 1188151257}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1460514721
 GameObject:
@@ -13357,7 +13357,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -13781,14 +13781,14 @@ MonoBehaviour:
   - spawnTime: 50
     spawnDelay: 0.8
     enemy: {fileID: 5038858920877382330, guid: 0bb66abe89c9f3145a86360b57b9be60, type: 3}
-    numberOfEnemies: 10
+    numberOfEnemies: 15
     spawnPoint: {fileID: 1351030311}
     route: {fileID: 1236497969}
     destination: {fileID: 699613287}
   - spawnTime: 70
-    spawnDelay: 1
+    spawnDelay: 0.8
     enemy: {fileID: 4485696606817315175, guid: 52620d400615cd74482ebc042e808a28, type: 3}
-    numberOfEnemies: 10
+    numberOfEnemies: 40
     spawnPoint: {fileID: 1351030311}
     route: {fileID: 1236497969}
     destination: {fileID: 699613287}
@@ -13802,7 +13802,7 @@ MonoBehaviour:
   - spawnTime: 140
     spawnDelay: 1
     enemy: {fileID: 242025649482435655, guid: 261fdc79a200153429bc68380c269281, type: 3}
-    numberOfEnemies: 20
+    numberOfEnemies: 10
     spawnPoint: {fileID: 1351030311}
     route: {fileID: 1236497969}
     destination: {fileID: 699613287}
@@ -14656,7 +14656,7 @@ MonoBehaviour:
   - spawnTime: 100
     spawnDelay: 1
     enemy: {fileID: 473488541409166241, guid: 289a1802b7d759b49a78f4de941f29e2, type: 3}
-    numberOfEnemies: 10
+    numberOfEnemies: 15
     spawnPoint: {fileID: 783700272}
     route: {fileID: 1357680408}
     destination: {fileID: 114348304}
