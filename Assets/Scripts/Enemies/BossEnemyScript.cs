@@ -19,10 +19,13 @@ public class BossEnemyScript : BasicEnemyScript
     private int attackGateIndex = 0;
     private Animator animator;
     public float test;
+    [SerializeField]
+    private GameObject aoe;
 
     // Start is called before the first frame update
     new void Start()
     {
+        
         animator = this.GetComponent<Animator>();
         base.Start();
     }
@@ -43,6 +46,7 @@ public class BossEnemyScript : BasicEnemyScript
     IEnumerator attackAround()
     {
         changeSpeed(0f);
+        aoe.SetActive(true);
         animator.SetBool("Windup", true);
         yield return new WaitForSeconds(timeBeforeAttack);
         animator.SetBool("Attack", true);
@@ -54,6 +58,7 @@ public class BossEnemyScript : BasicEnemyScript
                 Destroy(hit.gameObject);
             }
         }
+        aoe.SetActive(false);
         animator.SetBool("Attack", false);
         yield return new WaitForSeconds(timeAfterAttack);
         animator.SetBool("Windup", false);
