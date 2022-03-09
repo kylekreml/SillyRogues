@@ -72,7 +72,14 @@ public class BasicEnemyScript : MonoBehaviour
         //destroys this instance when it reaches the destination
         if (transform.position == destination.transform.position && walkToExit)
         {
-            gameManager.ChangeGold(-1);
+            if (gameObject.name == "BossEnemy")
+            {
+                gameManager.ChangeGold(-20);
+            }
+            else
+            {
+                gameManager.ChangeGold(-1);
+            }
             spawnerScript.RemovedEnemy();
             Destroy(gameObject);
         }

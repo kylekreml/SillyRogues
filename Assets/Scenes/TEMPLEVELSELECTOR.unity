@@ -1953,7 +1953,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Tutorial 1
+          m_StringArgument: Tutorial 7
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1360821516
@@ -3022,7 +3022,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Tutorial 1
+          m_StringArgument: Tutorial 11
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1888280539
