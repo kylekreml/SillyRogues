@@ -331,7 +331,7 @@ MonoBehaviour:
   bullet: {fileID: 7834319045722432704, guid: f9ed548129e37fa4ebe8f1a6afffaf9a, type: 3}
   radius: 3
   circleRenderer: {fileID: 0}
-  buffMultiplier: 0.2
+  buffMultiplier: 0.3
   soundEffect: {fileID: 4138087927729281554}
   TowerType: 1
 --- !u!61 &2588484445895219004
