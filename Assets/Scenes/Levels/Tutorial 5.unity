@@ -2031,7 +2031,7 @@ MonoBehaviour:
   - spawnTime: 65
     spawnDelay: 3
     enemy: {fileID: 242025649482435655, guid: 261fdc79a200153429bc68380c269281, type: 3}
-    numberOfEnemies: 4
+    numberOfEnemies: 5
     spawnPoint: {fileID: 352802205}
     route: {fileID: 851628902}
     destination: {fileID: 1801680937}
@@ -2045,7 +2045,7 @@ MonoBehaviour:
   - spawnTime: 125
     spawnDelay: 3
     enemy: {fileID: 473488541409166241, guid: 289a1802b7d759b49a78f4de941f29e2, type: 3}
-    numberOfEnemies: 5
+    numberOfEnemies: 10
     spawnPoint: {fileID: 352802205}
     route: {fileID: 851628902}
     destination: {fileID: 1801680937}
@@ -3002,7 +3002,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -12196,14 +12196,14 @@ MonoBehaviour:
   - spawnTime: 110
     spawnDelay: 1
     enemy: {fileID: 5038858920877382330, guid: 0bb66abe89c9f3145a86360b57b9be60, type: 3}
-    numberOfEnemies: 10
+    numberOfEnemies: 15
     spawnPoint: {fileID: 639073977}
     route: {fileID: 1236497969}
     destination: {fileID: 561661222}
   - spawnTime: 155
     spawnDelay: 1
     enemy: {fileID: 5038858920877382330, guid: 0bb66abe89c9f3145a86360b57b9be60, type: 3}
-    numberOfEnemies: 10
+    numberOfEnemies: 15
     spawnPoint: {fileID: 639073977}
     route: {fileID: 1236497969}
     destination: {fileID: 561661222}
@@ -12870,7 +12870,7 @@ Transform:
   - {fileID: 1236497970}
   - {fileID: 851628903}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1325364286
 GameObject:
@@ -13914,7 +13914,7 @@ Transform:
   m_Children:
   - {fileID: 1188151257}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1460299463
 GameObject:
@@ -14509,7 +14509,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -15032,7 +15032,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -15079,7 +15079,7 @@ MonoBehaviour:
   - spawnTime: 80
     spawnDelay: 0.6
     enemy: {fileID: 4485696606817315175, guid: 52620d400615cd74482ebc042e808a28, type: 3}
-    numberOfEnemies: 10
+    numberOfEnemies: 20
     spawnPoint: {fileID: 1189479033}
     route: {fileID: 818380870}
     destination: {fileID: 1602538641}

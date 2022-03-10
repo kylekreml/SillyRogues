@@ -510,12 +510,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5993ee815d4a4f044aca0e67601a7b30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  maxHealth: 5
+  health: 4
   defaultSpeed: 1
   type: 
   healthSlider: {fileID: 1559596147}
   destination: {fileID: 0}
   route: {fileID: 0}
+  waypoints: []
   loot: {fileID: 1052501217885132493, guid: 77fecd29d5a669f44bdf454dbf79cbf5, type: 3}
 --- !u!58 &1590838111116559947
 CircleCollider2D:
