@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundMap: {fileID: 0}
-  maxSpeed: 10
+  maxSpeed: 8
   currentSpeed: 0
   timeToMaxSpeed: 0.07
   lootCount: 0
