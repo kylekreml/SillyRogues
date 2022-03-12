@@ -18,7 +18,7 @@ public class BasicEnemyScript : MonoBehaviour
     private GameObject destination;
     [SerializeField]
     private GameObject route;
-    private Animator animator;
+    public Animator animator;
     [SerializeField]
     private Transform[] waypoints;
     private int currentWaypoint;

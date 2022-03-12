@@ -17,7 +17,6 @@ public class BossEnemyScript : BasicEnemyScript
     [SerializeField]
     private float[] attackPercentages;
     private int attackGateIndex = 0;
-    private Animator animator;
     public float test;
     [SerializeField]
     private GameObject aoe;
@@ -47,9 +46,12 @@ public class BossEnemyScript : BasicEnemyScript
     {
         changeSpeed(0f);
         aoe.SetActive(true);
-        animator.SetBool("Windup", true);
-        yield return new WaitForSeconds(timeBeforeAttack);
-        animator.SetBool("Attack", true);
+        base.animator.SetBool("Windup", true);
+        yield return new WaitForSeconds(0.3f);
+        base.animator.SetBool("stopWind", true);
+        yield return new WaitForSeconds(timeBeforeAttack-0.6f);
+        base.animator.SetBool("Attack", true);
+        yield return new WaitForSeconds(0.3f);
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, attackRadius);
         foreach (Collider2D hit in hits)
         {
@@ -59,9 +61,10 @@ public class BossEnemyScript : BasicEnemyScript
             }
         }
         aoe.SetActive(false);
-        animator.SetBool("Attack", false);
+        base.animator.SetBool("Attack", false);
         yield return new WaitForSeconds(timeAfterAttack);
-        animator.SetBool("Windup", false);
+        base.animator.SetBool("Windup", false);
+        base.animator.SetBool("stopWind", false);
         resetSpeed();
     }
 
