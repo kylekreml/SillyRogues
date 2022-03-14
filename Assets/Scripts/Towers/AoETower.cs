@@ -16,8 +16,9 @@ public class AoETower : TowerClass
 
 
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
+        base.Start();
         Sword = this.transform.GetChild(0).gameObject;
         swordSprite = Sword.GetComponent<SpriteRenderer>();
         swordCollider = Sword.GetComponent<BoxCollider2D>();
@@ -77,10 +78,4 @@ public class AoETower : TowerClass
         this.transform.Find("Upgrade Ready").gameObject.SetActive(false);
 
     }
-
-
-
-
-
-
 }

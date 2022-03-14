@@ -17,7 +17,8 @@ public class BossEnemyScript : BasicEnemyScript
     [SerializeField]
     private float[] attackPercentages;
     private int attackGateIndex = 0;
-    public float test;
+    [SerializeField]
+    private float launchForce = 10;
     [SerializeField]
     private GameObject aoe;
 
@@ -33,7 +34,6 @@ public class BossEnemyScript : BasicEnemyScript
     new void Update()
     {
         base.Update();
-        test = health/maxHealth;
         if (attackGateIndex != attackPercentages.Length && health/maxHealth <= attackPercentages[attackGateIndex])
         {
             attackGateIndex++;
@@ -57,7 +57,41 @@ public class BossEnemyScript : BasicEnemyScript
         {
             if (hit.gameObject.tag == "Tower")
             {
-                Destroy(hit.gameObject);
+                hit.gameObject.GetComponent<TowerClass>().Knockback((hit.gameObject.transform.position - transform.position)*launchForce);
+                // Having issues with towers so I'm doing spaghetti due to time constraints
+                // TowerClass tc = hit.gameObject.GetComponent<TowerClass>();
+                // if (tc != null)
+                // {
+                //     tc.Knockback(hit.gameObject.transform.position - transform.position);
+                // }
+                // else
+                // {
+                //     TowerBehavior tb = hit.gameObject.GetComponent<TowerBehavior>();
+                //     if (tb != null)
+                //     {
+                //         tb.Knockback(hit.gameObject.transform.position - transform.position);
+                //     }
+                //     else
+                //     {
+                //         StatusTowerBehavior stb = hit.gameObject.GetComponent<StatusTowerBehavior>();
+                //         if (stb != null)
+                //         {
+                //             stb.Knockback(hit.gameObject.transform.position - transform.position);
+                //         }
+                //         else
+                //         {
+                //             AoETower at = hit.gameObject.GetComponent<AoETower>();
+                //             if (at != null)
+                //             {
+                //                 at.Knockback(hit.gameObject.transform.position - transform.position);
+                //             }
+                //         }
+                //     }
+                // }
+            }
+            if (hit.gameObject.tag == "Player")
+            {
+                hit.gameObject.GetComponent<PlayerMovement>().Knockback(hit.gameObject.transform.position - transform.position);
             }
         }
         aoe.SetActive(false);

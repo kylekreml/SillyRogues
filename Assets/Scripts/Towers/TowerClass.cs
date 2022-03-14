@@ -17,13 +17,15 @@ public class TowerClass : MonoBehaviour
     public int tier = 0;
     public bool readyToUpgrade = false;
 
+    private Rigidbody2D rb2d;
+
     public Sprite[] spriteList;
     
     //public int tier = 1;
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
-        
+        rb2d = gameObject.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -103,4 +105,20 @@ public class TowerClass : MonoBehaviour
         return tier;
     }
 
+    public void Knockback(Vector3 direction)
+    {
+        disableTower();
+        rb2d.bodyType = RigidbodyType2D.Dynamic;
+        rb2d.AddForce(direction, ForceMode2D.Impulse);
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Wall")
+        {
+            enableTower();
+            rb2d.bodyType = RigidbodyType2D.Kinematic;
+            rb2d.velocity = new Vector2(0f, 0f);
+        }
+    }
 }

@@ -28,6 +28,10 @@ public class PlayerMovement : MonoBehaviour
     private GameObject indicator;
     private SpriteRenderer indicatorSprite;
     private Collider2D nodeCollider;
+    private PlayerInput playerInput;
+    private Rigidbody2D rb2d;
+
+    private bool knockback;
 
     // Start is called before the first frame update
     void Start()
@@ -37,11 +41,15 @@ public class PlayerMovement : MonoBehaviour
         indicatorSprite = indicator.GetComponent<SpriteRenderer>();
         indicatorSprite.color = new Color(1f, 1f, 1f, 0f);
         nodeCollider = null;
+        playerInput = gameObject.GetComponent<PlayerInput>();
+        rb2d = gameObject.GetComponent<Rigidbody2D>();
+        knockback = false;
     }
 
     private void FixedUpdate()
     {
-        movement();
+        if (!knockback)
+            movement();
     }
 
     // Update is called once per frame
@@ -58,6 +66,15 @@ public class PlayerMovement : MonoBehaviour
         // CheckInteract();
         CheckHeld();
         CheckLoot();
+
+        if (knockback)
+        {
+            playerInput.DeactivateInput();
+        }
+        else
+        {
+            playerInput.ActivateInput();
+        }
 
         //Debug for drawing the area box that the player can interact with in blue
         // Vector2 pVector = new Vector2(NormalizedDirection.y, -NormalizedDirection.x) / Mathf.Sqrt(Mathf.Pow(NormalizedDirection.x, 2f) + Mathf.Pow(NormalizedDirection.y, 2f));
@@ -321,6 +338,20 @@ public class PlayerMovement : MonoBehaviour
         else if (ctx.canceled)
         {
             InteractReleased();
+        }
+    }
+
+    public void Knockback(Vector3 direction)
+    {
+        knockback = true;
+        rb2d.AddForce(direction, ForceMode2D.Impulse);
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Wall")
+        {
+            knockback = false;
         }
     }
 

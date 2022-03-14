@@ -30,8 +30,9 @@ public class TowerBehavior : TowerClass
     public type TowerType;
 
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
+        base.Start();
         timer = bulletRespawn;
         radiusCircle = this.transform.Find("Circle").GetComponent<SpriteRenderer>();
     }
