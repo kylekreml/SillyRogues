@@ -52,7 +52,6 @@ public class GameManager: MonoBehaviour
     {
         if (finalLevelTowersTrack != null)
         {
-            Debug.Log("here");
             finalLevelTowersTrack.GetComponent<CRUDFinalLevelTowersScript>().CheckUpgrades();  
         }
         startNextLevel = true;

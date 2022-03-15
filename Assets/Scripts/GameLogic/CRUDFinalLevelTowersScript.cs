@@ -79,7 +79,6 @@ public class CRUDFinalLevelTowersScript : MonoBehaviour
 
     private void towerCount(int index, GameObject tower)
     {
-        Debug.Log(index);
         switch (index)
         {
             case 0:
@@ -154,13 +153,9 @@ public class CRUDFinalLevelTowersScript : MonoBehaviour
 
     public void CheckUpgrades()
     {
-        Debug.Log("called");
         for (int i = 0; i < upgradeCheck.Count; i++)
         {
-            Debug.Log(i);
             (int towerNumber, GameObject tower) t = upgradeCheck[i];
-            Debug.Log(t.towerNumber);
-            Debug.Log(t.tower);
             towerCount(t.towerNumber, t.tower);
         }
     }
