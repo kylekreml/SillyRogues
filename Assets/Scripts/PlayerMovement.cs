@@ -349,7 +349,7 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Wall")
+        if(collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Tower")
         {
             knockback = false;
             rb2d.velocity = Vector2.zero;
