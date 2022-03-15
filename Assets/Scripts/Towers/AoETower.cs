@@ -24,6 +24,11 @@ public class AoETower : TowerClass
         swordCollider = Sword.GetComponent<BoxCollider2D>();
     }
 
+    public override void Update()
+    {
+        base.Update();
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {

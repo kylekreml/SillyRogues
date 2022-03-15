@@ -22,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
     public Collider2D held = null;
     public char playerNumber = (char)1;
     public Animator animator;
+    private float knockbackTimerLength = 1f;
+    private float knockbackTimer = 0f;
 
     private Vector3 NormalizedDirection = new Vector3(0, 0, 0);
     private Vector3 direction;
@@ -74,6 +76,15 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             playerInput.ActivateInput();
+        }
+
+        if (knockbackTimer > 0)
+        {
+            knockbackTimer -= Time.deltaTime;
+        }
+        else
+        {
+            StopKnockback();
         }
 
         //Debug for drawing the area box that the player can interact with in blue
@@ -347,12 +358,18 @@ public class PlayerMovement : MonoBehaviour
         rb2d.AddForce(direction, ForceMode2D.Impulse);
     }
 
+    private void StopKnockback()
+    {
+        knockback = false;
+        knockbackTimer = knockbackTimerLength;
+        rb2d.velocity = Vector2.zero;
+    }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Tower")
         {
-            knockback = false;
-            rb2d.velocity = Vector2.zero;
+            StopKnockback();
         }
     }
 
