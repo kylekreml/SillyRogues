@@ -19,6 +19,9 @@ public class GameManager: MonoBehaviour
     private string nextScene = "TEMPLEVELSELECTOR";
     [SerializeField]
     public GameObject hp;
+    [SerializeField]
+    private GameObject finalLevelTowersTrack = null;
+    
     private void Awake()
     {
         // Initialize GameManager
@@ -39,6 +42,7 @@ public class GameManager: MonoBehaviour
             else if (spawnersLeft == 0 && !levelComplete)
             {
                 transform.parent.Find("UI").Find("Canvas").Find("EndDialogue").GetComponent<DialogueScript>().StartDialogue();
+                
                 levelComplete = true;
             }
         }
@@ -46,6 +50,11 @@ public class GameManager: MonoBehaviour
 
     public void StartNextLevel()
     {
+        if (finalLevelTowersTrack != null)
+        {
+            Debug.Log("here");
+            finalLevelTowersTrack.GetComponent<CRUDFinalLevelTowersScript>().CheckUpgrades();  
+        }
         startNextLevel = true;
     }
 

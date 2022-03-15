@@ -8,6 +8,8 @@ public class CRUDFinalLevelTowersScript : MonoBehaviour
     private bool finalLevel;
     [SerializeField]
     private GameObject[] towers;
+    // private List<(int towerNumber, GameObject tower)> upgradeCheck;
+    private List<(int, GameObject)> upgradeCheck = new List<(int, GameObject)>();
 
     // Start is called before the first frame update
     void Start()
@@ -32,21 +34,38 @@ public class CRUDFinalLevelTowersScript : MonoBehaviour
     {
         int towerSpots = transform.childCount;
         int towerSpotIndex = 0;
-        int[] totalTowers = new int[6];
+        int[] totalTowers = new int[12];
         totalTowers[0] = FinalLevelTowersScript.basicTowers;
         totalTowers[1] = FinalLevelTowersScript.domTowers;
         totalTowers[2] = FinalLevelTowersScript.slowAoeTowers;
         totalTowers[3] = FinalLevelTowersScript.aoeTowers;
         totalTowers[4] = FinalLevelTowersScript.buffTowers;
         totalTowers[5] = FinalLevelTowersScript.lineAoeTowers;
-        
-        // Goes through amount of towers we have
-        for (int t = 0; t < 6; t++)
+        totalTowers[6] = FinalLevelTowersScript.basicTowersUpgraded;
+        totalTowers[7] = FinalLevelTowersScript.domTowersUpgraded;
+        totalTowers[8] = FinalLevelTowersScript.slowAoeTowersUpgraded;
+        totalTowers[9] = FinalLevelTowersScript.aoeTowersUpgraded;
+        totalTowers[10] = FinalLevelTowersScript.buffTowersUpgraded;
+        totalTowers[11] = FinalLevelTowersScript.lineAoeTowersUpgraded;
+
+        // Goes through tower types that can be spawned
+        for (int t = 0; t < 12; t++)
         {
             // Spawns amount of towers
             for (int n = 0; n < totalTowers[t]; n++)
             {
-                GameObject tower = Instantiate(towers[t]);
+                GameObject tower;
+                // If t > 5, needs to upgrade tower
+                if (t > 5)
+                {
+                    tower = Instantiate(towers[t-6]);
+                    tower.GetComponent<TowerClass>().upgradeTower();
+                }
+                else
+                {
+                     tower = Instantiate(towers[t]);
+                }
+                
                 tower.transform.position = transform.GetChild(towerSpotIndex).position;
                 towerSpotIndex++;
                 // if there are ever too many towers, the rest are gone once limit reached
@@ -58,30 +77,91 @@ public class CRUDFinalLevelTowersScript : MonoBehaviour
         }
     }
 
-    public void towerCount(int index)
+    private void towerCount(int index, GameObject tower)
     {
+        Debug.Log(index);
         switch (index)
         {
             case 0:
-                FinalLevelTowersScript.basicTowers = FinalLevelTowersScript.basicTowers + 1;
+                if (tower.GetComponent<TowerClass>().getTier() == 0)
+                {
+                    FinalLevelTowersScript.basicTowers = FinalLevelTowersScript.basicTowers + 1;
+                }
+                else
+                {
+                    FinalLevelTowersScript.basicTowersUpgraded = FinalLevelTowersScript.basicTowersUpgraded + 1;
+                }
                 break;
             case 1:
-                FinalLevelTowersScript.domTowers = FinalLevelTowersScript.domTowers + 1;
+                if (tower.GetComponent<TowerClass>().getTier() == 0)
+                {
+                    FinalLevelTowersScript.domTowers = FinalLevelTowersScript.domTowers + 1;
+                }
+                else
+                {
+                    FinalLevelTowersScript.domTowersUpgraded = FinalLevelTowersScript.domTowersUpgraded + 1;
+                }
                 break;
             case 2:
-                FinalLevelTowersScript.slowAoeTowers = FinalLevelTowersScript.slowAoeTowers + 1;
+                if (tower.GetComponent<TowerClass>().getTier() == 0)
+                {
+                    FinalLevelTowersScript.slowAoeTowers = FinalLevelTowersScript.slowAoeTowers + 1;
+                }
+                else
+                {
+                    FinalLevelTowersScript.slowAoeTowersUpgraded = FinalLevelTowersScript.slowAoeTowersUpgraded + 1;
+                }
                 break;
             case 3:
-                FinalLevelTowersScript.aoeTowers = FinalLevelTowersScript.aoeTowers + 1;
+                if (tower.GetComponent<TowerClass>().getTier() == 0)
+                {
+                    FinalLevelTowersScript.aoeTowers = FinalLevelTowersScript.aoeTowers + 1;
+                }
+                else
+                {
+                    FinalLevelTowersScript.aoeTowersUpgraded = FinalLevelTowersScript.aoeTowersUpgraded + 1;
+                }
                 break;
             case 4:
-                FinalLevelTowersScript.buffTowers = FinalLevelTowersScript.buffTowers + 1;
+                if (tower.GetComponent<TowerClass>().getTier() == 0)
+                {
+                    FinalLevelTowersScript.buffTowers = FinalLevelTowersScript.buffTowers + 1;
+                }
+                else
+                {
+                    FinalLevelTowersScript.buffTowersUpgraded = FinalLevelTowersScript.buffTowersUpgraded + 1;
+                }
                 break;
             case 5:
-                FinalLevelTowersScript.lineAoeTowers = FinalLevelTowersScript.lineAoeTowers + 1;
+                if (tower.GetComponent<TowerClass>().getTier() == 0)
+                {
+                    FinalLevelTowersScript.lineAoeTowers = FinalLevelTowersScript.lineAoeTowers + 1;
+                }
+                else
+                {
+                    FinalLevelTowersScript.lineAoeTowersUpgraded = FinalLevelTowersScript.lineAoeTowersUpgraded + 1;
+                }
                 break;
             default:
                 break;
+        }
+    }
+
+    public void TrackTowers(int towerNumber, GameObject tower)
+    {
+        upgradeCheck.Add((towerNumber, tower));
+    }
+
+    public void CheckUpgrades()
+    {
+        Debug.Log("called");
+        for (int i = 0; i < upgradeCheck.Count; i++)
+        {
+            Debug.Log(i);
+            (int towerNumber, GameObject tower) t = upgradeCheck[i];
+            Debug.Log(t.towerNumber);
+            Debug.Log(t.tower);
+            towerCount(t.towerNumber, t.tower);
         }
     }
 }
