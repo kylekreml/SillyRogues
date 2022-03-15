@@ -9420,7 +9420,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Headmaster leaves the room to go somewhere
+  m_Text: Headmaster leaves the room
 --- !u!222 &1193025153
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9872,7 +9872,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 16
-    m_FontStyle: 2
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40
@@ -11060,7 +11060,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Headmaster - Who knows, maybe you might even be hired by a local lord to
-    bring fame and glory to your name. that concludes the lesson for today, head
+    bring fame and glory to your name. That concludes the lesson for today, head
     back to your barracks and enjoy the rest of the day.
 --- !u!222 &1810575626
 CanvasRenderer:
@@ -11454,9 +11454,13 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 500018141420873796, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f47147b2cc74fbf48bff596e4e28fdfa, type: 3}
     - target: {fileID: 992063441672315310, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
       propertyPath: m_Text
-      value: Headmaster - Congratulation, you are now an apprentice  knightgineer. 
+      value: Headmaster - Congratulations, you are now an apprentice  knightgineer. 
         Now if you can survive this ordeal until graduation, you will officially
         become a Knightgineer.
       objectReference: {fileID: 0}
@@ -11479,8 +11483,8 @@ PrefabInstance:
     - target: {fileID: 3096017520059080247, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
       propertyPath: m_Text
       value: The headmaster has deemed you worthy of learning the secrets that the
-        Academy of Knightgineering has to offer.  All you have is some wood and stone
-        and you are told to make fortress fortifications with them
+        Academy has to offer.  Today is the day you take your first step of becoming
+        a knightgineer.
       objectReference: {fileID: 0}
     - target: {fileID: 3096017520059080247, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
       propertyPath: m_FontData.m_FontStyle
@@ -11788,7 +11792,8 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'Headmaster - Anyone can pick up things and put them down somewhere else,
-    but it takes a real Knightgineer to be able to create something from nothing.  '
+    but it takes a real Knightgineer to be able to create siege fortifications within
+    a fortnight.  '
 --- !u!222 &1995672491
 CanvasRenderer:
   m_ObjectHideFlags: 0
