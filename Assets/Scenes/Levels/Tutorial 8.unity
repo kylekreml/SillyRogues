@@ -1680,9 +1680,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Walter the wizard - Magical crystals hold many properties in them.  When
-    combining crystals with other materials, unique effects may happen such as making
-    those caught in it\u2019s radius heavier or something like that. \n"
+  m_Text: 'Walter the wizard - Magical crystals hold many properties to them.  When
+    combining crystals with other materials, enchanted objects may be created.
+
+'
 --- !u!222 &197316937
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -20156,7 +20157,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Knight 1 - Had fun there headmaster? Looks like you had a jolly time in
-    the breakroom.
+    the side chamber.
 --- !u!222 &1959194119
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -20246,7 +20247,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 992063441672315310, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
       propertyPath: m_Text
-      value: "Headmaster - Wow, those crystals were effective, we could use these
+      value: "Headmaster - Wow, those crystals are effective, we could use these
         for so many things. I\u2019ll be adding crystals to the school\u2019s curriculum
         asap!"
       objectReference: {fileID: 0}
