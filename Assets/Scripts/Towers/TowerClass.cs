@@ -95,7 +95,7 @@ public class TowerClass : MonoBehaviour
     {
             this.GetComponent<SpriteRenderer>().sprite = spriteList[tier];
 
-            tier += 1;
+            tier += 2;
             readyToUpgrade = false;
             this.transform.Find("Upgrade Ready").gameObject.SetActive(false);
     }
