@@ -39,8 +39,9 @@ public class TowerBehavior : TowerClass
 
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
+        base.Update();
         if (!this.disabled) {
             if (timer <= 0)
             {

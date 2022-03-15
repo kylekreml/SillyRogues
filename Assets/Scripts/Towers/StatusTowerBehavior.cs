@@ -11,8 +11,9 @@ public class StatusTowerBehavior : TowerClass
     }
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
+        base.Update();
         if (!this.disabled)
         {
             this.transform.Find("Aoe Radius").GetComponent<SpriteRenderer>().enabled = false;

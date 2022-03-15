@@ -19,6 +19,10 @@ public class TowerClass : MonoBehaviour
 
     private Rigidbody2D rb2d;
 
+    [SerializeField]
+    private float knockbackTimerLength = 1f;
+    private float knockbackTimer = 0;
+
     public Sprite[] spriteList;
     
     //public int tier = 1;
@@ -29,9 +33,16 @@ public class TowerClass : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public virtual void Update()
     {
-        
+        if (knockbackTimer > 0)
+        {
+            knockbackTimer -= Time.deltaTime;
+        }
+        else
+        {
+            StopKnockback();
+        }
     }
 
     public void enableTower()
@@ -108,17 +119,23 @@ public class TowerClass : MonoBehaviour
     public void Knockback(Vector3 direction)
     {
         disableTower();
+        knockbackTimer = knockbackTimerLength;
         rb2d.bodyType = RigidbodyType2D.Dynamic;
         rb2d.AddForce(direction, ForceMode2D.Impulse);
+    }
+
+    private void StopKnockback()
+    {
+        enableTower();
+        rb2d.bodyType = RigidbodyType2D.Kinematic;
+        rb2d.velocity = new Vector2(0f, 0f);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Wall")
         {
-            enableTower();
-            rb2d.bodyType = RigidbodyType2D.Kinematic;
-            rb2d.velocity = new Vector2(0f, 0f);
+            StopKnockback();
         }
     }
 }
