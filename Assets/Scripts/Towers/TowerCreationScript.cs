@@ -32,6 +32,7 @@ public class TowerCreationScript : MonoBehaviour
     private bool keepCountOfTowers = false;
     [SerializeField]
     private GameObject finalLevelTowersTrack = null;
+    private List<GameObject> towersCreated;
     
     private GameObject craftingAssistant;
     private bool useCraftingAssistant;
@@ -152,6 +153,10 @@ public class TowerCreationScript : MonoBehaviour
             GameObject t = Instantiate(towers[tower]);
             // Places down at spawnpoint location
             // t.transform.position = spawnpoint.position;
+            if (keepCountOfTowers && tower >= 0)
+            {
+                finalLevelTowersTrack.GetComponent<CRUDFinalLevelTowersScript>().TrackTowers(tower, t);
+            }
 
             // Disables tower and
             // Places in last player's hands
@@ -162,11 +167,6 @@ public class TowerCreationScript : MonoBehaviour
 
             resource1Type = Resource.Node;
             resource2Type = Resource.Node;
-        }
-
-        if (keepCountOfTowers && tower >= 0)
-        {
-            finalLevelTowersTrack.GetComponent<CRUDFinalLevelTowersScript>().towerCount(tower);
         }
     }
 

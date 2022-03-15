@@ -352,6 +352,7 @@ public class PlayerMovement : MonoBehaviour
         if(collision.gameObject.tag == "Wall")
         {
             knockback = false;
+            rb2d.velocity = Vector2.zero;
         }
     }
 
