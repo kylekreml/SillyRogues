@@ -55,11 +55,11 @@ public class AoETower : TowerClass
         //Debug.Log("SWORD UPGRADE!!!");
         swordSprite.sprite = spriteList[tier];
         
-        tier += 1;
+        tier += 2;
         if (tier == 1)
             // tower got upgraded to tier 1 so the range on the sword is longer
         {// TEMP CODE IN PLACE OF SPRITE
-            swordSprite.color = new Color(1, 0, 0, 1);
+            //swordSprite.color = new Color(1, 0, 0, 1);
             //CHANGE THIS TO CHANGE SIZE OF SWORD
             //swordCollider.size = new Vector2(swordCollider.size.x, swordCollider.size.y * 2);
             //swordSprite.size = new Vector2(swordSprite.size.x, swordSprite.size.y * 2);
@@ -71,8 +71,10 @@ public class AoETower : TowerClass
             // tower got upgraded to tier 2 so the speed of rotation is faster
         {//TEMP CODE IN PLACE OF SPRITE
             swordSprite.color = new Color(1, 0, 1, 1);
-            //CHANGE THIS LATER TO CHANGE SPEED OF UPGRADED TOWER
+            //CHANGE THIS LATER TO CHANGE SPEED OF UPGRADED TOWER 
             attackSpeed = 1.5f;
+            //Changes size of sword
+            this.transform.GetChild(0).localScale = new Vector3(Sword.transform.localScale.x, Sword.transform.localScale.y * 2, Sword.transform.localScale.z);
         }
         readyToUpgrade = false;
         this.transform.Find("Upgrade Ready").gameObject.SetActive(false);

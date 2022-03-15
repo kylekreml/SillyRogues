@@ -721,7 +721,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Knight 1 - I guess that puts an end to this tragic love story, Time to
+  m_Text: 'Knight 1 - I guess that puts an end to this tragic love story. Time to
     head back and report to the headmaster.
 
 '
@@ -1113,7 +1113,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 16
-    m_FontStyle: 2
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40
@@ -1123,9 +1123,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Headmaster - The recent reports of goblins attacking villagers is concerning. 
-    In the past, the goblins would occasionally attack villagers, not on such a large
-    scale such as this.
+  m_Text: Headmaster - The recent reports of goblins attacking villages is concerning. 
+    In the past, the goblins would occasionally attack villages, but not on such
+    a large scale such as this.
 --- !u!222 &208002716
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2916,7 +2916,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Gobliet - No goblio. No die. Gobliet love goblio.
+  m_Text: Gobliet - No goblio. No die. Gobliet love Goblio.
 --- !u!222 &588628398
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4170,8 +4170,8 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Headmaster - Wizards are known for being extremely lazy and will find the
-    most convoluted solution to a problem such as teleporting places instead of walking
-    there.
+    most inefficient solution to a problem such as sending mail through teleportation
+    instead of the postal service.
 --- !u!222 &827529873
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8595,7 +8595,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 16
-    m_FontStyle: 0
+    m_FontStyle: 2
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40
@@ -8605,7 +8605,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Goblio dies and Gobliet arrives to see goblio die
+  m_Text: Gobliet arrives as Goblio dies.
 --- !u!222 &1061994332
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8684,7 +8684,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Gobliet - I no live. No goblio.  Gobliet own nothing now.
+  m_Text: Gobliet - I no live. No Goblio.  Gobliet has nothing now.
 --- !u!222 &1083902739
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8995,7 +8995,8 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Headmaster - The town was originally built as a town for magic practitioners
-    so there may be some lingering magic that can aid you in your fight.
+    so there may be some lingering <b>teleportation</b> magic that can aid you in
+    your fight.
 --- !u!222 &1095986780
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12355,7 +12356,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Knight 1 - Hmm, goblins organizing an attack, that\u2019s unheard of."
+  m_Text: "Knight 1 - Hmm, goblins <b>organizing</b> an attack, that\u2019s unheard
+    of."
 --- !u!222 &1327851404
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14662,7 +14664,7 @@ PrefabInstance:
     - target: {fileID: 3096017520059080247, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
       propertyPath: m_Text
       value: After Gobliet went missing, Goblio garnered the support of his goblin
-        village and plans an all out attack on the nearby town of Silvershire
+        village and plans an all out attack on the nearby town of Silvershire.
       objectReference: {fileID: 0}
     - target: {fileID: 3096017520059080247, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
       propertyPath: m_FontData.m_FontStyle
@@ -14849,9 +14851,9 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "Headmaster - Goblins have set up camp outside the town of Silvershire.
-    We fear they mean to attack the village and claim it as their own. I\u2019m sending
-    you to defend it. Silvershire holds value to us so it is of utmost importance
-    you do not lose this village. "
+    We fear they mean to attack the village and claim it. I\u2019m sending you to
+    defend it. I have stocks in the Silvershire brothel business. My investments
+    absolutely cannot fail."
 --- !u!222 &1980577012
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14995,7 +14997,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 16
-    m_FontStyle: 2
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40
@@ -15006,7 +15008,8 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "Headmaster - Oh well, a matter for another time and that time isn\u2019t
-    today.  Go back to your dorm and do whatever you want, I\u2019m going home."
+    today.  Go back to your dorm and do whatever you want, I have more pressing matters
+    to attend to."
 --- !u!222 &2020877355
 CanvasRenderer:
   m_ObjectHideFlags: 0
