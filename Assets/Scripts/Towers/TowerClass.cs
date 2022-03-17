@@ -127,7 +127,7 @@ public class TowerClass : MonoBehaviour
         rb2d.AddForce(direction, ForceMode2D.Impulse);
     }
 
-    private void StopKnockback()
+    public void StopKnockback()
     {
         if (knockback)
         {
