@@ -126,7 +126,6 @@ public class TowerClass : MonoBehaviour
 
     private void StopKnockback()
     {
-        enableTower();
         rb2d.bodyType = RigidbodyType2D.Kinematic;
         rb2d.velocity = new Vector2(0f, 0f);
     }
