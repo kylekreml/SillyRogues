@@ -149,6 +149,7 @@ public class PlayerMovement : MonoBehaviour
             oldHeld.enabled = true;
             if(oldHeld.gameObject.tag == "Tower")
             {
+                oldHeld.GetComponent<TowerClass>().StopKnockback();
                 oldHeld.GetComponent<TowerClass>().enableTower();
             }
             else if (oldHeld.gameObject.tag == "Resource")

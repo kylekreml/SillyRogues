@@ -22,6 +22,7 @@ public class TowerClass : MonoBehaviour
     [SerializeField]
     private float knockbackTimerLength = 1f;
     private float knockbackTimer = 0;
+    private bool knockback;
 
     public Sprite[] spriteList;
     
@@ -30,12 +31,13 @@ public class TowerClass : MonoBehaviour
     public virtual void Start()
     {
         rb2d = gameObject.GetComponent<Rigidbody2D>();
+        knockback = false;
     }
 
     // Update is called once per frame
     public virtual void Update()
     {
-        if (knockbackTimer > 0)
+        if (knockback && knockbackTimer > 0)
         {
             knockbackTimer -= Time.deltaTime;
         }
@@ -119,6 +121,7 @@ public class TowerClass : MonoBehaviour
     public void Knockback(Vector3 direction)
     {
         disableTower();
+        knockback = true;
         knockbackTimer = knockbackTimerLength;
         rb2d.bodyType = RigidbodyType2D.Dynamic;
         rb2d.AddForce(direction, ForceMode2D.Impulse);
@@ -126,6 +129,11 @@ public class TowerClass : MonoBehaviour
 
     private void StopKnockback()
     {
+        if (knockback)
+        {
+            enableTower();
+        }
+        knockback = false;
         rb2d.bodyType = RigidbodyType2D.Kinematic;
         rb2d.velocity = new Vector2(0f, 0f);
     }
