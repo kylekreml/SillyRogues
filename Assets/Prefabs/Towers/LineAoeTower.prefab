@@ -430,16 +430,17 @@ MonoBehaviour:
   disabled: 0
   buffed: 0
   xp: 0
-  xpToTierOne: 30
-  xpToTierTwo: 45
+  xpToTierOne: 15
+  xpToTierTwo: 30
   tier: 0
   readyToUpgrade: 0
+  knockbackTimerLength: 1
   spriteList:
   - {fileID: 21300000, guid: a06d5a5c6e25c9b4890b8fee5486acdf, type: 3}
   - {fileID: 21300000, guid: 0023f6a3cb1abee49a76899af8453cdb, type: 3}
-  bulletRespawn: 2
+  bulletRespawn: 1.8
   bullet: {fileID: 9166294425720770919, guid: dd1730c854bbd9a4abdde7df595260e0, type: 3}
-  radius: 3
+  radius: 4
   circleRenderer: {fileID: 0}
   buffMultiplier: 0.3
   soundEffect: {fileID: 6280795311358753886}

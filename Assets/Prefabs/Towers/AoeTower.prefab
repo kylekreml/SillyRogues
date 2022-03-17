@@ -246,10 +246,11 @@ MonoBehaviour:
   disabled: 0
   buffed: 0
   xp: 0
-  xpToTierOne: 10
-  xpToTierTwo: 10
+  xpToTierOne: 20
+  xpToTierTwo: 0
   tier: 0
   readyToUpgrade: 0
+  knockbackTimerLength: 1
   spriteList:
   - {fileID: 21300000, guid: 81698e86ec6f2c943bd4b828db2d21c6, type: 3}
   - {fileID: 21300000, guid: 81698e86ec6f2c943bd4b828db2d21c6, type: 3}

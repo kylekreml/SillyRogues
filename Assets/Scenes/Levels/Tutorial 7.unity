@@ -11031,7 +11031,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8139678779346162853, guid: b7066255d6d4f32488aba2612070cfef, type: 3}
       propertyPath: tier
-      value: 1
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8139678779346162853, guid: b7066255d6d4f32488aba2612070cfef, type: 3}
+      propertyPath: buffed
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7066255d6d4f32488aba2612070cfef, type: 3}
