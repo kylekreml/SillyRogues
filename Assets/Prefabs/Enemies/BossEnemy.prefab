@@ -280,16 +280,18 @@ MonoBehaviour:
   healthSlider: {fileID: 5127073551856965961}
   destination: {fileID: 0}
   route: {fileID: 0}
+  animator: {fileID: 0}
   waypoints: []
   loot: {fileID: 1052501217885132493, guid: 77fecd29d5a669f44bdf454dbf79cbf5, type: 3}
-  timeBeforeAttack: 2
-  timeAfterAttack: 2
+  timeBeforeAttack: 4
+  timeAfterAttack: 1.5
   attackRadius: 5
   attackPercentages:
   - 0.75
   - 0.5
   - 0.25
-  test: 0
+  launchForce: 10
+  aoe: {fileID: 0}
 --- !u!212 &4608902966670334082
 SpriteRenderer:
   m_ObjectHideFlags: 0

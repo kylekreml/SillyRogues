@@ -613,11 +613,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4608902966670334080, guid: 6a6d171c033dde34d8f0594ba393d048, type: 3}
       propertyPath: timeAfterAttack
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4608902966670334080, guid: 6a6d171c033dde34d8f0594ba393d048, type: 3}
       propertyPath: timeBeforeAttack
-      value: 5
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 4608902966670334080, guid: 6a6d171c033dde34d8f0594ba393d048, type: 3}
       propertyPath: attackPercentages.Array.size

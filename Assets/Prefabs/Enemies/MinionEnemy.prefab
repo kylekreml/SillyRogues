@@ -204,7 +204,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -352,6 +352,7 @@ MonoBehaviour:
   healthSlider: {fileID: 2045290108275923196}
   destination: {fileID: 0}
   route: {fileID: 0}
+  animator: {fileID: 0}
   waypoints: []
   loot: {fileID: 1052501217885132493, guid: 77fecd29d5a669f44bdf454dbf79cbf5, type: 3}
 --- !u!58 &7907811754672960918
@@ -501,7 +502,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6654244171753395530
 RectTransform:
   m_ObjectHideFlags: 0
