@@ -10823,7 +10823,7 @@ PrefabInstance:
       objectReference: {fileID: 1234248679}
     - target: {fileID: 231151661205364913, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
       propertyPath: nextScene
-      value: TEMPLEVELSELECTOR
+      value: Tutorial 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 231151662018076406, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
       propertyPath: m_RootOrder
@@ -11207,6 +11207,10 @@ PrefabInstance:
     - target: {fileID: 7080244192645005715, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9145001972614505613, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}
+      propertyPath: m_Text
+      value: Press interact to continue. E or O
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d12ebdc14f22c34db8f4a4403ea4142, type: 3}

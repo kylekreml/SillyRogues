@@ -77,7 +77,7 @@ public class AoETower : TowerClass
         {//TEMP CODE IN PLACE OF SPRITE
             swordSprite.color = new Color(1, 0, 1, 1);
             //CHANGE THIS LATER TO CHANGE SPEED OF UPGRADED TOWER 
-            attackSpeed = 1.5f;
+            attackSpeed = 1.2f;
             //Changes size of sword
             this.transform.GetChild(0).localScale = new Vector3(Sword.transform.localScale.x, Sword.transform.localScale.y * 2, Sword.transform.localScale.z);
         }

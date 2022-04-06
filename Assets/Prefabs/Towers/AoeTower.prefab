@@ -254,7 +254,7 @@ MonoBehaviour:
   spriteList:
   - {fileID: 21300000, guid: 81698e86ec6f2c943bd4b828db2d21c6, type: 3}
   - {fileID: 21300000, guid: 81698e86ec6f2c943bd4b828db2d21c6, type: 3}
-  attackSpeed: 0.8
+  attackSpeed: 0.6
   blade: {fileID: 1552374782312664747}
 --- !u!1 &1552374782312664747
 GameObject:
