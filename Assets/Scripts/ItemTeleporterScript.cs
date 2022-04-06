@@ -10,7 +10,7 @@ public class ItemTeleporterScript : MonoBehaviour
 
     [SerializeField]
     private Tilemap colMap;
-
+    public AudioSource soundEffect;
     // Start is called before the first frame update
     void Start()
     {
@@ -54,6 +54,7 @@ public class ItemTeleporterScript : MonoBehaviour
                 {
                     obj.transform.position = transform.parent.GetChild(0).GetChild(0).position;
                 }
+                soundEffect.Play();
             }
             else if (obj.tag == "Resource" && obj.gameObject.GetComponent<ResourceScript>().GetResourceType() != Resource.Node)
             {
@@ -65,7 +66,9 @@ public class ItemTeleporterScript : MonoBehaviour
                 {
                     obj.transform.position = transform.parent.GetChild(0).GetChild(0).position;
                 }
+                soundEffect.Play();
             }
+
         }
     }
 }
