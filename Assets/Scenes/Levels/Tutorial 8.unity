@@ -3583,7 +3583,7 @@ MonoBehaviour:
   - spawnTime: 55
     spawnDelay: 1
     enemy: {fileID: 5038858920877382330, guid: 0bb66abe89c9f3145a86360b57b9be60, type: 3}
-    numberOfEnemies: 10
+    numberOfEnemies: 15
     spawnPoint: {fileID: 1110121140}
     route: {fileID: 1075939059}
     destination: {fileID: 1801680937}
@@ -3597,7 +3597,7 @@ MonoBehaviour:
   - spawnTime: 160
     spawnDelay: 1
     enemy: {fileID: 5038858920877382330, guid: 0bb66abe89c9f3145a86360b57b9be60, type: 3}
-    numberOfEnemies: 7
+    numberOfEnemies: 15
     spawnPoint: {fileID: 1110121140}
     route: {fileID: 1075939059}
     destination: {fileID: 1801680937}
@@ -3611,7 +3611,7 @@ MonoBehaviour:
   - spawnTime: 190
     spawnDelay: 1
     enemy: {fileID: 5038858920877382330, guid: 0bb66abe89c9f3145a86360b57b9be60, type: 3}
-    numberOfEnemies: 15
+    numberOfEnemies: 20
     spawnPoint: {fileID: 1110121140}
     route: {fileID: 1075939059}
     destination: {fileID: 1801680937}
@@ -15804,7 +15804,7 @@ MonoBehaviour:
   - spawnTime: 70
     spawnDelay: 0.6
     enemy: {fileID: 4485696606817315175, guid: 52620d400615cd74482ebc042e808a28, type: 3}
-    numberOfEnemies: 10
+    numberOfEnemies: 15
     spawnPoint: {fileID: 1299299014}
     route: {fileID: 2134340720}
     destination: {fileID: 164955030}
@@ -15818,7 +15818,7 @@ MonoBehaviour:
   - spawnTime: 130
     spawnDelay: 0.6
     enemy: {fileID: 4485696606817315175, guid: 52620d400615cd74482ebc042e808a28, type: 3}
-    numberOfEnemies: 20
+    numberOfEnemies: 25
     spawnPoint: {fileID: 1299299014}
     route: {fileID: 2134340720}
     destination: {fileID: 164955030}
@@ -19356,35 +19356,35 @@ MonoBehaviour:
   - spawnTime: 40
     spawnDelay: 0.9
     enemy: {fileID: 5038858920877382330, guid: 0bb66abe89c9f3145a86360b57b9be60, type: 3}
-    numberOfEnemies: 10
+    numberOfEnemies: 15
     spawnPoint: {fileID: 1189479033}
     route: {fileID: 818380870}
     destination: {fileID: 1602538641}
   - spawnTime: 70
     spawnDelay: 0.6
     enemy: {fileID: 4485696606817315175, guid: 52620d400615cd74482ebc042e808a28, type: 3}
-    numberOfEnemies: 10
+    numberOfEnemies: 15
     spawnPoint: {fileID: 1189479033}
     route: {fileID: 818380870}
     destination: {fileID: 1602538641}
   - spawnTime: 115
-    spawnDelay: 0.6
+    spawnDelay: 3
     enemy: {fileID: 242025649482435655, guid: 261fdc79a200153429bc68380c269281, type: 3}
-    numberOfEnemies: 1
+    numberOfEnemies: 3
     spawnPoint: {fileID: 1189479033}
     route: {fileID: 818380870}
     destination: {fileID: 1602538641}
   - spawnTime: 145
     spawnDelay: 1
     enemy: {fileID: 5038858920877382330, guid: 0bb66abe89c9f3145a86360b57b9be60, type: 3}
-    numberOfEnemies: 20
+    numberOfEnemies: 30
     spawnPoint: {fileID: 1189479033}
     route: {fileID: 818380870}
     destination: {fileID: 1602538641}
   - spawnTime: 190
     spawnDelay: 0.8
     enemy: {fileID: 5038858920877382330, guid: 0bb66abe89c9f3145a86360b57b9be60, type: 3}
-    numberOfEnemies: 15
+    numberOfEnemies: 25
     spawnPoint: {fileID: 1189479033}
     route: {fileID: 818380870}
     destination: {fileID: 1602538641}

@@ -7968,14 +7968,14 @@ MonoBehaviour:
   - spawnTime: 32
     spawnDelay: 1
     enemy: {fileID: 242025649482435655, guid: 261fdc79a200153429bc68380c269281, type: 3}
-    numberOfEnemies: 2
+    numberOfEnemies: 3
     spawnPoint: {fileID: 639073977}
     route: {fileID: 1236497969}
     destination: {fileID: 561661222}
   - spawnTime: 55
     spawnDelay: 0.5
     enemy: {fileID: 4485696606817315175, guid: 52620d400615cd74482ebc042e808a28, type: 3}
-    numberOfEnemies: 15
+    numberOfEnemies: 20
     spawnPoint: {fileID: 639073977}
     route: {fileID: 1236497969}
     destination: {fileID: 561661222}
